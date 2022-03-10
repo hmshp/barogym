@@ -35,7 +35,7 @@ const Header = () => {
   }
 
   return (
-    <Navbar style={navbarStyles} expand="md" onToggle={toggle}>
+    <Navbar collapseOnSelect style={navbarStyles} expand="md" onToggle={toggle}>
       <Container fluid>
         <Navbar.Brand style={navbarBrandStyles} href="/">
           <Logo
