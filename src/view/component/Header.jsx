@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container, Navbar, Offcanvas } from 'react-bootstrap';
+import { Container, Navbar, Offcanvas, Button } from 'react-bootstrap';
 import styled from 'styled-components';
 import Navi from './Navi';
 
@@ -46,10 +46,14 @@ const Header = () => {
         </Navbar.Brand>
         <Navbar.Toggle/>
         {
-          !toggle ?
+          !isToggled ?
             <>
-              <Navbar.Collapse>
+              <Navbar.Collapse className="justify-content-end">
                 <Navi/>
+                <section>
+                  <Button variant="primary" size="sm">로그인</Button>
+                  <Button variant="primary" size="sm">회원가입</Button>
+                </section>
               </Navbar.Collapse>
             </>
           :
@@ -61,6 +65,10 @@ const Header = () => {
               >
                 <Offcanvas.Body>
                   <Navi/>
+                  <section>
+                    <Button variant="primary" size="sm">로그인</Button>
+                    <Button variant="primary" size="sm">회원가입</Button>
+                  </section>
                 </Offcanvas.Body>
               </Navbar.Offcanvas>
             </>
