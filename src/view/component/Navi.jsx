@@ -39,19 +39,30 @@ const Navi = () => {
           </LinkContainer>  
         </NavDropdown>
         <NavDropdown title="이용권">
-        <LinkContainer to="/pass/info">
+          <LinkContainer to="/pass/info">
             <NavDropdown.Item>이용권안내</NavDropdown.Item>
           </LinkContainer>  
           <LinkContainer to="/pass/buy">
             <NavDropdown.Item>이용권구매</NavDropdown.Item>
           </LinkContainer>  
         </NavDropdown>
-        <NavDropdown title="수업">
-        <LinkContainer to="/class/appointment">
+        <NavDropdown title="수업 예약">
+          <LinkContainer to="/class/appointment">
             <NavDropdown.Item>수업예약</NavDropdown.Item>
           </LinkContainer>  
           <LinkContainer to="/class/schedule">
             <NavDropdown.Item>수업일정</NavDropdown.Item>
+          </LinkContainer>  
+        </NavDropdown>
+        <NavDropdown title="마이페이지">
+          <LinkContainer to="/myInfo/MyInfoPage">
+            <NavDropdown.Item>내 정보</NavDropdown.Item>
+          </LinkContainer>  
+          <LinkContainer to="/myInfo/PayListPage">
+            <NavDropdown.Item>구매한 이용권</NavDropdown.Item>
+          </LinkContainer>  
+          <LinkContainer to="#">
+            <NavDropdown.Item>내 게시글</NavDropdown.Item>
           </LinkContainer>  
         </NavDropdown>
       </Nav>      
