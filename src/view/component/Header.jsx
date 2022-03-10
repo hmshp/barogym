@@ -46,7 +46,7 @@ const Header = () => {
         </Navbar.Brand>
         <Navbar.Toggle/>
         {
-          !toggle ?
+          !isToggled ?
             <>
               <Navbar.Collapse>
                 <Navi/>
