@@ -48,7 +48,7 @@ const Header = () => {
         {
           !isToggled ?
             <>
-              <Navbar.Collapse>
+              <Navbar.Collapse className="justify-content-end">
                 <Navi/>
                 <section>
                   <Button variant="primary" size="sm">로그인</Button>
