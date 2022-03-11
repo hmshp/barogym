@@ -41,7 +41,7 @@ const INPUT = styled.input`
   border: 1px solid gray;
 `
 
-const BUTTON = styled.button`
+const STYLEDBUTTON = styled.button`
   background-color: rgb(254, 139, 121);
   color: white;
   padding: 0.5em 1em;
@@ -58,7 +58,7 @@ export default function MyContactInfo(props) {
       <FORMCONTAINER>
         <FORMTITLE>
           <h2>회원 정보</h2>
-          <BUTTON onClick={props.activateInput}>회원 정보 수정</BUTTON>
+          <STYLEDBUTTON onClick={props.activateInput}>회원 정보 수정</STYLEDBUTTON>
         </FORMTITLE>
         <FORM onSubmit={handleSubmit((data) => console.log(data))}>
           <FORMITEM>
@@ -80,7 +80,7 @@ export default function MyContactInfo(props) {
               defaultValue="010-1234-5678"
               disabled={props.isDisabled}
             />
-            <p>{errors.password?.message}</p>
+            <p>{errors.phone?.message}</p>
           </FORMITEM>
 
           <FORMITEM>
@@ -91,10 +91,10 @@ export default function MyContactInfo(props) {
               defaultValue="서울시 강남구"
               disabled={props.isDisabled}
             />
-            <p>{errors.password?.message}</p>
+            <p>{errors.address?.message}</p>
           </FORMITEM>
 
-          <BUTTON>변경하기</BUTTON>
+          <STYLEDBUTTON>변경하기</STYLEDBUTTON>
         </FORM>
       </FORMCONTAINER>
     </SECTION>
