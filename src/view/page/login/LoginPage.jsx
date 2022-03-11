@@ -1,9 +1,10 @@
 import React from 'react';
+import LoginForm from '../../component/login/LoginForm';
 
 const LoginPage = () => {
   return (
     <div>
-      로그인 페이지
+      <LoginForm />
     </div>
   );
 };
