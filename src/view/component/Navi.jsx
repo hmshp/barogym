@@ -55,7 +55,7 @@ const Navi = () => {
           </LinkContainer>  
         </NavDropdown>
         <NavDropdown title="마이페이지">
-          <LinkContainer to="/myInfo/MyInfoPage">
+          <LinkContainer to="/myInfo">
             <NavDropdown.Item>내 정보</NavDropdown.Item>
           </LinkContainer>  
           <LinkContainer to="/myInfo/PayListPage">
