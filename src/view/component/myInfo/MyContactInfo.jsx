@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 import styled, {css} from 'styled-components'
 
@@ -63,6 +63,12 @@ export default function MyContactInfo(props) {
   const { register, handleSubmit, formState: { errors } } = useForm();
   console.log(errors)
 
+  const [member,setMember] = useState({
+    email:"abc@gmail.com",
+    phone:"010-1234-5678",
+    address:"서울시 강남구"
+  });
+
   return (
     <SECTION>
         <FORMTITLE>
@@ -75,7 +81,7 @@ export default function MyContactInfo(props) {
             <INPUT
               {...register("email")}
               id="email"
-              defaultValue="abc@gmail.com"
+              defaultValue={member.email}
               disabled={props.isDisabled}
               required
             />
@@ -87,7 +93,7 @@ export default function MyContactInfo(props) {
             <INPUT
               {...register("phone")}
               id="phone"
-              defaultValue="010-1234-5678"
+              defaultValue={member.phone}
               disabled={props.isDisabled}
               required
             />
@@ -98,7 +104,7 @@ export default function MyContactInfo(props) {
             <INPUT
               {...register("address")}
               id="address"
-              defaultValue="서울시 강남구"
+              defaultValue={member.address}
               disabled={props.isDisabled}
               required
             />
