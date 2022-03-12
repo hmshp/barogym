@@ -1,16 +1,17 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
+
+// 버그 있음!! defaultValue를 설정해 놓았음에도 불구하고, '회원정보 수정' 버튼 누르고 아무것도 바꾸지 않은 채(input에 커서를 두지 않은 채) '변경하기' 버튼을 누르면 input value가 undefined라고 출력된다(값 확인용으로 콘솔에 출력하면)
+// 아마 uncontrolled form이라서 input에 커서를 대지 않으면 초기값이 적용이 안 되는 듯....? 
 
 const SECTION = styled.section`
-  width: 80%;
   margin: 0 auto;
+  width: 90%;
+  padding: 0 2em;
+  position: relative;
 `
 
-const FORMCONTAINER = styled.div`
-  max-width: 500px;
-  margin: 0 auto;
-`
 
 const FORM = styled.form`
   margin: 2em auto;
@@ -47,6 +48,15 @@ const STYLEDBUTTON = styled.button`
   padding: 0.5em 1em;
   border-radius: 4px;
   border: none;
+  @media(min-width: 800px) {
+    ${props =>
+    props.bottom &&
+    css`
+      position: absolute;
+      bottom: 0;
+    `}
+  }
+  
 `
 
 export default function MyContactInfo(props) {
@@ -55,7 +65,6 @@ export default function MyContactInfo(props) {
 
   return (
     <SECTION>
-      <FORMCONTAINER>
         <FORMTITLE>
           <h2>회원 정보</h2>
           <STYLEDBUTTON onClick={props.activateInput}>회원 정보 수정</STYLEDBUTTON>
@@ -64,39 +73,39 @@ export default function MyContactInfo(props) {
           <FORMITEM>
             <LABEL htmlFor="email">이메일</LABEL>
             <INPUT
-              {...register("email", { required: '필수 입력사항입니다.' })}
+              {...register("email")}
               id="email"
               defaultValue="abc@gmail.com"
               disabled={props.isDisabled}
+              required
             />
-            <p>{errors.email?.message}</p>
+            
           </FORMITEM>
 
           <FORMITEM>
             <LABEL htmlFor="phone">휴대폰</LABEL>
             <INPUT
-              {...register("phone", { required: '필수 입력사항입니다.' })}
+              {...register("phone")}
               id="phone"
               defaultValue="010-1234-5678"
               disabled={props.isDisabled}
+              required
             />
-            <p>{errors.phone?.message}</p>
           </FORMITEM>
 
           <FORMITEM>
             <LABEL htmlFor="address">주소</LABEL>
             <INPUT
-              {...register("address", { required: '필수 입력사항입니다.' })}
+              {...register("address")}
               id="address"
               defaultValue="서울시 강남구"
               disabled={props.isDisabled}
+              required
             />
-            <p>{errors.address?.message}</p>
           </FORMITEM>
 
-          <STYLEDBUTTON>변경하기</STYLEDBUTTON>
+          <STYLEDBUTTON bottom>변경하기</STYLEDBUTTON>
         </FORM>
-      </FORMCONTAINER>
     </SECTION>
   );
 }
