@@ -1,38 +1,10 @@
 import {useState, React} from 'react';
 import MyContactInfo from '../../component/myInfo/MyContactInfo';
 import MyPasswordInfo from '../../component/myInfo/MyPasswordInfo';
-import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom';
 import {Button} from 'react-bootstrap'
+import {PAGEHEADER, STYLEDCONTAINER, STYLEDSECTION, STYLEDBUTTON, FORM, LABEL, INPUT} from '../../../styles/MyInfoStyle';
 
-const PAGEHEADER = styled.header`
-  margin: 2em 0;
-  display: flex;
-  justify-content: space-between;
-`
-
-const STYLEDCONTAINER = styled.div`
-  margin: 0 auto;
-  width: 90%;
-`
-
-const STYLEDSECTION = styled.section`
-  @media(min-width: 800px) {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  margin-bottom: 5em;
-  
-`
-
-const STYLEDBUTTON = styled.button`
-  background-color: rgb(254, 139, 121);
-  color: white;
-  padding: 0.5em 1em;
-  border-radius: 4px;
-  border: none;
-`
 
 const MyInfoPage = () => {
   const [isPwChecked, setIsPwChecked] = useState(false);
@@ -71,22 +43,28 @@ const MyInfoPage = () => {
     <STYLEDCONTAINER>
     {
       !isPwChecked?
-      <form>
-        <label> 
-          비밀번호 확인(1234)
-        </label>
-        <input 
-          onChange={handleChange}
-          type="password"
-          placeholder='비밀번호를 입력해 주세요.'
-        />
-        <Button onClick={checkPassword}>확인</Button>
-        <Button 
-          onClick={()=>{ navigate('/'); window.location.reload();}} 
-          variant="secondary">
-            취소
-        </Button>
-      </form>
+      <STYLEDCONTAINER pwCheck>
+        <FORM>
+          <LABEL pwCheck htmlFor="password"> 
+            <h1>비밀번호 확인(1234)</h1>
+          </LABEL>
+          <INPUT
+            pwCheck
+            onChange={handleChange}
+            type="password"
+            placeholder='비밀번호를 입력해 주세요.'
+            id="password"
+          />
+          <div>
+            <Button onClick={checkPassword}>확인</Button>
+            <Button 
+              onClick={()=>{ navigate('/'); window.location.reload();}} 
+              variant="secondary">
+                취소
+            </Button>
+          </div>
+        </FORM>
+      </STYLEDCONTAINER>
       :
       <>
         <PAGEHEADER>
