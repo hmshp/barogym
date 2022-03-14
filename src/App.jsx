@@ -28,7 +28,6 @@ import SchedulePage from './view/page/myInfo/SchedulePage'
 import IncomeListPage from './view/page/mgmt/IncomeListPage';
 import ProductListPage from './view/page/mgmt/ProductListPage';
 import ProductUpdatePage from './view/page/mgmt/ProductUpdatePage';
-import MyPostsPage from './view/page/myInfo/MyPostsPage';
 import Zipcode from './view/component/login/Zipcode';
 
 
@@ -36,9 +35,9 @@ const App = () => {
   return (
     <>
       <Header/>
-        {/* <button onClick={async()=>{ const db =await memberListDB(); alert("console창 확인"); console.log(db.data[0]);}}>DB테스트</button>
+        <button onClick={async()=>{ const db =await memberListDB(); alert("console창 확인"); console.log(db.data[0]);}}>DB테스트</button>
         <KakaoMap/>
-        <Zipcode/> */}
+        <Zipcode/>
         <Routes>
           {/* home */}
           <Route path="/" exact={true} element={<HomePage/>} />
@@ -67,7 +66,6 @@ const App = () => {
           {/* myInfo */}
           <Route path="/myInfo" exact={true} element={<MyInfoPage/>} />
           <Route path="/myInfo/payList" exact={true} element={<PayListPage/>} />
-          <Route path="/myInfo/posts" exact={true} element={<MyPostsPage/>} />
           <Route path="/myInfo/schedule" exact={true} element={<SchedulePage/>} />
           {/* mgmt */}
           <Route path="/mgmt/product/list" exact={true} element={<ProductListPage/>} />
