@@ -55,13 +55,13 @@ const Navi = () => {
           </LinkContainer>  
         </NavDropdown>
         <NavDropdown title="마이페이지">
-          <LinkContainer to="/myInfo/MyInfoPage">
+          <LinkContainer to="/myInfo">
             <NavDropdown.Item>내 정보</NavDropdown.Item>
           </LinkContainer>  
-          <LinkContainer to="/myInfo/PayListPage">
+          <LinkContainer to="/myInfo/PayList">
             <NavDropdown.Item>구매한 이용권</NavDropdown.Item>
           </LinkContainer>  
-          <LinkContainer to="#">
+          <LinkContainer to="/myInfo/posts">
             <NavDropdown.Item>내 게시글</NavDropdown.Item>
           </LinkContainer>  
         </NavDropdown>
