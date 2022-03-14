@@ -3,7 +3,9 @@ import styled, { css } from 'styled-components';
 /* MyInfo 페이지 */
 
 export const PAGEHEADER = styled.header`
+  border-bottom: 1px solid gray;
   margin: 2em 0;
+  padding-bottom: 1em;
   display: flex;
   justify-content: space-between;
 `
@@ -32,11 +34,16 @@ export const STYLEDSECTION = styled.section`
   }
 
   margin-bottom: 5em;
-  
+`
+
+export const SUBSECTION = styled.section`
+  margin-bottom: 3em;
 `
 
 export const STYLEDBUTTON = styled.button`
-  background-color: rgb(254, 139, 121);
+  background-color: ${props =>
+    props.gray ? "gray" : "rgb(254, 139, 121)"
+  };
   color: white;
   padding: 0.5em 1em;
   border-radius: 4px;
@@ -93,4 +100,11 @@ export const INPUT = styled.input`
       margin-bottom: 1em;
     `
   }
+`
+
+/* 주소 */
+
+export const ADDRSECTION = styled.section`
+  display: flex;
+  flex-direction: column;
 `
