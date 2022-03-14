@@ -28,6 +28,7 @@ import SchedulePage from './view/page/myInfo/SchedulePage'
 import IncomeListPage from './view/page/mgmt/IncomeListPage';
 import ProductListPage from './view/page/mgmt/ProductListPage';
 import ProductUpdatePage from './view/page/mgmt/ProductUpdatePage';
+import MyPostsPage from './view/page/myInfo/MyPostsPage';
 import Zipcode from './view/component/login/Zipcode';
 
 
@@ -66,6 +67,7 @@ const App = () => {
           {/* myInfo */}
           <Route path="/myInfo" exact={true} element={<MyInfoPage/>} />
           <Route path="/myInfo/payList" exact={true} element={<PayListPage/>} />
+          <Route path="/myInfo/posts" exact={true} element={<MyPostsPage/>} />
           <Route path="/myInfo/schedule" exact={true} element={<SchedulePage/>} />
           {/* mgmt */}
           <Route path="/mgmt/product/list" exact={true} element={<ProductListPage/>} />
