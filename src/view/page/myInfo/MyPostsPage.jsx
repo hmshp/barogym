@@ -2,7 +2,7 @@ import React from 'react';
 import { PAGEHEADER, H1, STYLEDCONTAINER } from '../../../styles/MyInfoStyle';
 import {Table} from 'react-bootstrap';
 import MyPostsPagination from "../../component/myInfo/MyPostsPagination"
-import MyPostsSearchBar from './MyPostsSearchBar';
+import MyPostsSearchBar from '../../component/myInfo/MyPostsSearchBar';
 
 const MyPostsPage = () => {
   const posts = [
