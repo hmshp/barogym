@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { Pagination } from 'react-bootstrap';
 
 /* MyInfo 페이지 */
 
@@ -107,4 +108,16 @@ export const INPUT = styled.input`
 export const ADDRSECTION = styled.section`
   display: flex;
   flex-direction: column;
+`
+
+/* 글자 색 */
+export const H1 = styled.h1`
+  color: rgb(254, 139, 121);
+`
+
+/* pagination */
+
+export const PAGINATION = styled(Pagination)`
+  display: flex;
+  justify-content: center;
 `
