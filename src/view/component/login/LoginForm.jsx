@@ -2,19 +2,13 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import styled from 'styled-components'
 
-const FORMCONTAINER = styled.div`
-  display: flex;
-  justify-content: center;
-`
+
 
 const FORM = styled.form`
-  margin: 2em auto;
-  width: 80%;
-  max-width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+  margin-bottom: 2em;
 `
 
 const INPUT = styled.input`
@@ -36,7 +30,6 @@ export default function LoginForm() {
   console.log(errors)
 
   return (
-    <FORMCONTAINER>
       <FORM onSubmit={handleSubmit((data) => console.log(data))}>
         <INPUT
           {...register("email", { required: '필수 입력사항입니다.' })}
@@ -50,6 +43,5 @@ export default function LoginForm() {
         <p>{errors.password?.message}</p>
         <BUTTON>로그인</BUTTON>
       </FORM>
-    </FORMCONTAINER>
   );
 }
