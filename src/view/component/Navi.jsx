@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 const Navi = () => {
   const param = useLocation().search.split("&")[0];
-  console.log(useLocation().search)
+
   console.log(param)
 
   return(
