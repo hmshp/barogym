@@ -3,7 +3,7 @@ import MyContactInfo from '../../component/myInfo/MyContactInfo';
 import MyPasswordInfo from '../../component/myInfo/MyPasswordInfo';
 import { useNavigate } from 'react-router-dom';
 import {Button} from 'react-bootstrap'
-import {PAGEHEADER, STYLEDCONTAINER, STYLEDSECTION, STYLEDBUTTON, FORM, LABEL, INPUT} from '../../../styles/MyInfoStyle';
+import {PAGEHEADER, STYLEDCONTAINER, STYLEDSECTION, STYLEDBUTTON, FORM, LABEL, INPUT, H1} from '../../../styles/MyInfoStyle';
 
 
 const MyInfoPage = () => {
@@ -46,7 +46,7 @@ const MyInfoPage = () => {
       <STYLEDCONTAINER pwCheck>
         <FORM>
           <LABEL pwCheck htmlFor="password"> 
-            <h1>비밀번호 확인(1234)</h1>
+            <H1>비밀번호 확인(1234)</H1>
           </LABEL>
           <INPUT
             pwCheck
