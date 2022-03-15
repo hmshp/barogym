@@ -20,7 +20,7 @@ import ClassAppointmentPage from './view/page/class/ClassAppointmentPage'
 import ClassSchedulePage from './view/page/class/ClassSchedulePage'
 import LoginPage from './view/page/login/LoginPage'
 import SignupPage from './view/page/login/SignupPage'
-import FindIdPage from './view/page/login/FindIdPage'
+import FindEmailPage from './view/page/login/FindEmailPage'
 import ResetPwdPage from './view/page/login/ResetPwdPage'
 import MyInfoPage from './view/page/myInfo/MyInfoPage'
 import PayListPage from './view/page/myInfo/PayListPage'
@@ -62,7 +62,7 @@ const App = () => {
           {/* login */}
           <Route path="/login" exact={true} element={<LoginPage/>} />
           <Route path="/login/signup" exact={true} element={<SignupPage/>} />
-          <Route path="/login/findId" exact={true} element={<FindIdPage/>} />
+          <Route path="/login/findEmail" exact={true} element={<FindEmailPage/>} />
           <Route path="/login/resetPwd" exact={true} element={<ResetPwdPage/>} />
           {/* myInfo */}
           <Route path="/myInfo" exact={true} element={<MyInfoPage/>} />
