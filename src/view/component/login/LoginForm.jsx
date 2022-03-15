@@ -1,29 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import styled from 'styled-components'
-
-
-
-const FORM = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 2em;
-`
-
-const INPUT = styled.input`
-  height: 40px;
-  border-radius: 4px;
-  border: 1px solid gray;
-`
-
-const BUTTON = styled.button`
-  background-color: rgb(254, 139, 121);
-  color: white;
-  padding: 0.5em 1em;
-  border-radius: 4px;
-  border: none;
-`
+import {FORM, INPUT, BUTTON} from '../../../styles/MembershipStyle'
 
 export default function LoginForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();

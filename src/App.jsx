@@ -20,7 +20,7 @@ import ClassAppointmentPage from './view/page/class/ClassAppointmentPage'
 import ClassSchedulePage from './view/page/class/ClassSchedulePage'
 import LoginPage from './view/page/login/LoginPage'
 import SignupPage from './view/page/login/SignupPage'
-import FindIdPage from './view/page/login/FindIdPage'
+import FindEmailPage from './view/page/login/FindEmailPage'
 import ResetPwdPage from './view/page/login/ResetPwdPage'
 import MyInfoPage from './view/page/myInfo/MyInfoPage'
 import PayListPage from './view/page/myInfo/PayListPage'
@@ -48,10 +48,10 @@ const App = () => {
           <Route path="/intro/class" exact={true} element={<IntroClassPage/>} />
           <Route path="/intro/location" exact={true} element={<IntroLocationPage/>} />
           {/* board */}
-          <Route path="/board/list/:id/:page" exact={true} element={<BoardListPage/>} />
-          <Route path="/board/write/:id" exact={true} element={<BoardWritePage/>} />
-          <Route path="/board/detail/:id/:bno/:page" exact={true} element={<BoardDetailPage/>} />
-          <Route path="/board/update/:id/:bno/:page" exact={true} element={<BoardUpdatePage/>} />
+          <Route path="/board/list/*" element={<BoardListPage/>} />
+          <Route path="/board/write/*" element={<BoardWritePage/>} />
+          <Route path="/board/detail/*" element={<BoardDetailPage/>} />
+          <Route path="/board/update/*" element={<BoardUpdatePage/>} />
           {/* pass */}
           <Route path="/pass/info" exact={true} element={<PassInfoPage/>} />
           <Route path="/pass/buy" exact={true} element={<PassBuyPage/>} />
@@ -62,7 +62,7 @@ const App = () => {
           {/* login */}
           <Route path="/login" exact={true} element={<LoginPage/>} />
           <Route path="/login/signup" exact={true} element={<SignupPage/>} />
-          <Route path="/login/findId" exact={true} element={<FindIdPage/>} />
+          <Route path="/login/findEmail" exact={true} element={<FindEmailPage/>} />
           <Route path="/login/resetPwd" exact={true} element={<ResetPwdPage/>} />
           {/* myInfo */}
           <Route path="/myInfo" exact={true} element={<MyInfoPage/>} />

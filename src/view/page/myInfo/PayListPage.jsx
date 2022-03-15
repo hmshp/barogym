@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {STYLEDCONTAINER, PAGEHEADER, STYLEDSECTION, SUBSECTION} from '../../../styles/MyInfoStyle'
+import {STYLEDCONTAINER, PAGEHEADER, STYLEDSECTION, SUBSECTION, H1} from '../../../styles/MyInfoStyle'
 
 const STYLEDBUTTON = styled.button`
   background-color: rgb(254, 139, 121);
@@ -14,7 +14,7 @@ const PayListPage = () => {
   return (
     <STYLEDCONTAINER>
       <PAGEHEADER>
-        <h1>구매한 이용권</h1>
+        <H1>구매한 이용권</H1>
         <STYLEDBUTTON>이용권 구매</STYLEDBUTTON>
       </PAGEHEADER>
       <STYLEDSECTION>
@@ -24,7 +24,7 @@ const PayListPage = () => {
         </SUBSECTION>
         <SUBSECTION>
           <p>잔여 일수: <strong>106일</strong>/120일</p>
-          <p>잔여 일수: <strong>17회</strong>/20회</p>
+          <p>잔여 횟수: <strong>17회</strong>/20회</p>
         </SUBSECTION>
       </STYLEDSECTION>
     </STYLEDCONTAINER>

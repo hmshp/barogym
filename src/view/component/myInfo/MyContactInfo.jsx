@@ -31,6 +31,7 @@ export default function MyContactInfo(props) {
               defaultValue={member.email}
               disabled={props.isDisabled}
               required
+              type="email"
             />
             
           </FORMITEM>

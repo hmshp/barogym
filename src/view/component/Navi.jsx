@@ -1,8 +1,12 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { Nav, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const Navi = () => {
+  const param = useLocation().search.split("&")[0];
+
+  console.log(param)
 
   return(
     <>
@@ -22,19 +26,19 @@ const Navi = () => {
           </LinkContainer>  
         </NavDropdown>
         <NavDropdown title="커뮤니티">
-          <LinkContainer eventKey="/board/list?id=notice" to={"/board/list?id=notice&page=1"}>
+          <LinkContainer active={param==="?id=notice"?true:false} to={"/board/list?id=notice&page=1"}>
             <NavDropdown.Item>공지사항</NavDropdown.Item>
           </LinkContainer>  
-          <LinkContainer eventKey="/board/list?id=trans" to={"/board/list?id=trans&page=1"}>
+          <LinkContainer active={param==="?id=trans"?true:false} to={"/board/list?id=trans&page=1"}>
             <NavDropdown.Item>이용권양도</NavDropdown.Item>
           </LinkContainer>  
-          <LinkContainer eventKey="/board/list?id=review" to={"/board/list?id=review&page=1"}>
+          <LinkContainer active={param==="?id=review"?true:false} to={"/board/list?id=review&page=1"}>
             <NavDropdown.Item>수강후기</NavDropdown.Item>
           </LinkContainer>  
-          <LinkContainer eventKey="/board/list?id=inquire" to={"/board/list?id=inquire&page=1"}>
+          <LinkContainer active={param==="?id=inquire"?true:false} to={"/board/list?id=inquire&page=1"}>
             <NavDropdown.Item>1:1문의</NavDropdown.Item>
           </LinkContainer>  
-          <LinkContainer eventKey="/board/list?id=ask" to={"/board/list?id=ask&page=1"}>
+          <LinkContainer active={param==="?id=ask"?true:false} to={"/board/list?id=ask&page=1"}>
             <NavDropdown.Item>자주하는질문</NavDropdown.Item>
           </LinkContainer>  
         </NavDropdown>
