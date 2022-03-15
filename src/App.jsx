@@ -48,10 +48,10 @@ const App = () => {
           <Route path="/intro/class" exact={true} element={<IntroClassPage/>} />
           <Route path="/intro/location" exact={true} element={<IntroLocationPage/>} />
           {/* board */}
-          <Route path="/board/list/:id/:page" exact={true} element={<BoardListPage/>} />
-          <Route path="/board/write/:id" exact={true} element={<BoardWritePage/>} />
-          <Route path="/board/detail/:id/:bno/:page" exact={true} element={<BoardDetailPage/>} />
-          <Route path="/board/update/:id/:bno/:page" exact={true} element={<BoardUpdatePage/>} />
+          <Route path="/board/list/*" element={<BoardListPage/>} />
+          <Route path="/board/write/*" element={<BoardWritePage/>} />
+          <Route path="/board/detail/*" element={<BoardDetailPage/>} />
+          <Route path="/board/update/*" element={<BoardUpdatePage/>} />
           {/* pass */}
           <Route path="/pass/info" exact={true} element={<PassInfoPage/>} />
           <Route path="/pass/buy" exact={true} element={<PassBuyPage/>} />
