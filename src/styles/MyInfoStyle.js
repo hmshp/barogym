@@ -11,16 +11,25 @@ export const PAGEHEADER = styled.header`
   justify-content: space-between;
 `
 
-export const STYLEDCONTAINER = styled.div`
+export const CONTAINER = styled.article`
   margin: 0 auto;
+  width: 90%;
   @media(min-width: 800px) {
-    ${props =>
-    !props.pwCheck &&
-    css`
-      padding: 0 2em; // pwCheck(비번체크화면)가 아니고 너비 800px 이상일 때만 적용
+    ${props => props.flex && css`
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5em;
+    `}
+    ${props => props.sidePadding && css`
+      padding: 0 2em;
     `}
   }
-  width: 90%;
+  ${props => props.pwCheck &&
+      css`
+        margin-top: 5em;
+        width: 70%;
+         //
+      `}
   ${props =>
   props.relative &&
   css`
@@ -28,27 +37,32 @@ export const STYLEDCONTAINER = styled.div`
   `}
 `
 
-export const STYLEDSECTION = styled.section`
-  @media(min-width: 800px) {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  margin-bottom: 5em;
+export const TWOBUTTONS = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
 `
+
 
 export const SUBSECTION = styled.section`
   margin-bottom: 3em;
 `
 
-export const STYLEDBUTTON = styled.button`
+export const BUTTON = styled.button`
   background-color: ${props =>
     props.gray ? "gray" : "rgb(254, 139, 121)"
   };
   color: white;
-  padding: 0.5em 1em;
+  padding: ${props => props.thick ? "1em" : "0.5em 1em"};
   border-radius: 4px;
   border: none;
+  ${props => props.forty && css`
+    width: 40%; //전체화면에서 버튼 너무 커서 40%로 줄임
+  `}
+  ${props => props.thirty && css`
+    width: 30%;
+  `}
+
   @media(min-width: 800px) {
     ${props =>
     props.bottom &&
@@ -76,7 +90,7 @@ export const FORM = styled.form`
   flex-direction: column;
 `
 
-export const FORMTITLE = styled.div`
+export const FORMTITLE = styled.header`
   display: flex;
   justify-content: space-between;
 `
@@ -93,7 +107,7 @@ export const LABEL = styled.label`
 `
 
 export const INPUT = styled.input`
-  height: 40px;
+  padding: 0.5em 1em;
   border-radius: 4px;
   border: 1px solid gray;
   ${props => props.pwCheck &&
@@ -101,6 +115,15 @@ export const INPUT = styled.input`
       margin-bottom: 1em;
     `
   }
+  ${props => props.seventy && css`
+    width: 70%;
+  `}
+  ${props => props.sixty && css`
+    width: 60%;
+  `}
+  ${props => props.full && css`
+    width: 100%;
+  `}
 `
 
 /* 주소 */

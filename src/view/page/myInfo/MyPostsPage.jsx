@@ -1,5 +1,5 @@
 import React from 'react';
-import { PAGEHEADER, H1, STYLEDCONTAINER } from '../../../styles/MyInfoStyle';
+import { PAGEHEADER, H1, CONTAINER } from '../../../styles/MyInfoStyle';
 import MyPostsPagination from "../../component/myInfo/MyPostsPagination"
 import MyPostsSearchBar from '../../component/myInfo/MyPostsSearchBar';
 import MyPosts from '../../component/myInfo/MyPostsList';
@@ -8,14 +8,16 @@ const MyPostsPage = () => {
   
 
   return (
-    <STYLEDCONTAINER>
+    <CONTAINER>
       <PAGEHEADER>
         <H1>내 게시글</H1>
       </PAGEHEADER>
-      <MyPosts />
-      <MyPostsPagination />
-      <MyPostsSearchBar />
-    </STYLEDCONTAINER>
+      <main>
+        <MyPosts />
+        <MyPostsPagination />
+        <MyPostsSearchBar />
+      </main>
+    </CONTAINER>
   );
 };
 
