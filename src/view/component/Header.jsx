@@ -1,31 +1,8 @@
 import * as React from 'react';
 import { Container, Navbar, Offcanvas, Button } from 'react-bootstrap';
-import styled from 'styled-components';
 import Navi from './Navi';
 import { LinkContainer } from 'react-router-bootstrap';
-
-const navbarStyles = {
-  backgroundColor: 'rgb(254, 139, 121)',
-  color: 'white'
-}
-
-const navbarBrandStyles = {
-  display: 'flex',
-  margin: '0 3em 0 0'
-}
-
-const Logo = styled.img`
-  width: 50px;
-  margin-right: 1em;
-`
-
-const H1 = styled.h1`
-  margin: 0;
-  display: flex;
-  align-items: center;
-  color: white;
-`
-
+import {LOGO, H1, navbarStyles, navbarBrandStyles} from '../../styles/HeaderStyle';
 
 const Header = () => {
 
@@ -39,7 +16,7 @@ const Header = () => {
     <Navbar collapseOnSelect style={navbarStyles} expand="md" onToggle={toggle}>
       <Container fluid>
         <Navbar.Brand style={navbarBrandStyles} href="/">
-          <Logo
+          <LOGO
               alt="바로짐 로고"
               src="https://i.ibb.co/smK8dwT/Kakao-Talk-20220308-145706090.png"
             />  
