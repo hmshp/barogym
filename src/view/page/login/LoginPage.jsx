@@ -16,7 +16,10 @@ const LoginPage = () => {
       <LoginForm />
       <ITEM>
         <P>아직 바로짐 회원이 아니신가요?</P>
-        <BUTTON gray>회원가입</BUTTON>
+        <LinkContainer to="/login/signup">
+          <BUTTON gray>회원가입</BUTTON>
+        </LinkContainer>
+        
       </ITEM>
       <ITEM>
         <P>회원 이메일을 잊으셨나요?</P>
