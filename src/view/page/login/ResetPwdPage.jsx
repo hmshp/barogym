@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import {CONTAINER, FORM, FORMHEADER, FORMITEM, LABEL, INPUT, BUTTON, TWOBUTTONS, H1, ERRORMSG} from '../../../styles/MembershipStyle';
 
+
 const ResetPwdPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   console.log(errors)
