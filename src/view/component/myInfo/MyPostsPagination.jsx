@@ -1,6 +1,6 @@
 import React from 'react';
 import {Pagination} from 'react-bootstrap';
-import {STYLEDCONTAINER, PAGINATION} from '../../../styles/MyInfoStyle'
+import {CONTAINER, PAGINATION} from '../../../styles/MyInfoStyle'
 
 const MyPostsPagination = () => {
   let active = 1;
@@ -14,9 +14,9 @@ const MyPostsPagination = () => {
   }
 
   return (
-      <STYLEDCONTAINER>
+      <CONTAINER>
         <PAGINATION>{items}</PAGINATION>
-      </STYLEDCONTAINER>
+      </CONTAINER>
   );
 };
 
