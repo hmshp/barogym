@@ -2,8 +2,8 @@ import {useState, React} from 'react';
 import MyContactInfo from '../../component/myInfo/MyContactInfo';
 import MyPasswordInfo from '../../component/myInfo/MyPasswordInfo';
 import { useNavigate } from 'react-router-dom';
-import {Button} from 'react-bootstrap'
-import {PAGEHEADER, STYLEDCONTAINER, STYLEDSECTION, STYLEDBUTTON, FORM, LABEL, INPUT, H1} from '../../../styles/MyInfoStyle';
+import {PAGEHEADER, CONTAINER, STYLEDSECTION, BUTTON, FORM, LABEL, INPUT, H1} from '../../../styles/MyInfoStyle';
+import { TWOBUTTONS } from '../../../styles/MyInfoStyle';
 
 
 const MyInfoPage = () => {
@@ -40,53 +40,57 @@ const MyInfoPage = () => {
   }
 
   return (
-    <STYLEDCONTAINER>
+    <CONTAINER>
     {
       !isPwChecked?
-      <STYLEDCONTAINER pwCheck>
-        <FORM>
-          <LABEL pwCheck htmlFor="password"> 
-            <H1>비밀번호 확인(1234)</H1>
-          </LABEL>
-          <INPUT
-            pwCheck
-            onChange={handleChange}
-            type="password"
-            placeholder='비밀번호를 입력해 주세요.'
-            id="password"
-          />
-          <div>
-            <Button onClick={checkPassword}>확인</Button>
-            <Button 
-              onClick={()=>{ navigate('/'); window.location.reload();}} 
-              variant="secondary">
-                취소
-            </Button>
-          </div>
-        </FORM>
-      </STYLEDCONTAINER>
+      <>
+        <PAGEHEADER>
+          <H1>비밀번호 확인(1234)</H1>
+        </PAGEHEADER>
+        <main>
+          <FORM>
+            <INPUT
+              pwCheck
+              onChange={handleChange}
+              type="password"
+              placeholder='비밀번호를 입력해 주세요.'
+              id="password"
+            />
+            <TWOBUTTONS>
+              <BUTTON
+                forty gray thick
+                onClick={()=>{ navigate('/'); window.location.reload();}} 
+              >
+                  취소
+              </BUTTON>
+              <BUTTON forty thick onClick={checkPassword}>확인</BUTTON>
+            </TWOBUTTONS>
+          </FORM>
+        </main>
+      </>
       :
       <>
         <PAGEHEADER>
           <h1>내 정보</h1>
+          <BUTTON>회원 탈퇴</BUTTON>
         </PAGEHEADER>
-        <STYLEDSECTION>
-          <MyContactInfo
-            isDisabled={isContactDisabled}
-            activateInput={activateContactInput}
-          />
-          <MyPasswordInfo
-            isDisabled={isPwDisabled}
-            activateInput={activatePwInput}
-          />
-        </STYLEDSECTION>
-        <STYLEDBUTTON>회원 탈퇴</STYLEDBUTTON>
+        <main>
+          <CONTAINER flex>
+            <MyContactInfo
+              isDisabled={isContactDisabled}
+              activateInput={activateContactInput}
+            />
+            <MyPasswordInfo
+              isDisabled={isPwDisabled}
+              activateInput={activatePwInput}
+            />
+          </CONTAINER>
+        </main>
       </>
       
     }
-      
-      
-    </STYLEDCONTAINER>
+
+    </CONTAINER>
   );
 };
 
