@@ -90,7 +90,7 @@ export const FORM = styled.form`
   flex-direction: column;
 `
 
-export const FORMTITLE = styled.div`
+export const FORMTITLE = styled.header`
   display: flex;
   justify-content: space-between;
 `
