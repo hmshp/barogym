@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import {FORM, INPUT, BUTTON} from '../../../styles/MembershipStyle'
+import {FORM, INPUT, BUTTON, ERRORMSG} from '../../../styles/MembershipStyle'
 
 export default function LoginForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -12,12 +12,12 @@ export default function LoginForm() {
           {...register("email", { required: '필수 입력사항입니다.' })}
           placeholder="이메일을 입력해 주세요."
         />
-        <p>{errors.email?.message}</p>
+        <ERRORMSG>{errors.email?.message}</ERRORMSG>
         <INPUT
           {...register("password", { required: '필수 입력사항입니다.' })}
           placeholder="비밀번호를 입력해 주세요."
         />
-        <p>{errors.password?.message}</p>
+        <ERRORMSG>{errors.password?.message}</ERRORMSG>
         <BUTTON>로그인</BUTTON>
       </FORM>
   );
