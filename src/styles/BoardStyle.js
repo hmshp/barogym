@@ -45,3 +45,31 @@ export const PAGINATION = styled(Pagination)`
   display: flex;
   justify-content: center;
 `
+
+/* 버튼 */
+export const BUTTON = styled.button`
+  background-color: ${props =>
+    props.gray ? "gray" : "rgb(254, 139, 121)"
+  };
+  color: white;
+  padding: ${props => props.thick ? "1em" : "0.5em 1em"};
+  border-radius: 4px;
+  border: none;
+  
+  ${props => props.forty && css`
+    width: 40%; //전체화면에서 버튼 너무 커서 40%로 줄임
+  `}
+  ${props => props.thirty && css`
+    width: 30%;
+  `}
+  
+  
+  @media(min-width: 800px) {
+    ${props =>
+    props.bottom &&
+    css`
+      position: absolute;
+      bottom: 0;
+    `}
+  }
+`

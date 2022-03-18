@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Table} from 'react-bootstrap';
-import {CONTAINER, PAGEHEADER, H1} from '../../../styles/BoardStyle';
+import {CONTAINER, PAGEHEADER, H1, BUTTON} from '../../../styles/BoardStyle';
 import { useLocation } from 'react-router-dom';
 import BoardBody from '../../sampleData/BoardBody.json'
 import BoardHeader from '../../sampleData/BoardHeader.json'
@@ -32,6 +32,7 @@ const BoardListPage = () => {
     <CONTAINER>
       <PAGEHEADER>
         <H1>{BoardHeader[boardName]}</H1>
+        <BUTTON>글쓰기</BUTTON>
       </PAGEHEADER>
       <BoardFilter boardName={boardName} />
       <Table striped bordered hover>
