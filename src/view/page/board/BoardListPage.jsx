@@ -12,32 +12,8 @@ const BoardListPage = () => {
   const boardName = useLocation().search.split("&")[0].slice(4);
   console.log(boardName)//inquire, notice, ask, review, trans 출력(어느 게시판인지 구분)
 
-  let listHeaders = []
-  let listItems = []
-
-  switch (boardName) {
-    case "inquire":
-      listHeaders = BoardBody.inquire.listHeader
-      listItems = BoardBody.inquire.listBody
-      break;
-    case "notice":
-      listHeaders = BoardBody.notice.listHeader
-      listItems = BoardBody.notice.listBody
-      break;
-    case "review":
-      listHeaders = BoardBody.review.listHeader
-      listItems = BoardBody.review.listBody
-      break;
-    case "ask":
-      listHeaders = BoardBody.ask.listHeader
-      listItems = BoardBody.ask.listBody
-      break;
-    case "trans":
-    listHeaders = BoardBody.trans.listHeader
-    listItems = BoardBody.trans.listBody
-    break;
-  }
-
+  const listHeaders = BoardBody[boardName].listHeader
+  const listItems = BoardBody[boardName].listBody
 
   const listHeadersElements = listHeaders.map(listHeader => <th>{listHeader}</th>)
   //nanoid를 key로 설정할까?
