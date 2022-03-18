@@ -7,6 +7,7 @@ import BoardHeader from '../../sampleData/BoardHeader.json'
 import BoardPagination from '../../component/board/BoardPagination';
 import BoardSearchBar from '../../component/board/BoardSearchBar';
 import BoardFilter from '../../component/board/BoardFilter';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const BoardListPage = () => {
   const boardName = useLocation().search.split("&")[0].slice(4);
@@ -32,7 +33,9 @@ const BoardListPage = () => {
     <CONTAINER>
       <PAGEHEADER>
         <H1>{BoardHeader[boardName]}</H1>
-        <BUTTON>글쓰기</BUTTON>
+        <LinkContainer to={`/board/write/?id=${boardName}`}>
+          <BUTTON>글쓰기</BUTTON>
+        </LinkContainer>
       </PAGEHEADER>
       <BoardFilter boardName={boardName} />
       <Table striped bordered hover>
