@@ -1,5 +1,5 @@
 {
-  "inquire": 
+  "qna": 
     {
       "listHeader" : ["제목", "작성자", "등록일"],
       "listBody" : [
@@ -41,10 +41,10 @@
         }
       ]
     },
-  "ask": 
+  "faq": 
     {
       "listHeader": ["카테고리", "제목", "작성자", "등록일"],
-      "listFilter": ["카테고리 선택"],
+      "listFilter": ["카테고리"],
       "listBody": [
         {
           "PostCategory": "헬스장 이용 안내",
@@ -100,7 +100,7 @@
   "trans": 
     {
       "listHeader": ["제목", "카테고리", "가격", "작성자", "등록일"],
-      "listFilter": ["헬스장 이용권", "그룹수업"],
+      "listFilter": ["카테고리"],
       "listBody": [
         {
           "title": "이용권 양도해요",
