@@ -14,14 +14,13 @@ const QnAListPage = () => {
   const listHeaders = BoardBody["qna"].listHeader
   const listItems = BoardBody["qna"].listBody
 
-  const listHeadersElements = listHeaders.map(listHeader => <th>{listHeader}</th>)
-  //nanoid를 key로 설정할까?
+  const listHeadersElements = listHeaders.map((listHeader, index) => <th key={index}>{listHeader}</th>)
 
-  const listItemsElements = listItems.map(listItem => {
+  const listItemsElements = listItems.map((listItem, index) => {
     return (
-      <tr key={listItem.title}>
-        {Object.keys(listItem).map((key) => (
-          <td>{listItem[key]}</td>
+      <tr key={index}>
+        {Object.keys(listItem).map((key, index) => (
+          <td key={index}>{listItem[key]}</td>
         )) }
       </tr>
     )
