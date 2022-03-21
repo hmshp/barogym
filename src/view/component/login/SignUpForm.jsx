@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
-import {FORM, INPUT, BUTTON, ERRORMSG, TWOBUTTONS} from '../../../styles/MembershipStyle'
+import {FORM, INPUT, BUTTON, ERRORMSG, TWOBUTTONS, RADIOINPUT, RADIOITEM, FIELDSET, LEGEND} from '../../../styles/MembershipStyle'
+
 
 export default function SignUpForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -61,6 +62,38 @@ export default function SignUpForm() {
             />
           </div>
           <ERRORMSG>{errors.address?.message}</ERRORMSG>
+          
+          <FIELDSET>
+            <LEGEND>성별을 선택해 주세요.</LEGEND>
+              <RADIOITEM>
+                <RADIOINPUT
+                  {...register("gender", { required: '필수 입력사항입니다.' })}
+                  type="radio"
+                  id="woman"
+                  value="여성"
+                />
+                <label htmlFor="woman">여성</label>
+              </RADIOITEM>
+              <RADIOITEM>
+                <RADIOINPUT
+                  {...register("gender", { required: '필수 입력사항입니다.' })}
+                  type="radio"
+                  id="man"
+                  value="남성"
+                />
+                <label htmlFor="man">남성</label>
+              </RADIOITEM>
+              <RADIOITEM>
+                <RADIOINPUT
+                  {...register("gender", { required: '필수 입력사항입니다.' })}
+                  type="radio"
+                  id="notToSay"
+                  value="공개 안 함"
+                />
+                <label htmlFor="notToSay">공개 안 함</label>
+              </RADIOITEM>
+          </FIELDSET>
+
           <TWOBUTTONS>
             <BUTTON
               forty

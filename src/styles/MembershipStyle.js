@@ -38,6 +38,9 @@ export const INPUT = styled.input`
     width: 100%;
   `}
 
+export const RADIOINPUT = styled(INPUT)`
+  margin-right: 0.75em;
+
 `
 
 export const BUTTON = styled.button`
@@ -52,9 +55,11 @@ export const BUTTON = styled.button`
   ${props => props.forty && css`
     width: 40%; //전체화면에서 버튼 너무 커서 40%로 줄임
   `}
+
   ${props => props.thirty && css`
     width: 30%;
   `}
+  
   
   
   @media(min-width: 800px) {
@@ -128,11 +133,26 @@ export const PAGEHEADER = styled.header`
   `}
 `
 
-
-
 export const ERRORMSG = styled.p`
   color: gray;
   ${props => props.rightAlign && css`
     text-align: right;
   `}
+`
+
+export const FIELDSET = styled.fieldset`
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: 1em;
+`
+
+export const LEGEND = styled.legend`
+  color: #5c5c5c;
+  font-size: 1.2em;
+`
+
+export const RADIOITEM = styled.div`
+  margin-right: 2em;
+  color: #5c5c5c;
+
 `
