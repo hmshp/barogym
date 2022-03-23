@@ -6,10 +6,6 @@ import BoardHeader from '../../../sampleData/BoardHeader.json'
 
 const TransWritePage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const [filterItems, setFilterItems] = useState([
-    '헬스장 이용권',
-    '그룹 수업'
-  ]);
 
   const navigate = useNavigate();
 
