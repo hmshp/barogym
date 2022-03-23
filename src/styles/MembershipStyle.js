@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-
 /* login 페이지 헤더 */
 
 export const H1 = styled.h1`
@@ -41,7 +40,6 @@ export const INPUT = styled.input`
 
 export const RADIOINPUT = styled(INPUT)`
   margin-right: 0.75em;
-
 `
 
 export const BUTTON = styled.button`

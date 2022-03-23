@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Container, Navbar, Offcanvas, Button } from 'react-bootstrap';
 import Navi from './Navi';
 import { LinkContainer } from 'react-router-bootstrap';
-import {LOGO, H1, navbarStyles, navbarBrandStyles} from '../../styles/HeaderStyle';
+import {LOGO, H1, navbarStyles, navbarBrandStyles, BUTTON} from '../../styles/HeaderStyle';
 
 const Header = () => {
 
@@ -30,10 +30,10 @@ const Header = () => {
                 <Navi/>
                 <section>
                   <LinkContainer to="/login">
-                    <Button variant="primary" size="sm">로그인</Button>
+                    <BUTTON size="sm">로그인</BUTTON>
                   </LinkContainer>
                   <LinkContainer to="/login/signup">
-                    <Button variant="primary" size="sm">회원가입</Button>
+                    <BUTTON size="sm">회원가입</BUTTON>
                   </LinkContainer>
                 </section>
               </Navbar.Collapse>

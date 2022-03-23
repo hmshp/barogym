@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { CONTAINER, PAGEHEADER, H1, TWOBUTTONS, BUTTON, FORM, INPUT, LABEL, ERRORMSG, TEXTAREA } from '../../../../styles/BoardStyle';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import BoardHeader from '../../../sampleData/BoardHeader.json'
-import ReviewListFilter from '../../../component/board/classReview/ReviewListFilter';
 
 const TransWritePage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -32,11 +31,6 @@ const TransWritePage = () => {
           rows={5}
         />
         <ERRORMSG>{errors.password?.message}</ERRORMSG>
-
-        <LABEL>카테고리</LABEL>
-        <div>
-          <ReviewListFilter />
-        </div>
 
         <LABEL htmlFor="pass">이용권 정보</LABEL>
         <BUTTON>불러오기</BUTTON>

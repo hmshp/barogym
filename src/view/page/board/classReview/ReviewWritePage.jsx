@@ -32,10 +32,7 @@ const ReviewWritePage = () => {
           rows={5}
         />
         <ERRORMSG>{errors.password?.message}</ERRORMSG>
-        <LABEL>카테고리</LABEL>
-        <div>
-          <ReviewListFilter />
-        </div>
+
         <TWOBUTTONS>
           <BUTTON
             gray forty thick

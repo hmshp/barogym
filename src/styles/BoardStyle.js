@@ -100,7 +100,7 @@ export const TWOBUTTONS = styled.div`
 
 /* 글 상세보기 페이지 */
 export const GRIDCONTAINER = styled.article`
-  width: 80%;
+  width: 100%;
   font-size: 0.8rem;
   display: grid;
   gap: 10px;
@@ -155,5 +155,10 @@ export const ERRORMSG = styled.p`
   ${props => props.rightAlign && css`
     text-align: right;
   `}
+`
+
+/* FAQ 카테고리 선택 버튼 담는 div */
+export const CATEGORY = styled.div`
+  margin-bottom: 2em;
 `
 
