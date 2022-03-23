@@ -162,4 +162,3 @@ export const CATEGORY = styled.div`
   margin-bottom: 2em;
 `
 
-

@@ -23,7 +23,7 @@ const FaqWritePage = () => {
             <Dropdown.Item href="#/action-3">수업 안내</Dropdown.Item>
           </DropdownButton>
         </CATEGORY>
-        
+
         <LABEL htmlFor="title">제목</LABEL>
         <INPUT
           {...register("title", { required: '필수 입력사항입니다.' })}

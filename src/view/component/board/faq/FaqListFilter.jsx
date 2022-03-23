@@ -67,5 +67,4 @@ const FaqListFilter = () => {
   );
 };
 
-
 export default FaqListFilter;
