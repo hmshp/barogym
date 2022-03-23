@@ -7,52 +7,50 @@ import { Route, Link } from 'react-router-dom';
 const HomePage = () => {
   return (
    <div>
-      <Carousel class="opacity">
-  <Carousel.Item>
-    <img
-      className="homeImg"
-      src="https://i.ibb.co/MndR7bt/gym-gcdd3176ab-1920.jpg"
-      alt="First slide"
-    />
+      <Carousel className="opacity">
+        <Carousel.Item>
+          <img
+            className="homeImg"
+            src="https://i.ibb.co/MndR7bt/gym-gcdd3176ab-1920.jpg"
+            alt="First slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="homeImg"
+            src="https://i.ibb.co/9Wbf6yp/workout-g6445426c7-1920.jpg"
+            alt="Second slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="homeImg"
+            src="https://i.ibb.co/P9ySqz0/mark-bertulfo-XKim-W0pke6w-unsplash.jpg"
+            alt="Third slide"
+          />
+        </Carousel.Item>
+      </Carousel>
 
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="homeImg"
-      src="https://i.ibb.co/9Wbf6yp/workout-g6445426c7-1920.jpg"
-      alt="Second slide"
-    />
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="homeImg"
-      src="https://i.ibb.co/P9ySqz0/mark-bertulfo-XKim-W0pke6w-unsplash.jpg"
-      alt="Third slide"
-    />
-  </Carousel.Item>
-</Carousel>
-
-<div className='button'>
-  
+    <div className='button'>
       <Link to="/board/notice/list/*">
-      <img  className="homeButton"
-      src="https://i.ibb.co/hYsQnBq/11.png"
-      alt="공지">
-      </img>
+        <img  className="homeButton"
+        src="https://i.ibb.co/hYsQnBq/11.png"
+        alt="공지">
+        </img>
       </Link>
 
       <Link to="/board/review/list/*">
-      <img  className="homeButton"
-      src="https://i.ibb.co/q9h4y0s/444.png"
-      alt="수강후기">
-      </img>
+        <img  className="homeButton"
+        src="https://i.ibb.co/q9h4y0s/444.png"
+        alt="수강후기">
+        </img>
       </Link>
 
       <Link to="/board/qna/list/*">
-      <img  className="homeButton"
-      src="https://i.ibb.co/FYcKjFS/33.png"
-      alt="1:1">
-   </img>
+        <img  className="homeButton"
+        src="https://i.ibb.co/FYcKjFS/33.png"
+        alt="1:1">
+        </img>
       </Link>
 
       <Link to="/class/appointment">
@@ -61,8 +59,7 @@ const HomePage = () => {
       alt="예약">
       </img>
       </Link>
-
-</div>
+    </div>
 
 
       <Link to="./intro/gym">
@@ -87,7 +84,6 @@ const HomePage = () => {
       </Link>
 
 
-     
     </div>
   );
 };
