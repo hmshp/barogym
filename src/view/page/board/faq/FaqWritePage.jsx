@@ -1,9 +1,9 @@
 import React from 'react';
-import { CONTAINER, PAGEHEADER, H1, TWOBUTTONS, BUTTON, FORM, INPUT, LABEL, ERRORMSG, TEXTAREA } from '../../../../styles/BoardStyle';
+import { CONTAINER, PAGEHEADER, H1, TWOBUTTONS, BUTTON, FORM, INPUT, LABEL, ERRORMSG, TEXTAREA, CATEGORY } from '../../../../styles/BoardStyle';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import BoardHeader from '../../../sampleData/BoardHeader.json'
-import ReviewListFilter from '../../../component/board/classReview/ReviewListFilter';
+import { Dropdown, DropdownButton, ButtonGroup } from 'react-bootstrap';
 
 const FaqWritePage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -16,6 +16,14 @@ const FaqWritePage = () => {
         <H1>{BoardHeader["faq"]}</H1>
       </PAGEHEADER>
       <FORM onSubmit={handleSubmit((data) => console.log(data))}>
+        <CATEGORY>
+          <DropdownButton variant="secondary" id="dropdown-basic-button" title="카테고리">
+            <Dropdown.Item href="#/action-1">헬스장 이용 안내</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">결제 안내</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">수업 안내</Dropdown.Item>
+          </DropdownButton>
+        </CATEGORY>
+        
         <LABEL htmlFor="title">제목</LABEL>
         <INPUT
           {...register("title", { required: '필수 입력사항입니다.' })}
@@ -32,10 +40,7 @@ const FaqWritePage = () => {
           rows={5}
         />
         <ERRORMSG>{errors.password?.message}</ERRORMSG>
-        <LABEL>카테고리</LABEL>
-        <div>
-          <ReviewListFilter />
-        </div>
+
         <TWOBUTTONS>
           <BUTTON
             gray forty thick
