@@ -37,10 +37,10 @@ export const INPUT = styled.input`
   ${props => props.full && css`
     width: 100%;
   `}
-`
 
 export const RADIOINPUT = styled(INPUT)`
   margin-right: 0.75em;
+
 `
 
 export const BUTTON = styled.button`
@@ -55,9 +55,11 @@ export const BUTTON = styled.button`
   ${props => props.forty && css`
     width: 40%; //전체화면에서 버튼 너무 커서 40%로 줄임
   `}
+
   ${props => props.thirty && css`
     width: 30%;
   `}
+  
   
   
   @media(min-width: 800px) {
@@ -152,4 +154,5 @@ export const LEGEND = styled.legend`
 export const RADIOITEM = styled.div`
   margin-right: 2em;
   color: #5c5c5c;
+
 `

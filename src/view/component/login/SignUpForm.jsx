@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import {FORM, INPUT, BUTTON, ERRORMSG, TWOBUTTONS, RADIOINPUT, RADIOITEM, FIELDSET, LEGEND} from '../../../styles/MembershipStyle'
 
+
 export default function SignUpForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   console.log(errors)
