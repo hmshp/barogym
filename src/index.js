@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider} from 'react-redux'
 import { createStore } from 'redux'
 import rootReducer from './redux/rootReducer'
-import AuthLogic from './service//firebase/authLogic';
+import AuthLogic from './service/firebase/authLogic';
 import firebaseApp from './service/firebase/firebase';
 import App from './App';
 

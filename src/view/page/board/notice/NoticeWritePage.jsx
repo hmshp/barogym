@@ -1,9 +1,8 @@
 import React from 'react';
-import { CONTAINER, PAGEHEADER, H1, TWOBUTTONS, BUTTON, FORM, INPUT, LABEL, ERRORMSG, TEXTAREA } from '../../../../styles/BoardStyle';
+import { CONTAINER, PAGEHEADER, H1, TWOBUTTONS, BUTTON, FORM, INPUT, LABEL, ERRORMSG, TEXTAREA} from '../../../../styles/BoardStyle';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import BoardHeader from '../../../sampleData/BoardHeader.json'
-import ReviewListFilter from '../../../component/board/classReview/ReviewListFilter';
 
 const NoticeWritePage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -22,7 +21,7 @@ const NoticeWritePage = () => {
           placeholder="제목을 입력해 주세요."
           id="title"
         />
-        <ERRORMSG>{errors.password?.message}</ERRORMSG>
+        <ERRORMSG>{errors.title?.message}</ERRORMSG>
 
         <LABEL htmlFor="content">내용</LABEL>
         <TEXTAREA
@@ -31,7 +30,14 @@ const NoticeWritePage = () => {
           id="content"
           rows={5}
         />
-        <ERRORMSG>{errors.password?.message}</ERRORMSG>
+        <ERRORMSG>{errors.content?.message}</ERRORMSG>
+
+        <LABEL htmlFor="file">파일</LABEL>
+        <INPUT
+          type="file" id="file" {...register("file")}
+        />
+        <ERRORMSG>{errors.file?.message}</ERRORMSG>
+
         <TWOBUTTONS>
           <BUTTON
             gray forty thick
