@@ -37,6 +37,7 @@ export const INPUT = styled.input`
   ${props => props.full && css`
     width: 100%;
   `}
+`
 
 export const RADIOINPUT = styled(INPUT)`
   margin-right: 0.75em;

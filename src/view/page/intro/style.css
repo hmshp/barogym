@@ -1,0 +1,58 @@
+
+.programimg {
+    height: 200px;
+    margin-top: 40px;
+}
+.programProcess{
+    height: 190px;
+    margin: 5px;
+}
+
+
+.teacher{
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 10px;
+    margin-bottom: 50px;
+}
+
+.teacherImg{
+    height: 230px;
+}
+
+.location{
+    width: 480px;
+}
+.introImg {
+    max-width: 100%;
+    width: 500px;
+    height: 320px;
+
+    margin-top: 10px;
+    opacity: 0.75;
+    filter: alpha(opacity=40);
+}
+
+.homeImg {
+    max-width: 100%;
+    width: 500px;
+    height: 320px;
+    margin-top: 10px;
+    opacity: 0.75;
+    filter: alpha(opacity=40);
+}
+
+.homeImg2 {
+    max-width: 100%;
+}
+
+.homeButton {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+
+
+.teacher {
+    max-width: 100%;
+}

@@ -30,9 +30,10 @@ import TransWritePage from './view/page/board/trans/TransWritePage';
 import TransUpdatePage from './view/page/board/trans/TransUpdatePage';
 import TransDetailPage from './view/page/board/trans/TransDetailPage';
 
-import PassInfoPage from './view/page/pass/PassInfoPage'
-import PassBuyPage from './view/page/pass/PassBuyPage'
-import ClassUploadPage from './view/page/class/ClassUploadPage'
+import PassInfoPage from './view/page/pass/PassInfoPage';
+import PassBuyPage from './view/page/pass/PassBuyPage';
+import PassBuyComplete from './view/page/pass/PassBuyComplete';
+import ClassUploadPage from './view/page/class/ClassUploadPage';
 import ClassAppointmentPage from './view/page/class/ClassAppointmentPage'
 import ClassSchedulePage from './view/page/class/ClassSchedulePage'
 import LoginPage from './view/page/login/LoginPage'
@@ -92,6 +93,7 @@ const App = () => {
           {/* pass */}
           <Route path="/pass/info" exact={true} element={<PassInfoPage/>} />
           <Route path="/pass/buy" exact={true} element={<PassBuyPage/>} />
+          <Route path="/pass/buyComplete" exact={true} element={<PassBuyComplete/>} />
           {/* class */}
           <Route path="/class/upload" exact={true} element={<ClassUploadPage/>} />
           <Route path="/class/appointment" exact={true} element={<ClassAppointmentPage/>} />
