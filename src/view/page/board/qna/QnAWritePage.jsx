@@ -32,6 +32,13 @@ const QnAWritePage = () => {
           rows={5}
         />
         <ERRORMSG>{errors.password?.message}</ERRORMSG>
+
+        <LABEL htmlFor="file">파일</LABEL>
+        <INPUT
+          type="file" id="file" {...register("file")}
+        />
+        <ERRORMSG>{errors.file?.message}</ERRORMSG>
+
         <TWOBUTTONS>
           <BUTTON
             gray forty thick
