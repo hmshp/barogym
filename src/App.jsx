@@ -49,6 +49,7 @@ import ProductUpdatePage from './view/page/mgmt/ProductUpdatePage';
 import MyPostsPage from './view/page/myInfo/MyPostsPage';
 import Zipcode from './view/component/login/Zipcode';
 import ManagerHeader from './view/component/mgmt/ManagerHeader';
+import MemberMgmtPage from './view/page/mgmt/MemberMgmtPage';
 
 
 const App = () => {
@@ -114,6 +115,7 @@ const App = () => {
           <Route path="/mgmt/product/list" exact={true} element={<ProductListPage/>} />
           <Route path="/mgmt/product/update" exact={true} element={<ProductUpdatePage/>} />
           <Route path="/mgmt/income/list" exact={true} element={<IncomeListPage/>} />
+          <Route path="/mgmt/member/list" exact={true} element={<MemberMgmtPage/>} />
         </Routes> 
       <Footer />        
     </>

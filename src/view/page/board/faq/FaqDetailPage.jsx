@@ -19,12 +19,7 @@ const FaqDetailPage = () => {
         
       </PAGEHEADER>
       <section>
-        <FORM>
-          <TEXTAREA 
-            placeholder='글 내용'
-            rows={5}
-            disabled
-          />
+          <div>글 내용입니다.</div>
           <TWOBUTTONS>
             <BUTTON gray forty>삭제</BUTTON>
             <LinkContainer to={`/board/faq/update`}>
@@ -32,7 +27,6 @@ const FaqDetailPage = () => {
             </LinkContainer>
             
           </TWOBUTTONS>
-        </FORM>
       </section>
       <CommentForm />
       <CommentList />

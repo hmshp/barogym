@@ -3,16 +3,26 @@ import {Table} from 'react-bootstrap';
 import {CONTAINER, PAGEHEADER, H1, BUTTON} from '../../../../styles/BoardStyle';
 import { useLocation } from 'react-router-dom';
 import BoardBody from '../../../sampleData/BoardBody.json'
-import BoardHeader from '../../../sampleData/BoardHeader.json'
 import BoardPagination from '../../../component/board/BoardPagination';
 import BoardSearchBar from '../../../component/board/BoardSearchBar';
-import ReviewListFilter from '../../../component/board/classReview/ReviewListFilter';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useNavigate } from 'react-router-dom'
 
 const NoticeListPage = () => { 
-  const listHeaders = BoardBody["notice"].listHeader
+  const [list, setList] = useState({});
+
+  const listHeaders = ["글 번호", "제목", "작성자", "등록일", "조회수"]
   const listItems = BoardBody["notice"].listBody
+
+  const bno = window.location.search.split('?')[1].split('&')[0].split('-')[1];
+
+  useEffect(() => {
+    // const ReviewList = async() => {
+    //   const res = await NoticeListDB(bno);
+    //   console.log(res)
+    //   setList(res.data);
+    // }
+  }, [list])
 
   const navigate = useNavigate();
 
@@ -31,7 +41,7 @@ const NoticeListPage = () => {
   return (
     <CONTAINER>
       <PAGEHEADER>
-        <H1>{BoardHeader["notice"]}</H1>
+        <H1>공지사항</H1>
         <LinkContainer to={`/board/notice/write`}>
           <BUTTON>글쓰기</BUTTON>
         </LinkContainer>
