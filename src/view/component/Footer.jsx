@@ -15,7 +15,7 @@ export const footerStyles2 = {
 }
 
 const Footer = () => 
-<footer className="page-footer font-small blue pt-4" collapseOnSelect style={footerStyles} expand="md">
+<footer className="page-footer font-small blue pt-4" style={footerStyles} expand="md">
     <div className="container-fluid text-center text-md-left">
         <div className="row">
             <div className="col-md-6 mt-md-0 mt-3">
@@ -40,7 +40,7 @@ const Footer = () =>
           </div>
        </div>
 
-            <div className="footer-copyright text-center py-3"  collapseOnSelect style={footerStyles2} expand="md"
+            <div className="footer-copyright text-center py-3" style={footerStyles2} expand="md"
             >© 2022 Copyright BAROGYM 
             </div>
         </footer>
