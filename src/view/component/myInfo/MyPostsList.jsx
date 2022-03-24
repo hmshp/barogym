@@ -1,7 +1,11 @@
 import React from 'react';
 import {Table} from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const MyPosts = () => {
+
+  const navigate = useNavigate();
+
   const posts = [
     {
       title: "이용권 양도합니다",
@@ -20,9 +24,9 @@ const MyPosts = () => {
     },
   ]
 
-  const myPostsElements = posts.map(post => {
+  const myPostsElements = posts.map((post, index) => {
     return (
-      <tr key={post.title}>
+      <tr key={post.title} onClick={() => navigate(`/board/trans/detail?page=1&bno=${index}`)}>
         <td>{post.title}</td>
         <td>{post.date}</td>
         <td>{post.boardType}</td>
