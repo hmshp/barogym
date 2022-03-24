@@ -19,35 +19,31 @@ const PassBuyComplete = () => {
 <div>
 <STYLEDCONTAINER>
     <PAGEHEADER>
-          <h1>결제 완료</h1>
-        </PAGEHEADER>
+      <h1>결제 완료</h1>
+    </PAGEHEADER>
 
-          <div>
-        <SUBSECTION>
-        <p> <h3><strong>이용권 구매</strong> 가 <strong>완료</strong>되었습니다.</h3>
-      </p>
+    <div>
+      <SUBSECTION>
+        <h3><strong>이용권 구매</strong> 가 <strong>완료</strong>되었습니다.</h3>
       </SUBSECTION>
-
-          </div>
+    </div>
 
       <SUBSECTION>
-          <h2>그룹수업 5회권 패키지</h2>
-          <h3>70,000원</h3>
-        </SUBSECTION>
-        <SUBSECTION>
-
-      <p>      <strong>이용권 정보 </strong>
+        <h2>그룹수업 5회권 패키지</h2>
+        <h3>70,000원</h3>
+      </SUBSECTION>
+        
+      <SUBSECTION>
+      <p><strong>이용권 정보 </strong>
         그룹수업 5회권 패키지</p>
-
-          <p> <strong>이용권 시작일자 </strong> 2022.02.23 수요일</p>
-         
+      <p> <strong>이용권 시작일자 </strong> 2022.02.23 수요일</p>  
      </SUBSECTION>
 
       <Link to="/">
-<STYLEDBUTTON2> 홈 화면으로</STYLEDBUTTON2>
-</Link>
+        <STYLEDBUTTON2> 홈 화면으로</STYLEDBUTTON2>
+      </Link>
 
-</STYLEDCONTAINER>
+  </STYLEDCONTAINER>
 
 </div>
   );
