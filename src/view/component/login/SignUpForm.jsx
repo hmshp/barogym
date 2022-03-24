@@ -16,10 +16,10 @@ export default function SignUpForm() {
       <main>
         {
           !isSelected ?
-          <>
-            <BUTTON onClick={() => setIsSelected(true)}>회원</BUTTON>
-            <BUTTON onClick={() => setIsSelected(true)}>강사</BUTTON>
-          </>
+          <TWOBUTTONS>
+            <BUTTON forty thick onClick={() => setIsSelected(true)}>회원</BUTTON>
+            <BUTTON forty thick onClick={() => setIsSelected(true)}>강사</BUTTON>
+          </TWOBUTTONS>
           :
           <FORM onSubmit={handleSubmit((data) => console.log(data))}>
             <div>
