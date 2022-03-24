@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {CONTAINER, PAGEHEADER, SUBSECTION, H1} from '../../../styles/MyInfoStyle'
+import { LinkContainer } from 'react-router-bootstrap';
 
 const STYLEDBUTTON = styled.button`
   background-color: rgb(254, 139, 121);
@@ -15,7 +16,9 @@ const PayListPage = () => {
     <CONTAINER>
       <PAGEHEADER>
         <H1>구매한 이용권</H1>
-        <STYLEDBUTTON>이용권 구매</STYLEDBUTTON>
+        <LinkContainer to="/pass/buy">
+          <STYLEDBUTTON>이용권 구매</STYLEDBUTTON>
+        </LinkContainer>
       </PAGEHEADER>
       <main>
         <CONTAINER flex>
