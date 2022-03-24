@@ -14,7 +14,7 @@ const Logo = styled.img`
 const Footer = () => {
   return (
 <div >
-<footer collapseOnSelect style={footerStyles} expand="md" >
+<footer style={footerStyles} expand="md" >
 <Logo alt="인스타" src="https://cdn-icons-png.flaticon.com/512/1077/1077042.png" />  
 <Logo alt="카카오톡" src="https://cdn-icons.flaticon.com/png/512/3114/premium/3114553.png?token=exp=1647339973~hmac=d321ebc89d4ce39cc38cab2528bd5a1d" />  
 <Logo alt="전화" src="https://cdn-icons-png.flaticon.com/512/126/126509.png" /> 
