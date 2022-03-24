@@ -5,8 +5,8 @@ import MyPostsSearchBar from '../../component/myInfo/MyPostsSearchBar';
 import MyPosts from '../../component/myInfo/MyPostsList';
 
 const MyPostsPage = () => {
-  
 
+  
   return (
     <CONTAINER>
       <PAGEHEADER>
