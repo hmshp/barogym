@@ -10,6 +10,13 @@ import {STYLEDBUTTON,STYLEDCONTAINER,BLACKBUTTON,PINKBUTTON, CLASSINFO} from '..
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
+const divStyle = {
+  marginTop:'10px', 
+  display:'flex', 
+  justifyContent: 'space-between', 
+  borderBottom:"solid 1px gray"
+}
+
 
 function App() {
   const [date, setDate] = useState(new Date());
@@ -39,15 +46,17 @@ function App() {
           </Badge>
         </p>
         <hr></hr>
-        <CLASSINFO>
+
+
+             <div className="text-left">
+          <div style={divStyle}>
             오전 09:00 - 09:50
             <br /> 김민지 트레이너
           <PINKBUTTON variant="info" onClick={handleShow}>
             예약가능
           </PINKBUTTON>
-        </CLASSINFO>
-          <>
-            <Modal show={show} onHide={handleClose}>
+        </div>
+          <> <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
                 <Modal.Title>수업 예약</Modal.Title>
               </Modal.Header>
@@ -60,21 +69,15 @@ function App() {
                   예약
                 </Button>
               </Modal.Footer>
-            </Modal>
-          </>
- 
-        <hr />
-        <CLASSINFO>
+            </Modal> </>
+
+            <div className="text-left">
+          <div style={divStyle}>
           오전 10:00 - 10:50<br />
           김사랑 트레이너
-          <STYLEDBUTTON onClick={() => setSmShow(true)}>예약완료</STYLEDBUTTON>{' '}
-          </CLASSINFO>
-    <>
-      <Modal
-        size="sm"
-        show={smShow}
-        onHide={() => setSmShow(false)}
-        aria-labelledby="example-modal-sizes-title-sm">
+          <STYLEDBUTTON onClick={() => setSmShow(true)}>예약완료</STYLEDBUTTON>
+          </div>
+           <> <Modal size="sm" show={smShow} onHide={() => setSmShow(false)} aria-labelledby="example-modal-sizes-title-sm">
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-sm">
             수업 예약
@@ -83,18 +86,25 @@ function App() {
         <Modal.Body> 이미 예약된 수업입니다.
         </Modal.Body>
       </Modal>    </>
-      <hr />
+      </div>
 
-      <CLASSINFO>
+
+      <div className="text-left">
+          <div style={divStyle}>
         오전 11:00 - 11:50
         <br />
         김사랑 트레이너
           <BLACKBUTTON>마감</BLACKBUTTON>{' '}
-       </CLASSINFO>
+</div>
+</div>
+
+
        <hr />
-   
+   </div>
     </STYLEDCONTAINER>
     </div>
+  
+
   );
 
 }

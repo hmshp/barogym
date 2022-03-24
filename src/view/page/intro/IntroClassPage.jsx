@@ -7,8 +7,6 @@ const IntroClassPage = () => {
       <br />
       <H1>프로그램 소개</H1>
       <hr></hr>
-
-
       <p>
         <img
           className="programProcess"
@@ -60,7 +58,6 @@ const IntroClassPage = () => {
       코어근육 강화와 자세, 체형 교정에 좋은 운동입니다.
       <br />
       <br />
-      <hr></hr>     
     </div>
   );
 };
