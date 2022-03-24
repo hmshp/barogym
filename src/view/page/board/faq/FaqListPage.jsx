@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Table} from 'react-bootstrap';
 import {CONTAINER, PAGEHEADER, H1, BUTTON} from '../../../../styles/BoardStyle';
 import BoardBody from '../../../sampleData/BoardBody.json'
-import BoardHeader from '../../../sampleData/BoardHeader.json'
 import BoardPagination from '../../../component/board/BoardPagination';
 import BoardSearchBar from '../../../component/board/BoardSearchBar';
 import FaqListFilter from '../../../component/board/faq/FaqListFilter';
@@ -10,8 +9,20 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const FaqListPage = () => {
-  const listHeaders = BoardBody["faq"].listHeader
+  const [list, setList] = useState({});
+
+  const listHeaders = ["글 번호", "카테고리", "제목", "작성자", "등록일", "조회수"]
   const listItems = BoardBody["faq"].listBody
+
+  const bno = window.location.search.split('?')[1].split('&')[0].split('-')[1];
+
+  useEffect(() => {
+    // const ReviewList = async() => {
+    //   const res = await FaqListDB(bno);
+    //   console.log(res)
+    //   setList(res.data);
+    // }
+  }, [list])
 
   const navigate = useNavigate();
 
@@ -30,7 +41,7 @@ const FaqListPage = () => {
   return (
     <CONTAINER>
       <PAGEHEADER>
-        <H1>{BoardHeader["faq"]}</H1>
+        <H1>자주 묻는 질문</H1>
         <LinkContainer to={`/board/faq/write`}>
           <BUTTON>글쓰기</BUTTON>
         </LinkContainer>
