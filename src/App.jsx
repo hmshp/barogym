@@ -48,11 +48,13 @@ import ProductListPage from './view/page/mgmt/ProductListPage';
 import ProductUpdatePage from './view/page/mgmt/ProductUpdatePage';
 import MyPostsPage from './view/page/myInfo/MyPostsPage';
 import Zipcode from './view/component/login/Zipcode';
+import ManagerHeader from './view/component/mgmt/ManagerHeader';
 
 
 const App = () => {
   return (
     <>
+      {/* <ManagerHeader /> */}
       <Header/>
         {/* <button onClick={async()=>{ const db =await memberListDB(); alert("console창 확인"); console.log(db.data[0]);}}>DB테스트</button>
         <KakaoMap/>
