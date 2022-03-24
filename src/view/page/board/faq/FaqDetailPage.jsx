@@ -10,7 +10,7 @@ const FaqDetailPage = () => {
     <CONTAINER>
       <PAGEHEADER center>
         <div>
-          <h2>중도 환불 금액</h2>
+          <h2>락커 대여 방법이 궁금합니다.</h2>
           <p>2022-03-18</p>
         </div>
         <GRIDCONTAINER>

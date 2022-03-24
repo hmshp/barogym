@@ -12,6 +12,7 @@ const FaqListFilter = () => {
 
   //임시 데이터(DB에서 JSON 받아올 예정)
   const categoryItems = [
+    '전체 카테고리',
     '헬스장 이용 안내',
     '결제 안내',
     '수업 안내',
