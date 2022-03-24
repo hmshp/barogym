@@ -19,20 +19,13 @@ const NoticeDetailPage = () => {
         
       </PAGEHEADER>
       <section>
-        <FORM>
-          <TEXTAREA 
-            placeholder='글 내용'
-            rows={5}
-            disabled
-          />
+          <div>글 내용입니다.</div>
           <TWOBUTTONS>
             <BUTTON gray forty>삭제</BUTTON>
               <LinkContainer to={`/board/notice/update`}>
             <BUTTON forty>수정</BUTTON>
-            </LinkContainer>
-            
+            </LinkContainer>   
           </TWOBUTTONS>
-        </FORM>
       </section>
       <CommentForm />
       <CommentList />

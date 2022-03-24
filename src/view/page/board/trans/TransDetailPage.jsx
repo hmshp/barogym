@@ -26,19 +26,13 @@ const TransDetailPage = () => {
         onHide={() => setModalShow(false)}
       />
       <section>
-        <FORM>
-          <TEXTAREA 
-            placeholder='글 내용'
-            rows={5}
-            disabled
-          />
+          <div>글 내용입니다.</div>
           <TWOBUTTONS>
             <BUTTON gray forty>삭제</BUTTON>
             <LinkContainer to={`/board/trans/update`}>
               <BUTTON forty>수정</BUTTON>
             </LinkContainer>
           </TWOBUTTONS>
-        </FORM>
       </section>
       <CommentForm />
       <CommentList />
