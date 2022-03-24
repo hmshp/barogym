@@ -8,14 +8,6 @@
     margin: 5px;
 }
 
-
-.teacher{
-    margin-top: 20px;
-    margin-left: 30px;
-    margin-right: 10px;
-    margin-bottom: 50px;
-}
-
 .teacherImg{
     height: 230px;
 }
@@ -35,9 +27,6 @@
 
 .homeImg {
     max-width: 100%;
-    width: 500px;
-    height: 320px;
-    margin-top: 10px;
     opacity: 0.75;
     filter: alpha(opacity=40);
 }
@@ -55,4 +44,12 @@
 
 .teacher {
     max-width: 100%;
+}
+
+.BAROGYM{
+    max-width: 100%;
+    width: 600px;
+    height: 400px;
+    opacity: 0.75;
+    filter: alpha(opacity=40);
 }
