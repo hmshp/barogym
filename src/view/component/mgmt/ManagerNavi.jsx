@@ -17,7 +17,7 @@ const ManagerNavi = () => {
           </LinkContainer>  
         </NavDropdown>
         <NavDropdown title="매장 관리">
-          <LinkContainer to={"/board/notice/list?page=1"}>
+          <LinkContainer to={"/mgmt/member/list?page=1"}>
             <NavDropdown.Item>회원 관리</NavDropdown.Item>
           </LinkContainer>
           <LinkContainer to={"/board/trans/list?page=1"}>
@@ -26,13 +26,13 @@ const ManagerNavi = () => {
           <LinkContainer to={"/board/review/list?page=1"}>
             <NavDropdown.Item>수업 관리</NavDropdown.Item>
           </LinkContainer>  
-          <LinkContainer to={"/board/qna/list?page=1"}>
+          <LinkContainer to={"/mgmt/product/list"}>
             <NavDropdown.Item>상품 관리</NavDropdown.Item>
           </LinkContainer>  
           <LinkContainer to={"/board/faq/list?page=1"}>
             <NavDropdown.Item>결제 관리</NavDropdown.Item>
           </LinkContainer>  
-          <LinkContainer to={"/board/faq/list?page=1"}>
+          <LinkContainer to={"/mgmt/income/list"}>
             <NavDropdown.Item>매출</NavDropdown.Item>
           </LinkContainer>  
         </NavDropdown>
