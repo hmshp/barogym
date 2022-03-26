@@ -19,13 +19,15 @@ const MemberMgmt = () => {
     {
       name: "김사랑",
       phone: "010-1234-5678",
+
       address: "서울시 강남구",
       nickname: '별명',
       email: 'abc@gmail.com',
       tel: '010-1234-5678',
       birthday: '3/25',
       gender: '여성',
-      joinDate: '2022-03-24'
+      joinDate: '2022-03-24',
+      address: "서울시 강남구"
     },
     {
       name: "지승완",
