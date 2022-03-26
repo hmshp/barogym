@@ -50,6 +50,7 @@ import MyPostsPage from './view/page/myInfo/MyPostsPage';
 import Zipcode from './view/component/login/Zipcode';
 import ManagerHeader from './view/component/mgmt/ManagerHeader';
 import MemberMgmtPage from './view/page/mgmt/MemberMgmtPage';
+import TeacherMgmtPage from './view/page/mgmt/TeacherMgmtPage';
 
 
 const App = () => {
@@ -116,6 +117,7 @@ const App = () => {
           <Route path="/mgmt/product/update" exact={true} element={<ProductUpdatePage/>} />
           <Route path="/mgmt/income/list" exact={true} element={<IncomeListPage/>} />
           <Route path="/mgmt/member/list" exact={true} element={<MemberMgmtPage/>} />
+          <Route path="/mgmt/teacher/list" exact={true} element={<TeacherMgmtPage/>} />
         </Routes> 
       <Footer />        
     </>
