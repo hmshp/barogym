@@ -1,36 +1,49 @@
 import React, {useState, useEffect} from 'react';
 import {Table} from 'react-bootstrap';
 import {CONTAINER, PAGEHEADER, H1, BUTTON} from '../../../../styles/BoardStyle';
-import BoardBody from '../../../sampleData/BoardBody.json'
 import BoardPagination from '../../../component/board/BoardPagination';
 import BoardSearchBar from '../../../component/board/BoardSearchBar';
 import FaqListFilter from '../../../component/board/faq/FaqListFilter';
-import { LinkContainer } from 'react-router-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { boardListDB } from '../../../../service/dbLogic';
 
 const FaqListPage = () => {
-  const [list, setList] = useState({});
+  const navigate = useNavigate();
+  const id = `${useLocation().pathname.split('/')[1]}/${useLocation().pathname.split('/')[2]}`.slice(6)
 
-  const listHeaders = ["글 번호", "카테고리", "제목", "작성자", "등록일", "조회수"]
-  const listItems = BoardBody["faq"].listBody
+  const [title, setTitle] = useState({ //필터 클릭하기 전 or 클릭해서 드롭다운 메뉴 중 하나 선택했을 때 화면에 보이는 제목 3개
+    category : '카테고리',
+  });
 
-  const bno = window.location.search.split('?')[1].split('&')[0].split('-')[1];
+  const [listBody,setListBody] = useState([]);
 
   useEffect(() => {
-    // const ReviewList = async() => {
-    //   const res = await FaqListDB(bno);
-    //   console.log(res)
-    //   setList(res.data);
-    // }
-  }, [list])
+    const boardList = async() =>{
+      const res = await boardListDB(id);
+      const list = [];
+      console.log(res)
+      res.data.forEach((item) => {
+        const obj = {
+          bno : item.MASTER_BNO,
+          title: item.MASTER_TITLE,
+          writer: item.MEM_NAME,
+          date: item.MASTER_DATE,
+          hit: item.MASTER_HIT
+        };
+        list.push(obj);
+      })
+      setListBody(list);
+    }
+    boardList();
+  },[title,setListBody, id]);
 
-  const navigate = useNavigate();
+  const listHeaders = ["글 번호", "카테고리", "제목", "작성자", "등록일", "조회수"]
 
   const listHeadersElements = listHeaders.map((listHeader, index) => <th key={index}>{listHeader}</th>)
 
-  const listItemsElements = listItems.map((listItem, index) => {
+  const listItemsElements = listBody.map((listItem, index) => {
     return (
-      <tr key={index} onClick={() => navigate(`/board/faq/detail?page=1&bno=${index}`)}>
+      <tr key={index} onClick={() => navigate(`/board/faq/detail?bno=${listItem.bno}&page=1`)}>
         {Object.keys(listItem).map((key, index) => (
           <td key={index}>{listItem[key]}</td>
         )) }
@@ -42,11 +55,9 @@ const FaqListPage = () => {
     <CONTAINER>
       <PAGEHEADER>
         <H1>자주 묻는 질문</H1>
-        <LinkContainer to={`/board/faq/write`}>
-          <BUTTON>글쓰기</BUTTON>
-        </LinkContainer>
+        <BUTTON onClick={()=>{navigate(`/board/faq/write`)}}>글쓰기</BUTTON>
       </PAGEHEADER>
-      <FaqListFilter />
+      <FaqListFilter title={title} setTitle={setTitle} />
       <Table striped bordered hover>
         <thead>
           <tr>

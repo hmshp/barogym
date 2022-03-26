@@ -6,31 +6,47 @@ import BoardPagination from '../../../component/board/BoardPagination';
 import BoardSearchBar from '../../../component/board/BoardSearchBar';
 import TransListFilter from '../../../component/board/trans/TransListFilter';
 import { LinkContainer } from 'react-router-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { boardListDB } from '../../../../service/dbLogic';
 
 const TransListPage = () => {
-  const [list, setList] = useState({});
+  const navigate = useNavigate();
 
-  const listHeaders = ["글 번호", "제목", "카테고리", "가격", "작성자", "등록일", "조회수"]
-  const listItems = BoardBody["trans"].listBody
+  const id = `${useLocation().pathname.split('/')[1]}/${useLocation().pathname.split('/')[2]}`.slice(6)
 
-  const bno = window.location.search.split('?')[1].split('&')[0].split('-')[1];
+  const [title, setTitle] = useState({ //필터 클릭하기 전 or 클릭해서 드롭다운 메뉴 중 하나 선택했을 때 화면에 보이는 제목 3개
+    category : '카테고리',
+  });
+
+  const [listBody,setListBody] = useState([]);
 
   useEffect(() => {
-    // const ReviewList = async() => {
-    //   const res = await TransListDB(bno);
-    //   console.log(res)
-    //   setList(res.data);
-    // }
-  }, [list])
+    const boardList = async() =>{
+      const res = await boardListDB(id);
+      const list = [];
+      console.log(res)
+      res.data.forEach((item) => {
+        const obj = {
+          bno : item.MASTER_BNO,
+          title: item.MASTER_TITLE,
+          writer: item.MEM_NAME,
+          date: item.MASTER_DATE,
+          hit: item.MASTER_HIT
+        };
+        list.push(obj);
+      })
+      setListBody(list);
+    }
+    boardList();
+  },[title,setListBody, id]);
 
-  const navigate = useNavigate();
+  const listHeaders = ["글 번호", "제목", "카테고리", "가격", "작성자", "등록일", "조회수"]
 
   const listHeadersElements = listHeaders.map((listHeader, index) => <th key={index}>{listHeader}</th>)
 
-  const listItemsElements = listItems.map((listItem, index) => {
+  const listItemsElements = listBody.map((listItem, index) => {
     return (
-      <tr key={index} onClick={() => navigate(`/board/trans/detail?page=1&bno=${index}`)}>
+      <tr key={index} onClick={() => navigate(`/board/trans/detail?bno=${listItem.bno}&page=1`)}>
         {Object.keys(listItem).map((key, index) => (
           <td key={index}>{listItem[key]}</td>
         )) }
@@ -42,11 +58,9 @@ const TransListPage = () => {
     <CONTAINER>
       <PAGEHEADER>
         <H1>양도게시판</H1>
-        <LinkContainer to={`/board/trans/write`}>
-          <BUTTON>글쓰기</BUTTON>
-        </LinkContainer>
+        <BUTTON onClick={()=>{navigate(`/board/trans/write`)}}>글쓰기</BUTTON>
       </PAGEHEADER>
-      <TransListFilter />
+      <TransListFilter title={title} setTitle={setTitle} />
       <Table striped bordered hover>
         <thead>
           <tr>
