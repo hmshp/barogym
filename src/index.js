@@ -10,6 +10,7 @@ import rootReducer from './redux/rootReducer'
 import AuthLogic from './service/firebase/authLogic';
 import firebaseApp from './service/firebase/firebase';
 import App from './App';
+import 'react-quill/dist/quill.snow.css';
 
 const authLogic = new AuthLogic(firebaseApp);
 

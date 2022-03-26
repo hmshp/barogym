@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const ReviewListFilter = () => {
+const ReviewListFilter = (props) => {
+  const { title, setTitle } = props;
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -16,12 +17,6 @@ const ReviewListFilter = () => {
     필라테스 : ['현세훈', '이제근', '박찬민', '유승범'],
     요가 : ['김나리', '박수정', '박나래']
   }
-
-  const [title, setTitle] = useState({ //필터 클릭하기 전 or 클릭해서 드롭다운 메뉴 중 하나 선택했을 때 화면에 보이는 제목 3개
-    class : '수업',
-    teacher : '강사',
-    rating : '별점'
-  });
 
   const classItems = [
     '수업',
@@ -56,23 +51,16 @@ const ReviewListFilter = () => {
     setTeacherItems(items);
   },[title,setTeacherItems]);
 
-
-  useEffect(() => {
-    console.log(path)
-    //대충 해당 파라미터로 DB에 게시판 불러오는 내용
-  },[path]);
-
-
-
   const setPath = (key, oldItem, newItem) => {
     let path;
     console.log(key, oldItem, newItem);
     console.log(title);
+    const searchPath = window.location.search;
     //location.search는 쿼리스트링 부분.
     //아래 코드: 쿼리스트링 안에 key(class)가 들어 있다면
-    if(key==='class'&&decodeURIComponent(location.search).match(key)){
+    if(key==='class'&&decodeURIComponent(searchPath).match(key)){
       //location.pathname은 쿼리스트링 이전 부분이다
-      path = location.pathname+decodeURIComponent(location.search)
+      path = window.location.pathname+decodeURIComponent(searchPath)
               //이전 key를 새 key로. 예시) class='수업'을 class='필라테스'로 대체
               .replace(`&${key}=${oldItem}`,`&${key}=${newItem}`)
               //쿼리스트링 강사 부분 없애기. 수업이 달라지면 강사도 다시 선택하도록
@@ -83,12 +71,12 @@ const ReviewListFilter = () => {
               .replace(`&rating=${title.rating}`,'')
       console.log(path);
       // key가 class가 아닐 때(수업 선택할 땐 강사, 별점도 초기화해야 하므로 특별한 경우라 위에서 if문을 따로 써줬음.)
-    } else if(decodeURIComponent(location.search).match(key)){
-      path = location.pathname+decodeURIComponent(location.search).replace(`&${key}=${oldItem}`,`&${key}=${newItem}`)
+    } else if(decodeURIComponent(searchPath).match(key)){
+      path = window.location.pathname+decodeURIComponent(searchPath).replace(`&${key}=${oldItem}`,`&${key}=${newItem}`)
       console.log(path)
     } else{
       // ??
-      path = location.pathname+location.search+`&${key}=${newItem}`
+      path = location.pathname+searchPath+`&${key}=${newItem}`
       console.log(path)
     }
     return path;
@@ -97,7 +85,7 @@ const ReviewListFilter = () => {
 
   return (
     <div>
-      <div style={{display: 'flex', width: '250px', justifyContent: 'space-between'}}>
+      <div style={{display: 'flex', width: '50%'}}>
         <DropdownButton variant="outline-secondary"  title={title.class}>
           { 
             classItems.map((classItem, index)=>(
