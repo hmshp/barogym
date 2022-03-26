@@ -2,6 +2,7 @@ import React from 'react';
 import {PAGEHEADER,STYLEDBUTTON,STYLEDCONTAINER} from '../../../styles/ClassStyle'
 import { Link } from 'react-router-dom' 
 import styled from 'styled-components';
+import { H1 } from '../../../styles/MyInfoStyle';
 
 export const STYLEDBUTTON2 = styled.button`
   background-color: ${(props) => (props.gray ? "gray" : "rgb(254, 139, 121)")};
@@ -18,9 +19,11 @@ const PassBuyPage = () => {
   return (
     <div>
       <STYLEDCONTAINER>
+
     <PAGEHEADER>
-          <h1>이용권 구매</h1>
+          <H1>이용권 구매</H1>
         </PAGEHEADER>
+
         <form name="orderform" id="orderform" method="post"
           className="orderform" action="/Order" >
 
@@ -59,7 +62,8 @@ const PassBuyPage = () => {
             </div>
             </div>
             <br/>
-            <p><strong>총 합계 : 70,000원</strong></p>
+            <h5><strong>총 합계 : 70,000원</strong></h5>
+            <br/>
             <Link to="/pass/buyComplete">
 <STYLEDBUTTON2> 결제하기 </STYLEDBUTTON2>
 </Link>
