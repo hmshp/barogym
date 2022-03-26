@@ -71,6 +71,9 @@ export const BUTTON = styled.button`
   ${props => props.thirty && css`
     width: 30%;
   `}
+  ${props => props.full && css`
+    width: 100%;
+  `}
   
   @media(min-width: 800px) {
     ${props =>
