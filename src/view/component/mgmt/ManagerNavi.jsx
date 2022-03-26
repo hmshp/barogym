@@ -1,5 +1,4 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import { Nav, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
@@ -20,7 +19,7 @@ const ManagerNavi = () => {
           <LinkContainer to={"/mgmt/member/list?page=1"}>
             <NavDropdown.Item>회원 관리</NavDropdown.Item>
           </LinkContainer>
-          <LinkContainer to={"/board/trans/list?page=1"}>
+          <LinkContainer to={"/mgmt/teacher/list?page=1"}>
             <NavDropdown.Item>강사 관리</NavDropdown.Item>
           </LinkContainer>  
           <LinkContainer to={"/board/review/list?page=1"}>
