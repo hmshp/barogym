@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const TransListFilter = () => {
+const TransListFilter = (props) => {
+  const { title, setTitle } = props;
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -17,9 +18,6 @@ const TransListFilter = () => {
     '그룹 수업',
   ];
 
-  const [title, setTitle] = useState({ //필터 클릭하기 전 or 클릭해서 드롭다운 메뉴 중 하나 선택했을 때 화면에 보이는 제목 3개
-    category : '카테고리',
-  });
 
   useEffect(() => {
     console.log(path)
