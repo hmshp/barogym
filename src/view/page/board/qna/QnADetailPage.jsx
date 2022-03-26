@@ -52,7 +52,6 @@ const QnADetailPage = () => {
           <LinkContainer to={`/board/qna/update?bno=${bno}`}>
             <BUTTON forty>수정</BUTTON>
           </LinkContainer>
-          
         </TWOBUTTONS>
       </section>
       <CommentForm />

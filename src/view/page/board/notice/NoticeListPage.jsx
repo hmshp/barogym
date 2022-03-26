@@ -52,7 +52,7 @@ const NoticeListPage = () => {
     <CONTAINER>
       <PAGEHEADER>
         <H1>공지사항</H1>
-          <BUTTON onClick={()=>{navigate(`/board/notice/write`)}}>글쓰기</BUTTON>
+        <BUTTON onClick={()=>{navigate(`/board/notice/write`)}}>글쓰기</BUTTON>
       </PAGEHEADER>
       <Table striped bordered hover>
         <thead>
