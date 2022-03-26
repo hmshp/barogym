@@ -2,6 +2,7 @@ import React from 'react';
 import {PAGEHEADER,SUBSECTION,STYLEDCONTAINER} from '../../../styles/ClassStyle'
 import { Link } from 'react-router-dom' 
 import styled from 'styled-components';
+import { H1 } from '../../../styles/MyInfoStyle';
 
 export const STYLEDBUTTON2 = styled.button`
   background-color: ${(props) => (props.gray ? "gray" : "rgb(254, 139, 121)")};
@@ -18,8 +19,9 @@ const PassBuyComplete = () => {
   return (
 <div>
 <STYLEDCONTAINER>
+
     <PAGEHEADER>
-      <h1>결제 완료</h1>
+      <H1>결제 완료</H1>
     </PAGEHEADER>
 
     <div>

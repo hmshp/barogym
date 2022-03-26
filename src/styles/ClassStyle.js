@@ -7,9 +7,32 @@ export const PAGEHEADER = styled.header`
   padding-bottom: 1em;
   display: flex;
   justify-content: space-between;
+  ${props => props.center && css`
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  `}
 `
 
+
 export const STYLEDCONTAINER = styled.div`
+  margin: 0 auto;
+  @media(min-width: 800px) {
+    ${props =>
+    !props.pwCheck &&
+    css`
+      padding: 0 2em;
+    `}
+  }
+  width: 90%;
+  ${props =>
+  props.relative &&
+  css`
+    position: relative;
+  `}
+`
+
+export const STYLEDCONTAINER2 = styled.div`
   margin: 0 auto;
   @media(min-width: 800px) {
     ${props =>
@@ -141,3 +164,4 @@ export const CLASSINFO = styled.article`
   display: flex;
   justify-content: space-between;
 `
+;

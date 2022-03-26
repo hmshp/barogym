@@ -1,7 +1,11 @@
 import React from 'react';
-import {PAGEHEADER,STYLEDBUTTON,STYLEDCONTAINER} from '../../../styles/ClassStyle'
+import {STYLEDCONTAINER,PAGEHEADER} from '../../../styles/ClassStyle'
 import { Link } from 'react-router-dom' 
 import styled from 'styled-components';
+import { H1 } from '../../../styles/MyInfoStyle';
+import './pass.css';
+
+
 
 export const STYLEDBUTTON2 = styled.button`
   background-color: ${(props) => (props.gray ? "gray" : "rgb(254, 139, 121)")};
@@ -19,26 +23,28 @@ const PassInfoPage = () => {
     <div className="pass" style={{ textAlign: "left" }}>
      <STYLEDCONTAINER relative>
         <PAGEHEADER>
-          <h1>이용권 안내</h1>
+          <H1>이용권 안내</H1>
         </PAGEHEADER>
-        <img
-          className="pass"
-          src="https://i.ibb.co/L5rPqKc/2.png"
+
+
+
+
+<div className="PassImg">
+          <img className="passImg"
+          src="https://i.ibb.co/k41dQDC/003-3.png"
           alt="pass"
         />
+</div>
 
-<div>
+<div className="button">
   <Link to="/pass/buy"> 
   <STYLEDBUTTON2> 이용권 구매 </STYLEDBUTTON2>
 </Link>
 </div>
 
 
-
-
-
-
      </STYLEDCONTAINER>
+
 
     </div>
   );
