@@ -10,7 +10,7 @@ const MyPostsSearchBar = () => {
           className="me-2"
           aria-label="검색"
         />
-        <Button variant="outline-primary">검색</Button>
+        <Button variant="outline-secondary" style={{width: "100px"}}>검색</Button>
     </Form>
   );
 };
