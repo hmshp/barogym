@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Container, Navbar, Offcanvas, Button } from 'react-bootstrap';
 import ManagerNavi from "./ManagerNavi";
 import { LinkContainer } from 'react-router-bootstrap';
-import {LOGO, H1, navbarStyles, navbarBrandStyles, BUTTON} from '../../../styles/HeaderStyle';
+import {LOGO, H1, NAVBAR, navbarBrandStyles, BUTTON} from '../../../styles/HeaderStyle';
 
 const ManagerHeader = () => {
 
@@ -13,7 +13,7 @@ const ManagerHeader = () => {
   }
 
   return (
-    <Navbar collapseOnSelect style={navbarStyles} expand="md" onToggle={toggle}>
+    <NAVBAR collapseOnSelect expand="md" onToggle={toggle}>
       <Container fluid>
         <Navbar.Brand style={navbarBrandStyles} href="/">
           <LOGO
@@ -45,7 +45,7 @@ const ManagerHeader = () => {
         }
       </Container>
 
-    </Navbar>
+    </NAVBAR>
   );
 };
 export default ManagerHeader;
