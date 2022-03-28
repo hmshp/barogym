@@ -1,5 +1,7 @@
 import styled, {css} from 'styled-components';
 import { Pagination } from 'react-bootstrap';
+import breakpoint from './breakpoint';
+import { themeColor } from './GlobalStyle';
 
 export const PAGEHEADER = styled.header`
   border-bottom: 1px solid gray;
@@ -17,7 +19,17 @@ export const PAGEHEADER = styled.header`
 export const CONTAINER = styled.article`
   margin: 0 auto;
   width: 90%;
-  @media(min-width: 800px) {
+  ${props => props.pwCheck &&
+      css`
+        margin-top: 5em;
+        width: 70%;
+         //
+      `}
+  ${props => props.relative && css`
+    position: relative;
+  `}
+
+  @media only screen and (min-width: ${breakpoint.size.sm}) {
     ${props => props.flex && css`
       display: flex;
       justify-content: space-between;
@@ -27,38 +39,32 @@ export const CONTAINER = styled.article`
       padding: 0 2em;
     `}
   }
-  ${props => props.pwCheck &&
-      css`
-        margin-top: 5em;
-        width: 70%;
-         //
-      `}
-  ${props =>
-  props.relative &&
-  css`
-    position: relative;
-  `}
+  @media only screen and (min-width: ${breakpoint.size.xl}) {
+    width: 80%;
+  }
+
 `
 
 /* 글자 색 */
 export const H1 = styled.h1`
-  color: rgb(254, 139, 121);
+  color: ${themeColor};
 `
 
 export const H2 = styled.h2`
-  color: rgb(254, 139, 121);
+  color: ${themeColor};
 `
 
 /* 글 목록 페이지 */
 export const PAGINATION = styled(Pagination)`
   display: flex;
   justify-content: center;
+  color: gray;
 `
 
 /* 버튼 */
 export const BUTTON = styled.button`
   background-color: ${props =>
-    props.gray ? "gray" : "rgb(254, 139, 121)"
+    props.gray ? "gray" : themeColor
   };
   color: white;
   padding: ${props => props.thick ? "1em" : "0.5em 1em"};
