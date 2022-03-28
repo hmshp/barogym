@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import {CONTAINER, PAGEHEADER, SUBSECTION, H1} from '../../../styles/MyInfoStyle'
 import { LinkContainer } from 'react-router-bootstrap';
+import { themeColor } from '../../../styles/GlobalStyle';
 
 const STYLEDBUTTON = styled.button`
-  background-color: rgb(254, 139, 121);
+  background-color: ${themeColor};
   color: white;
   padding: 0.5em 1em;
   border-radius: 4px;

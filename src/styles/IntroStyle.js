@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { themeColor } from './GlobalStyle';
 
 
 export const LOGO = styled.img`
@@ -46,7 +47,7 @@ export const SUBSECTION = styled.section`
 `
 
 export const STYLEDBUTTON = styled.button`
-  background-color: ${(props) => (props.gray ? "gray" : "rgb(254, 139, 121)")};
+  background-color: ${(props) => (props.gray ? "gray" : themeColor)};
   color: white;
   padding: 0.5em 1em;
   border-radius: 4px;
@@ -109,5 +110,5 @@ export const INPUT = styled.input`
 `
 
 export const H1 = styled.h1`
-  color: rgb(254, 139, 121);
+  color: ${themeColor};
 `

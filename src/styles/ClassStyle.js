@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Pagination } from 'react-bootstrap';
+import { themeColor } from './GlobalStyle';
 
 export const PAGEHEADER = styled.header`
   border-bottom: 1px solid gray;
@@ -62,7 +63,7 @@ export const SUBSECTION = styled.section`
 `
 
 export const STYLEDBUTTON = styled.button`
-  background-color: ${(props) => (props.gray ? "gray" : "rgb(254, 139, 121)")};
+  background-color: ${(props) => (props.gray ? "gray" : themeColor)};
   color: white;
   padding: 0.5em 1em;
   border-radius: 4px;
@@ -150,7 +151,7 @@ export const INPUT = styled.input`
 
 /* 글자 색 */
 export const H1 = styled.h1`
-  color: rgb(254, 139, 121);
+  color: ${themeColor};
 `
 
 /* pagination */
