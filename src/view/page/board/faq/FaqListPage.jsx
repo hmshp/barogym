@@ -7,9 +7,9 @@ import FaqListFilter from '../../../component/board/faq/FaqListFilter';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { boardListDB } from '../../../../service/dbLogic';
 
-const FaqListPage = () => {
+const FaqListPage = (props) => {
   const navigate = useNavigate();
-  const id = `${useLocation().pathname.split('/')[1]}/${useLocation().pathname.split('/')[2]}`.slice(6)
+  const { id } = props;
 
   const [title, setTitle] = useState({ //필터 클릭하기 전 or 클릭해서 드롭다운 메뉴 중 하나 선택했을 때 화면에 보이는 제목 3개
     category : '카테고리',
@@ -55,7 +55,7 @@ const FaqListPage = () => {
     <CONTAINER>
       <PAGEHEADER>
         <H1>자주 묻는 질문</H1>
-        <BUTTON onClick={()=>{navigate(`/board/faq/write`)}}>글쓰기</BUTTON>
+        <BUTTON onClick={()=>{navigate(`/board/write?id=${id}`)}}>글쓰기</BUTTON>
       </PAGEHEADER>
       <FaqListFilter title={title} setTitle={setTitle} />
       <Table striped bordered hover>

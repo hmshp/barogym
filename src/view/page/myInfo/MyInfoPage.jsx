@@ -2,7 +2,7 @@ import {useState, React} from 'react';
 import MyContactInfo from '../../component/myInfo/MyContactInfo';
 import MyPasswordInfo from '../../component/myInfo/MyPasswordInfo';
 import { useNavigate } from 'react-router-dom';
-import {PAGEHEADER, CONTAINER, STYLEDSECTION, BUTTON, FORM, LABEL, INPUT, H1} from '../../../styles/MyInfoStyle';
+import {PAGEHEADER, CONTAINER, BUTTON, FORM, INPUT, H1} from '../../../styles/MyInfoStyle';
 import { TWOBUTTONS } from '../../../styles/MyInfoStyle';
 
 

@@ -1,55 +1,92 @@
-import React from 'react';
-import { CONTAINER, PAGEHEADER, H1, TWOBUTTONS, BUTTON, FORM, INPUT, LABEL, ERRORMSG, TEXTAREA } from '../../../../styles/BoardStyle';
+import React, { useEffect, useRef, useState } from 'react';
+import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { useForm } from "react-hook-form";
-import BoardHeader from '../../../sampleData/BoardHeader.json'
-import ReviewListFilter from '../../../component/board/classReview/ReviewListFilter';
+import { boardInsertDB } from '../../../../service/dbLogic'
+import QuillEditor from '../../../component/board/QuillEditor'
 
-const QnAWritePage = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-
+const QnAWritePage = (props) => {
+  const { id } = props;
+  const[title, setTitle]= useState('');
+  const[content, setContent]= useState('');
+  const[files, setFiles]= useState([]);
+  
+  const quillRef = useRef();
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    for(let i=0; i<files.length; i++){
+      if(!content.match(files[i].split(' | ')[0])){
+        console.log(files);
+        setFiles(files.filter(file=>file!==files[i]));
+      }
+    }
+    
+  },[content, setFiles, files]);
+  
+
+
+  const handleContent = (value) => {
+    console.log(value);
+    setContent(value);
+  };
+
+
+  const handleFiles = (value) => {
+    setFiles([...files, value]);
+  };
+
+
+  const handleTitle = (e) => {
+    setTitle(e);
+  } 
+
+  const boardInsert = async() => {
+    if(title.trim()===''||content.trim()===''||!id) return alert("게시글이 작성되지 않았습니다.");
+    const board = {
+      id : id,
+      title : title,
+      content : content,
+      fileNames : files,
+      mem_no : '123'
+    }
+    const res = await boardInsertDB(board);
+    if(!res.data) return alert("게시판 수정에 실패했습니다.");
+    navigate(`/board/list?id=${id}&page=1`);
+  }
+
 
   return (
-    <CONTAINER>
-      <PAGEHEADER>
-        <H1>{BoardHeader["qna"]}</H1>
-      </PAGEHEADER>
-      <FORM onSubmit={handleSubmit((data) => console.log(data))}>
-        <LABEL htmlFor="title">제목</LABEL>
-        <INPUT
-          {...register("title", { required: '필수 입력사항입니다.' })}
-          placeholder="제목을 입력해 주세요."
-          id="title"
-        />
-        <ERRORMSG>{errors.password?.message}</ERRORMSG>
-
-        <LABEL htmlFor="content">내용</LABEL>
-        <TEXTAREA
-          {...register("content", { required: '필수 입력사항입니다.' })}
-          placeholder="글 내용을 입력해 주세요."
-          id="content"
-          rows={5}
-        />
-        <ERRORMSG>{errors.password?.message}</ERRORMSG>
-
-        <LABEL htmlFor="file">파일</LABEL>
-        <INPUT
-          type="file" id="file" {...register("file")}
-        />
-        <ERRORMSG>{errors.file?.message}</ERRORMSG>
-
-        <TWOBUTTONS>
-          <BUTTON
-            gray forty thick
-            onClick={()=>{ navigate(`/board/qna/list?page=1`);}}
-          >
-            취소
-          </BUTTON>
-          <BUTTON forty thick>올리기</BUTTON>
-        </TWOBUTTONS>
-      </FORM>
-    </CONTAINER>
+    <>
+      게시판 글쓰기 페이지
+      <div style={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>
+        <div style={{width:"80%", maxWidth:"2000px"}}>
+          <div style={{display: 'flex', justifyContent: 'space-between', marginBottom:'10px'}}>
+            <span style={{alignSelf: 'flex-end'}}>제목</span> 
+            <Button onClick={()=>{boardInsert()}}>글쓰기</Button>
+          </div>
+          <input
+            id="dataset-title"
+            type="text"
+            placeholder="제목을 입력하세요."
+            style={{width:"100%",height:'40px' , border:'1px solid lightGray'}}
+            //value={noticeTitle}
+            onChange={(e)=>{handleTitle(e.target.value)}}
+          />
+          <hr />
+          <div style={{textAlign:"left", marginBottom:'10px'}}>상세내용</div>
+          <QuillEditor value={content} handleContent={handleContent} quillRef={quillRef} files={files} handleFiles={handleFiles}/>
+          <hr />
+          <div style={{textAlign:"left", marginBottom:'10px'}}>첨부사진</div>
+          <div style={{display:'block', border:'1px solid lightGray', minHeight:'60px'}}>
+            {
+              files.map((item, index)=>(
+                <div type='text' id='fileUpload' style={{padding:"5px"}} key={index}>{item}</div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

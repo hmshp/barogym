@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
+import { themeColor } from './GlobalStyle';
 
 /* login 페이지 헤더 */
 
 export const H1 = styled.h1`
-  color: rgb(254, 139, 121);
+  color: ${themeColor};
 `
 
 /* login form */
@@ -44,7 +45,7 @@ export const RADIOINPUT = styled(INPUT)`
 
 export const BUTTON = styled.button`
   background-color: ${props =>
-    props.gray ? "gray" : "rgb(254, 139, 121)"
+    props.gray ? "gray" : themeColor
   };
   color: white;
   padding: ${props => props.thick ? "1em" : "0.5em 1em"};
@@ -87,7 +88,7 @@ export const P = styled.p`
 /* 이메일 찾기 폼 */
 
 export const H2 = styled.h2`
-  color: rgb(254, 139, 121);
+  color: ${themeColor};
 `
 
 export const FORMHEADER = styled.header`

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import {Button} from 'react-bootstrap';
+import {Button, Navbar} from 'react-bootstrap';
+import breakpoint from './breakpoint';
+import { themeColor } from './GlobalStyle';
 
 export const LOGO = styled.img`
   width: 50px;
@@ -13,10 +15,13 @@ export const H1 = styled.h1`
   color: white;
 `
 
-export const navbarStyles = {
-  backgroundColor: 'rgb(254, 139, 121)',
-  color: 'white'
-}
+export const NAVBAR = styled(Navbar)`
+  background-color: ${themeColor};
+  color: white;
+  @media only screen and (min-width: ${breakpoint.size.xl}) {
+    padding: 2em 0;
+  }
+`
 
 export const navbarBrandStyles = {
   display: 'flex',
@@ -24,13 +29,21 @@ export const navbarBrandStyles = {
 }
 
 export const BUTTON = styled(Button)`
-  background-color: rgb(254, 139, 121);
+  background-color: transparent;
   border: none;
   font-weight: 800;
+  margin: 0 0.5em;
+  text-decoration: none;
+  color: white;
   &:hover {
-    background-color: rgb(235, 125, 110);
+    color: white;
   }
   &:active {
-    background-color: rgb(235, 125, 110);
+    color: white;
   }
 `
+
+export const buttonStyle = {
+  backgroundColor: "transparent",
+  border: "none"
+}

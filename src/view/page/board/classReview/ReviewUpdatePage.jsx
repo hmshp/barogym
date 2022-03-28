@@ -5,15 +5,16 @@ import { boardDetailDB, boardUpdateDB } from '../../../../service/dbLogic';
 import QuillEditor from '../../../component/board/QuillEditor'
 import {Button} from 'react-bootstrap'
 
-const ReviewUpdatePage = () => {
-
+const ReviewUpdatePage = (props) => {
+  const { id, bno } = props;
   const[title, setTitle]= useState('');
   const[content, setContent]= useState('');
   const[files, setFiles]= useState([]);
   
   const quillRef = useRef();
-  const id = `${useLocation().pathname.split('/')[1]}/${useLocation().pathname.split('/')[2]}`.slice(6)
-  const bno = window.location.search.split('&')[0].split('=')[1]
+  
+  
+
   const navigate = useNavigate();
 
   useEffect(() => {

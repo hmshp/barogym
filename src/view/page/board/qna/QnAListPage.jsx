@@ -6,9 +6,9 @@ import BoardSearchBar from '../../../component/board/BoardSearchBar';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { boardListDB } from '../../../../service/dbLogic';
 
-const QnAListPage = () => {
+const QnAListPage = (props) => {
   const navigate = useNavigate();
-  const id = `${useLocation().pathname.split('/')[1]}/${useLocation().pathname.split('/')[2]}`.slice(6)
+  const { id } = props;
 
   const [listBody,setListBody] = useState([]);
 
@@ -50,7 +50,7 @@ const QnAListPage = () => {
     <CONTAINER>
       <PAGEHEADER>
         <H1>1:1 문의</H1>
-        <BUTTON onClick={()=>{navigate(`/board/qna/write`)}}>글쓰기</BUTTON>
+        <BUTTON onClick={()=>{navigate(`/board/write?id=${id}`)}}>글쓰기</BUTTON>
       </PAGEHEADER>
       <Table striped bordered hover>
         <thead>

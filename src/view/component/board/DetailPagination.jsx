@@ -4,14 +4,14 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { useLocation } from 'react-router-dom';
 
 const DetailPagination = () => {
-  const boardName = `${useLocation().pathname.split('/')[1]}/${useLocation().pathname.split('/')[2]}/list?page=1`
-  console.log(boardName)
+  const searchPath = window.location.search
+  const id = searchPath.split('&')[0].split('=')[1]
 
   return (
     <div>
       <Pagination size="lg" className="justify-content-center">
         <Pagination.Prev />
-        <LinkContainer to={`/${boardName}`}>
+        <LinkContainer to={`/board/list?id=${id}`}>
           <Pagination.Item>목록으로</Pagination.Item>
         </LinkContainer>
         

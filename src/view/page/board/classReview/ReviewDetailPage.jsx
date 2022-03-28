@@ -8,10 +8,8 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 
-const ReviewDetailPage = () => {
-  const id = `${useLocation().pathname.split('/')[1]}/${useLocation().pathname.split('/')[2]}`.slice(6)
-  const bno = window.location.search.split('&')[1].split('=')[1]
-
+const ReviewDetailPage = (props) => {
+  const { id, bno } = props;
   const [detail, setDetail] = useState({});
   const navigate = useNavigate();
 

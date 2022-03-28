@@ -9,26 +9,6 @@ import IntroGymPage from './view/page/intro/IntroGymPage'
 import IntroTeacherPage from './view/page/intro/IntroTeacherPage'
 import IntroClassPage from './view/page/intro/IntroClassPage'
 import IntroLocationPage from './view/page/intro/IntroLocationPage'
-import ReviewListPage from './view/page/board/classReview/ReviewListPage';
-import ReviewDetailPage from './view/page/board/classReview/ReviewDetailPage'
-import ReviewUpdatePage from './view/page/board/classReview/ReviewUpdatePage'
-import ReviewWritePage from './view/page/board/classReview/ReviewWritePage'
-import FaqListPage from './view/page/board/faq/FaqListPage';
-import FaqWritePage from './view/page/board/faq/FaqWritePage';
-import FaqUpdatePage from './view/page/board/faq/FaqUpdatePage';
-import FaqDetailPage from './view/page/board/faq/FaqDetailPage';
-import NoticeListPage from './view/page/board/notice/NoticeListPage';
-import NoticeWritePage from './view/page/board/notice/NoticeWritePage';
-import NoticeUpdatePage from './view/page/board/notice/NoticeUpdatePage';
-import NoticeDetailPage from './view/page/board/notice/NoticeDetailPage';
-import QnAListPage from './view/page/board/qna/QnAListPage';
-import QnAWritePage from './view/page/board/qna/QnAWritePage';
-import QnAUpdatePage from './view/page/board/qna/QnAUpdatePage';
-import QnADetailPage from './view/page/board/qna/QnADetailPage';
-import TransListPage from './view/page/board/trans/TransListPage';
-import TransWritePage from './view/page/board/trans/TransWritePage';
-import TransUpdatePage from './view/page/board/trans/TransUpdatePage';
-import TransDetailPage from './view/page/board/trans/TransDetailPage';
 
 import PassInfoPage from './view/page/pass/PassInfoPage';
 import PassBuyPage from './view/page/pass/PassBuyPage';
@@ -51,11 +31,17 @@ import Zipcode from './view/component/login/Zipcode';
 import ManagerHeader from './view/component/mgmt/ManagerHeader';
 import MemberMgmtPage from './view/page/mgmt/MemberMgmtPage';
 import TeacherMgmtPage from './view/page/mgmt/TeacherMgmtPage';
+import BoardList from './view/page/board/BoardList'
+import BoardUpdate from './view/page/board/BoardUpdate'
+import BoardDetail from './view/page/board/BoardDetail';
+import BoardWrite from './view/page/board/BoardWrite';
+import GlobalStyle from './styles/GlobalStyle';
 
 
 const App = () => {
   return (
     <>
+      <GlobalStyle />
       {/* <ManagerHeader /> */}
       <Header/>
         {/* <button onClick={async()=>{ const db =await memberListDB(); alert("console창 확인"); console.log(db.data[0]);}}>DB테스트</button>
@@ -69,31 +55,11 @@ const App = () => {
           <Route path="/intro/teacher" exact={true} element={<IntroTeacherPage/>} />
           <Route path="/intro/class" exact={true} element={<IntroClassPage/>} />
           <Route path="/intro/location" exact={true} element={<IntroLocationPage/>} />
-          {/* board - classReview */}
-          <Route path="/board/review/list/*" element={<ReviewListPage/>} />
-          <Route path="/board/review/write/*" element={<ReviewWritePage/>} />
-          <Route path="/board/review/detail/*" element={<ReviewDetailPage/>} />
-          <Route path="/board/review/update/*" element={<ReviewUpdatePage/>} />
-          {/* board - faq */}
-          <Route path="/board/faq/list/*" element={<FaqListPage/>} />
-          <Route path="/board/faq/write/*" element={<FaqWritePage/>} />
-          <Route path="/board/faq/detail/*" element={<FaqDetailPage/>} />
-          <Route path="/board/faq/update/*" element={<FaqUpdatePage/>} />
-          {/* board - notice */}
-          <Route path="/board/notice/list/*" element={<NoticeListPage/>} />
-          <Route path="/board/notice/write/*" element={<NoticeWritePage/>} />
-          <Route path="/board/notice/detail/*" element={<NoticeDetailPage/>} />
-          <Route path="/board/notice/update/*" element={<NoticeUpdatePage/>} />
-          {/* board - qna */}
-          <Route path="/board/qna/list/*" element={<QnAListPage/>} />
-          <Route path="/board/qna/write/*" element={<QnAWritePage/>} />
-          <Route path="/board/qna/detail/*" element={<QnADetailPage/>} />
-          <Route path="/board/qna/update/*" element={<QnAUpdatePage/>} />
-          {/* board - trans */}
-          <Route path="/board/trans/list/*" element={<TransListPage/>} />
-          <Route path="/board/trans/write/*" element={<TransWritePage/>} />
-          <Route path="/board/trans/detail/*" element={<TransDetailPage/>} />
-          <Route path="/board/trans/update/*" element={<TransUpdatePage/>} />
+          {/* board */}
+          <Route path="/board/list/*" element={<BoardList/>} />
+          <Route path="/board/write/*" element={<BoardWrite/>} />
+          <Route path="/board/detail/*" element={<BoardDetail/>} />
+          <Route path="/board/update/*" element={<BoardUpdate/>} />
           {/* pass */}
           <Route path="/pass/info" exact={true} element={<PassInfoPage/>} />
           <Route path="/pass/buy" exact={true} element={<PassBuyPage/>} />

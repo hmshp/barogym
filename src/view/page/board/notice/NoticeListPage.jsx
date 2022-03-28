@@ -1,16 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {Table} from 'react-bootstrap';
 import {CONTAINER, PAGEHEADER, H1, BUTTON} from '../../../../styles/BoardStyle';
-import BoardBody from '../../../sampleData/BoardBody.json'
 import BoardPagination from '../../../component/board/BoardPagination';
 import BoardSearchBar from '../../../component/board/BoardSearchBar';
-import { LinkContainer } from 'react-router-bootstrap';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { boardListDB } from '../../../../service/dbLogic';
 
-const NoticeListPage = () => { 
+const NoticeListPage = (props) => { 
   const navigate = useNavigate();
-  const id = `${useLocation().pathname.split('/')[1]}/${useLocation().pathname.split('/')[2]}`.slice(6)
+  const { id } = props;
 
   const [listBody,setListBody] = useState([]);
 
@@ -52,7 +50,7 @@ const NoticeListPage = () => {
     <CONTAINER>
       <PAGEHEADER>
         <H1>공지사항</H1>
-        <BUTTON onClick={()=>{navigate(`/board/notice/write`)}}>글쓰기</BUTTON>
+        <BUTTON onClick={()=>{navigate(`/board/write?id=${id}`)}}>글쓰기</BUTTON>
       </PAGEHEADER>
       <Table striped bordered hover>
         <thead>

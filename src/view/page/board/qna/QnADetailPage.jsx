@@ -7,11 +7,8 @@ import DetailPagination from '../../../component/board/DetailPagination'
 import { LinkContainer } from 'react-router-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-const QnADetailPage = () => {
-  const id = `${useLocation().pathname.split('/')[1]}/${useLocation().pathname.split('/')[2]}`.slice(6)
-  const bno = window.location.search.split('&')[1].split('=')[1]
-  console.log(id, bno)
-
+const QnADetailPage = (props) => {
+  const { id, bno } = props;
   const [detail, setDetail] = useState({});
   const navigate = useNavigate();
 

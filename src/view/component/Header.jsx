@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Container, Navbar, Offcanvas, Button } from 'react-bootstrap';
+import { Container, Navbar, Offcanvas, Button, ButtonGroup } from 'react-bootstrap';
 import Navi from './Navi';
-import { LinkContainer } from 'react-router-bootstrap';
-import {LOGO, H1, navbarStyles, navbarBrandStyles, BUTTON} from '../../styles/HeaderStyle';
+import {LOGO, H1, navbarBrandStyles, BUTTON, buttonStyle, NAVBAR} from '../../styles/HeaderStyle';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 
@@ -13,12 +13,12 @@ const Header = () => {
   }
 
   return (
-    <Navbar collapseOnSelect style={navbarStyles} expand="md" onToggle={toggle}>
+    <NAVBAR collapseOnSelect expand="md" onToggle={toggle}>
       <Container fluid>
         <Navbar.Brand style={navbarBrandStyles} href="/">
           <LOGO
               alt="바로짐 로고"
-              src="https://i.ibb.co/smK8dwT/Kakao-Talk-20220308-145706090.png"
+              src="https://i.ibb.co/xD3kQPV/barogym-logo.png"
             />  
           <H1>BAROGYM</H1>
         </Navbar.Brand>
@@ -28,14 +28,10 @@ const Header = () => {
             <>
               <Navbar.Collapse className="justify-content-end">
                 <Navi/>
-                <section>
-                  <LinkContainer to="/login">
-                    <BUTTON size="sm">로그인</BUTTON>
-                  </LinkContainer>
-                  <LinkContainer to="/login/signup">
-                    <BUTTON size="sm">회원가입</BUTTON>
-                  </LinkContainer>
-                </section>
+                <ButtonGroup>
+                    <BUTTON variant="secondary" style={buttonStyle} as={Link} to="/login">로그인</BUTTON>
+                    <BUTTON variant="secondary" style={buttonStyle} as={Link} to="/login/signup">회원가입</BUTTON>
+                  </ButtonGroup>
               </Navbar.Collapse>
             </>
           :
@@ -47,21 +43,16 @@ const Header = () => {
               >
                 <Offcanvas.Body>
                   <Navi/>
-                  <section>
-                    <LinkContainer to="/login">
-                      <Button variant="primary" size="sm">로그인</Button>
-                    </LinkContainer>
-                    <LinkContainer to="/login/signup">
-                      <Button variant="primary" size="sm">회원가입</Button>
-                    </LinkContainer>
-                  </section>
+                  <ButtonGroup>
+                    <BUTTON variant="secondary" as={Link} to="/login">로그인</BUTTON>
+                    <BUTTON variant="secondary" as={Link} to="/login/signup">회원가입</BUTTON>
+                  </ButtonGroup>
                 </Offcanvas.Body>
               </Navbar.Offcanvas>
             </>
         }
       </Container>
-
-    </Navbar>
+    </NAVBAR>
   );
 };
 export default Header;

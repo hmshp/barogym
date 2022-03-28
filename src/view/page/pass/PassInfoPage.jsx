@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import { H1 } from '../../../styles/MyInfoStyle';
 import './pass.css';
+import { themeColor } from '../../../styles/GlobalStyle';
 
 
 
 export const STYLEDBUTTON2 = styled.button`
-  background-color: ${(props) => (props.gray ? "gray" : "rgb(254, 139, 121)")};
+  background-color: ${(props) => (props.gray ? "gray" : themeColor)};
   color: white;
   padding: 0.5em 1em;
   margin-bottom: 20px;
