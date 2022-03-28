@@ -1,6 +1,7 @@
 import React from 'react';
 import {Pagination} from 'react-bootstrap';
 import {CONTAINER, PAGINATION} from '../../../styles/BoardStyle'
+import '../../../styles/boardStyle.css'
 
 const BoardPagination = () => {
   let active = 1;
