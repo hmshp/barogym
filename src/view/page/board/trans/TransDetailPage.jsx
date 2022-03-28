@@ -8,11 +8,8 @@ import TransModal from '../../../component/board/trans/TransModal'
 import { LinkContainer } from 'react-router-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-const TransDetailPage = () => {
-  const id = `${useLocation().pathname.split('/')[1]}/${useLocation().pathname.split('/')[2]}`.slice(6)
-  const bno = window.location.search.split('&')[1].split('=')[1]
-  console.log(id, bno)
-
+const TransDetailPage = (props) => {
+  const { id, bno } = props;
   const [detail, setDetail] = useState({});
   const navigate = useNavigate();
 

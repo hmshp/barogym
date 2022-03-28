@@ -9,10 +9,10 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { boardListDB } from '../../../../service/dbLogic';
 
-const TransListPage = () => {
+const TransListPage = (props) => {
   const navigate = useNavigate();
 
-  const id = `${useLocation().pathname.split('/')[1]}/${useLocation().pathname.split('/')[2]}`.slice(6)
+  const { id } = props;
 
   const [title, setTitle] = useState({ //필터 클릭하기 전 or 클릭해서 드롭다운 메뉴 중 하나 선택했을 때 화면에 보이는 제목 3개
     category : '카테고리',
@@ -40,7 +40,7 @@ const TransListPage = () => {
     boardList();
   },[title,setListBody, id]);
 
-  const listHeaders = ["글 번호", "제목", "카테고리", "가격", "작성자", "등록일", "조회수"]
+  const listHeaders = ["글 번호", "제목", "카테고리", "작성자", "등록일", "조회수"]
 
   const listHeadersElements = listHeaders.map((listHeader, index) => <th key={index}>{listHeader}</th>)
 
@@ -58,7 +58,7 @@ const TransListPage = () => {
     <CONTAINER>
       <PAGEHEADER>
         <H1>양도게시판</H1>
-        <BUTTON onClick={()=>{navigate(`/board/trans/write`)}}>글쓰기</BUTTON>
+        <BUTTON onClick={()=>{navigate(`/board/write?id=${id}`)}}>글쓰기</BUTTON>
       </PAGEHEADER>
       <TransListFilter title={title} setTitle={setTitle} />
       <Table striped bordered hover>

@@ -7,9 +7,10 @@ import BoardSearchBar from '../../../component/board/BoardSearchBar';
 import ReviewListFilter from '../../../component/board/classReview/ReviewListFilter';
 import { boardListDB } from '../../../../service/dbLogic';
 
-const ReviewListPage = () => {
+const ReviewListPage = (props) => {
   const navigate = useNavigate();
-  const id = `${useLocation().pathname.split('/')[1]}/${useLocation().pathname.split('/')[2]}`.slice(6)
+  
+  const { id } = props;
 
   const [title, setTitle] = useState({ //필터 클릭하기 전 or 클릭해서 드롭다운 메뉴 중 하나 선택했을 때 화면에 보이는 제목 3개
     class : '수업',
@@ -57,7 +58,7 @@ const ReviewListPage = () => {
     <CONTAINER>
       <PAGEHEADER>
         <H1>수강 후기</H1>
-        <BUTTON onClick={()=>{navigate(`/board/review/write`)}}>글쓰기</BUTTON>
+        <BUTTON onClick={()=>{navigate(`/board/write?id=${id}`)}}>글쓰기</BUTTON>
       </PAGEHEADER>
       <ReviewListFilter title={title} setTitle={setTitle} />
       <Table striped bordered hover>
