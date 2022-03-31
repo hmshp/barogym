@@ -1,16 +1,47 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
-import {FORM, INPUT, BUTTON, ERRORMSG, TWOBUTTONS, RADIOINPUT, RADIOITEM, FIELDSET, LEGEND} from '../../../styles/MembershipStyle'
-
+import {FORM, INPUT, BUTTON, TWOBUTTONS, RADIOINPUT, RADIOITEM, FIELDSET, LEGEND} from '../../../styles/MembershipStyle'
+import Zipcode from './Zipcode';
 
 export default function SignUpForm() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  console.log(errors)
-
   const navigate = useNavigate();
 
   const [isSelected, setIsSelected] = useState(false);
+  const [signUpFormData, setSignUpFormData] = useState({//회원가입에 필요한 컬럼 좀 더 추가
+    mem_email: "",
+    mem_pw: "",
+    mem_id: "",
+    mem_name: "",
+    mem_nickname: "",
+  });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("submitted!"+signUpFormData.mem_email+", "+signUpFormData.mem_pw+", "+signUpFormData.mem_name+", "+signUpFormData.mem_nickname);
+    //onLogin(formData.email,formData.password);
+    
+    fetch(`http://localhost:9000/member/memberInsert?mem_id=${signUpFormData.mem_id}&mem_email=${signUpFormData.mem_email}&mem_pw=${signUpFormData.mem_pw}&mem_name=${signUpFormData.mem_name}&mem_nickname=${signUpFormData.mem_nickname}`)
+    .then(res => res.json())
+    .then(result => {
+      console.log('회원가입 여부 : '+result);
+      navigate('/');
+    });    
+  }
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setSignUpFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: value
+      }
+    })
+  }
+
+  // const idCheck = () => {
+  //   fetch(`http://localhost:9000`)
+
+  // }
 
   return (
       <main>
@@ -21,62 +52,37 @@ export default function SignUpForm() {
             <BUTTON forty thick onClick={() => setIsSelected(true)}>강사</BUTTON>
           </TWOBUTTONS>
           :
-          <FORM onSubmit={handleSubmit((data) => console.log(data))}>
+          <FORM onSubmit={handleSubmit}>
             <div>
-              <INPUT
-                {...register("email", { required: '필수 입력사항입니다.' })}
+              <INPUT type="email" name="mem_email" value={signUpFormData.mem_email} onChange={handleChange}
                 placeholder="이메일"
                 seventy
               />
-              <BUTTON thirty gray>중복확인</BUTTON>
+              <BUTTON thirty gray onClick={idCheck} type="button">중복확인</BUTTON>
             </div>
-            <ERRORMSG>{errors.email?.message}</ERRORMSG>
-            <INPUT
-              {...register("password", { required: '필수 입력사항입니다.' })}
+            <INPUT name="mem_pw" value={signUpFormData.mem_pw} onChange={handleChange} 
               placeholder="비밀번호"
             />
-            <ERRORMSG>{errors.password?.message}</ERRORMSG>
             <INPUT
-              {...register("pwConfirmation", { required: '필수 입력사항입니다.' })}
               placeholder="비밀번호 확인"
             />
-            <ERRORMSG>{errors.pwConfirmation?.message}</ERRORMSG>
-            <INPUT
-              {...register("name", { required: '필수 입력사항입니다.' })}
+            <INPUT onChange={handleChange} name="mem_name" value={signUpFormData.mem_name}
               placeholder="이름"
             />
-            <ERRORMSG>{errors.name?.message}</ERRORMSG>
-            <INPUT
-              {...register("nickname")}
+            <INPUT onChange={handleChange} name="mem_id" value={signUpFormData.mem_id}
+              placeholder="아이디"
+            />
+            <INPUT onChange={handleChange} name="mem_nickname" value={signUpFormData.mem_nickname}
               placeholder="닉네임"
             />
-            <ERRORMSG>{errors.nickname?.message}</ERRORMSG>
-            <INPUT
-              {...register("phone", { required: '필수 입력사항입니다.' })}
+            <INPUT onChange={handleChange}
               placeholder="휴대폰 번호"
             />
-            <ERRORMSG>{errors.phone?.message}</ERRORMSG>
-            <div>
-              <INPUT
-                {...register("zipcode", { required: '필수 입력사항입니다.' })}
-                placeholder="우편번호"
-                sixty
-              />
-              <BUTTON forty gray>우편번호 찾기</BUTTON>
-              <ERRORMSG>{errors.zipcode?.message}</ERRORMSG>
-              <INPUT
-                {...register("address", { required: '필수 입력사항입니다.' })}
-                placeholder="주소"
-                full
-              />
-            </div>
-            <ERRORMSG>{errors.address?.message}</ERRORMSG>
-            
+            <Zipcode />
             <FIELDSET>
               <LEGEND>성별을 선택해 주세요.</LEGEND>
                 <RADIOITEM>
                   <RADIOINPUT
-                    {...register("gender", { required: '필수 입력사항입니다.' })}
                     type="radio"
                     id="woman"
                     value="여성"
@@ -85,7 +91,6 @@ export default function SignUpForm() {
                 </RADIOITEM>
                 <RADIOITEM>
                   <RADIOINPUT
-                    {...register("gender", { required: '필수 입력사항입니다.' })}
                     type="radio"
                     id="man"
                     value="남성"
@@ -94,7 +99,6 @@ export default function SignUpForm() {
                 </RADIOITEM>
                 <RADIOITEM>
                   <RADIOINPUT
-                    {...register("gender", { required: '필수 입력사항입니다.' })}
                     type="radio"
                     id="notToSay"
                     value="공개 안 함"
