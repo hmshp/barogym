@@ -1,5 +1,6 @@
 /* global daum */
 import React from 'react';
+import { BUTTON, INPUT } from '../../../styles/MembershipStyle';
 
 const Zipcode = () => {
 
@@ -28,12 +29,12 @@ const Zipcode = () => {
   return (
     <>
       <div>
-        <input type="text" id="zipcode" placeholder="우편번호"/>
-        <button type="button" onClick={()=>{openZipcode()}}>우편번호 찾기</button>
+        <INPUT sixty type="text" id="zipcode" placeholder="우편번호"/>
+        <BUTTON forty gray type="button" onClick={()=>{openZipcode()}}>우편번호 찾기</BUTTON>
           <br/>
-        <input type="text" id="address" placeholder="주소"/>
+        <INPUT full type="text" id="address" placeholder="주소"/>
           <br/>
-        <input type="text" id="detailAddress" placeholder="상세주소"/>
+        <INPUT full type="text" id="detailAddress" placeholder="상세주소"/>
       </div>
     </>
   );
