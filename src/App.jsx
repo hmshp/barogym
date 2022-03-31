@@ -36,9 +36,10 @@ import BoardUpdate from './view/page/board/BoardUpdate'
 import BoardDetail from './view/page/board/BoardDetail';
 import BoardWrite from './view/page/board/BoardWrite';
 import GlobalStyle from './styles/GlobalStyle';
+import RequestMgmt from './view/page/mgmt/RequestMgmtPage';
 
 
-const App = () => {
+const App = (props) => {
   return (
     <>
       <GlobalStyle />
@@ -84,6 +85,7 @@ const App = () => {
           <Route path="/mgmt/income/list" exact={true} element={<IncomeListPage/>} />
           <Route path="/mgmt/member/list" exact={true} element={<MemberMgmtPage/>} />
           <Route path="/mgmt/teacher/list" exact={true} element={<TeacherMgmtPage/>} />
+          <Route path="/mgmt/request/list" exact={true} element={<RequestMgmt/>} />
         </Routes> 
       <Footer />        
     </>
