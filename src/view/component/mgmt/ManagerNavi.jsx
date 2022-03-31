@@ -19,6 +19,9 @@ const ManagerNavi = () => {
           <LinkContainer to={"/mgmt/member/list?page=1"}>
             <NavDropdown.Item>회원 관리</NavDropdown.Item>
           </LinkContainer>
+          <LinkContainer to={"/mgmt/enrollment/list?page=1"}>
+            <NavDropdown.Item>신청 관리</NavDropdown.Item>
+          </LinkContainer>
           <LinkContainer to={"/mgmt/teacher/list?page=1"}>
             <NavDropdown.Item>강사 관리</NavDropdown.Item>
           </LinkContainer>  
