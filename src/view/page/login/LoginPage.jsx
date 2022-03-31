@@ -2,6 +2,7 @@ import React from 'react';
 import LoginForm from '../../component/login/LoginForm';
 import {PAGEHEADER, H1, BUTTON, LINKARTICLE, CONTAINER, P} from '../../../styles/MembershipStyle';
 import { LinkContainer } from 'react-router-bootstrap';
+import authLogic from '../../../service/firebase/authLogic';
 
 const LoginPage = () => {
   return (
