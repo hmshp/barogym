@@ -9,19 +9,17 @@ import { themeColor } from '../../../styles/GlobalStyle';
 
 const PassBuyPage = () => {
   const [productList, setProductList] = useState([]);
-  const [selectedList, setSelectedList] = useState([]);//체크된 상품의 PROD_NO 넣음
+  const [selectedProduct, setSelectedProduct] = useState("");//체크된 상품의 PROD_NO 넣음
 
-  console.log('목록: ' + selectedList)
+  console.log('선택된 상품: ' + selectedProduct)
 
   const handleChange = (event) => {
     const isChecked = event.target.checked;
     if(isChecked) { //체크 시 목록에 추가
-      setSelectedList(prevList => [...prevList, event.target.name])
+      setSelectedProduct(event.target.name)
     } else { //체크 해제 시 목록에서 삭제
-      const index = selectedList.indexOf(event.target.name)
-      const temp = [...selectedList]//state를 직접 바꾸면 안 되니 복사
-      temp.splice(index, 1);
-      setSelectedList(temp);
+      const temp = selectedProduct//state를 직접 바꾸면 안 되니 복사
+      setSelectedProduct(temp);
     }
   }
 
