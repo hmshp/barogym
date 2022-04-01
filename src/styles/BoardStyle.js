@@ -101,7 +101,7 @@ export const TRANSBUTTON = styled(BUTTON)`
 export const TWOBUTTONS = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 1em;
+  margin: 2em 0;
   ${props => props.flexEnd && css`
     justify-content: flex-end;
   `}
