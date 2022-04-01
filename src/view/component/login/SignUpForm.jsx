@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import {FORM, INPUT, BUTTON, TWOBUTTONS, RADIOINPUT, RADIOITEM, FIELDSET, LEGEND, ERRORMSG} from '../../../styles/MembershipStyle'
+import {FORM, INPUT, BUTTON, TWOBUTTONS, RADIOINPUT, RADIOITEM, FIELDSET, LEGEND, ERRORMSG, LABEL} from '../../../styles/MembershipStyle'
 import Zipcode from './Zipcode';
 
 export default function SignUpForm() {
@@ -21,12 +21,18 @@ export default function SignUpForm() {
   });
 
   const [isEmailChecked, setIsEmailChecked] = useState(false);
-  const [emailErrorMsg, setEmailErrorMsg] = useState("");
+  const [emailMsg, setEmailMsg] = useState("");
 
-  console.log(emailErrorMsg)
+  console.log(emailMsg)
   console.log('이메일 체크 여부: ' + isEmailChecked)
 
   console.log(signUpFormData)
+
+  const pwCheck = (event) => {
+    if(event.target.value === signUpFormData.mem_pw) {
+      return true;
+    }
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -78,8 +84,13 @@ export default function SignUpForm() {
     fetch(`http://localhost:9000/member/emailCheck?email=${signUpFormData.mem_email}`)
       .then(res => res.json())
       .then(result => {
-        result === 1 ? setEmailErrorMsg("이미 다른 사용자가 사용 중입니다.")
-        : setIsEmailChecked(true) 
+        if(result === 1) {
+          setEmailMsg("이미 다른 사용자가 사용 중입니다.")
+        } else {
+          setIsEmailChecked(true) 
+          setEmailMsg("사용 가능한 이메일입니다.")
+        }
+        
       })
   }
 
@@ -92,41 +103,59 @@ export default function SignUpForm() {
       <main>
           <FORM onSubmit={handleSubmit}>
             <div>
-              <INPUT type="email" name="mem_email" value={signUpFormData.mem_email} onChange={handleChange}
+              <LABEL htmlFor="mem_email">이메일</LABEL>
+              <INPUT type="email" id="mem_email" name="mem_email" value={signUpFormData.mem_email} onChange={handleChange}
                 placeholder="이메일"
                 seventy
               />
               <BUTTON thirty gray onClick={checkAvailability} type="button">중복확인</BUTTON>
             </div>
-            {!isEmailChecked && <ERRORMSG>{emailErrorMsg}</ERRORMSG>}
-            <INPUT name="mem_pw" value={signUpFormData.mem_pw} onChange={handleChange} 
-              placeholder="비밀번호"
+            <ERRORMSG>{emailMsg}</ERRORMSG>
+
+            <LABEL htmlFor="mem_pw">비밀번호</LABEL>
+            <INPUT id="mem_pw" name="mem_pw" value={signUpFormData.mem_pw} maxLength="20" minLength="3" onChange={handleChange} 
+              placeholder="3~20자 비밀번호를 입력해 주세요."
             />
+
+            <LABEL htmlFor="mem_pwCheck">비밀번호 확인</LABEL>
             <INPUT
-              placeholder="비밀번호 확인"
+              id="mem_pwCheck"
+              placeholder="3~20자 비밀번호를 입력해 주세요."
             />
-            <INPUT onChange={handleChange} name="mem_name" value={signUpFormData.mem_name}
+
+            <LABEL htmlFor="mem_name">이름</LABEL>
+            <INPUT onChange={handleChange} id="mem_name" name="mem_name" value={signUpFormData.mem_name}
               placeholder="이름"
-            />
-            <INPUT onChange={handleChange} name="mem_id" value={signUpFormData.mem_id}
+            />  
+
+            <LABEL htmlFor="mem_id">아이디</LABEL>
+            <INPUT onChange={handleChange} id="mem_id" name="mem_id" value={signUpFormData.mem_id}
               placeholder="아이디"
             />
-            <INPUT onChange={handleChange} name="mem_nickname" value={signUpFormData.mem_nickname}
+
+            <LABEL htmlFor="mem_nickname">닉네임</LABEL>
+            <INPUT onChange={handleChange} id="mem_nickname" name="mem_nickname" value={signUpFormData.mem_nickname}
               placeholder="닉네임"
             />
-            <INPUT onChange={handleChange} name="mem_tel" value={signUpFormData.mem_tel}
-              placeholder="휴대폰 번호"
+
+            <LABEL htmlFor="mem_tel">전화번호</LABEL>
+            <INPUT onChange={handleChange} id="mem_tel" name="mem_tel" value={signUpFormData.mem_tel}
+              placeholder="'-'를 제외하고 입력해 주세요."
             />
-            <INPUT onChange={handleChange} name="mem_birthday" value={signUpFormData.mem_birthday}
-              placeholder="생년월일"
+
+            <LABEL htmlFor="mem_birthday">생년월일</LABEL>
+            <INPUT onChange={handleChange} type="n" id="mem_birthday" name="mem_birthday" value={signUpFormData.mem_birthday}
+              placeholder="'-'를 제외하고 입력해 주세요(ex)19990101)"
             />
+
             <Zipcode
               signUpFormData={signUpFormData}
               setSignUpFormData={setSignUpFormData}
               handleChange={handleChange}
               />
+
+            <LABEL htmlFor="woman">성별</LABEL>
             <FIELDSET>
-              <LEGEND>성별을 선택해 주세요.</LEGEND>
                 <RADIOITEM>
                   <RADIOINPUT
                     type="radio"
