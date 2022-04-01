@@ -1,6 +1,6 @@
 /* global daum */
 import React from 'react';
-import { BUTTON, INPUT } from '../../../styles/MembershipStyle';
+import { BUTTON, INPUT, LABEL } from '../../../styles/MembershipStyle';
 
 const Zipcode = (props) => {
   const { signUpFormData, setSignUpFormData, handleChange } = props;
@@ -35,6 +35,7 @@ const Zipcode = (props) => {
   return (
     <>
       <div>
+        <LABEL htmlFor="address">주소</LABEL>
         <INPUT sixty type="text" id="zipcode" value={signUpFormData.mem_zipcode} onChange={handleChange} placeholder="우편번호"/>
         <BUTTON forty gray type="button" onClick={()=>{openZipcode()}}>우편번호 찾기</BUTTON>
           <br/>
