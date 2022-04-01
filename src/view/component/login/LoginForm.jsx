@@ -13,7 +13,7 @@ export default function LoginForm() {
   const [cmemName, setMemName] = useState('');//useState 사용하여 40, 41번에도 쿠키에 저장된 값이 동기화 되도록 
   const [cmemUid, setMemUid] = useState('');//useState 사용하여 40, 41번에도 쿠키에 저장된 값이 동기화 되도록 
 
-  console.log(formData)
+  console.log(cmemName, cmemUid)
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -35,7 +35,7 @@ export default function LoginForm() {
     .then(result => {
       //console.log(result);
       console.log(result[0].MEM_ID+", "+result[0].MEM_NAME);
-      setCookie('cmem_uid', result[0].MEM_UID);//쿠키에 값을 담는 코드. //DB연동에서 insert할때 필요한 값들이 담겨 있어야 한다
+      setCookie('cmem_uid', result[0].MEM_ID);//쿠키에 값을 담는 코드. //DB연동에서 insert할때 필요한 값들이 담겨 있어야 한다
       setCookie('cmem_name', result[0].MEM_NAME);//쿠키에 값을 담는 코드 //DB연동에서 insert할때 필요한 값들이 담겨 있어야 한다
       setMemName(result[0].MEM_NAME);
       setMemUid(result[0].MEM_ID);
@@ -43,6 +43,7 @@ export default function LoginForm() {
 
     console.log(`getCookie : ${cmemUid} , ${cmemName}`); //쿠키에 담긴 아이디와 이름을 출력해 두었으니 수업신청시나 관리자 메뉴에서 필요할 때 꺼내 쓰면 된다.
     navigate('/');//로그인 시 Home으로 이동
+    //수동으로 새로고침해야 쿠키 값 반영됨
 
 /*
 Can't perform a React state update on an unmounted component. 
