@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {CONTAINER, PAGEHEADER, H1, BUTTON, TWOBUTTONS, GRIDCONTAINER, FORM, TEXTAREA} from '../../../../styles/BoardStyle';
 import CommentForm from '../../../component/board/CommentForm';
 import CommentList from '../../../component/board/CommentList';
@@ -6,8 +6,11 @@ import { boardDeleteDB, boardDetailDB } from '../../../../service/dbLogic';
 import DetailPagination from '../../../component/board/DetailPagination'
 import { LinkContainer } from 'react-router-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
+import UserContext from '../../../../userContext'
 
 const QnADetailPage = (props) => {
+  const userId = useContext(UserContext)
+
   const { id, bno } = props;
   const [detail, setDetail] = useState({});
   const navigate = useNavigate();
@@ -51,7 +54,7 @@ const QnADetailPage = (props) => {
           </LinkContainer>
         </TWOBUTTONS>
       </section>
-      <CommentForm />
+      {userId === "admin123" && <CommentForm />}
       <CommentList />
       <DetailPagination />
     </CONTAINER>
