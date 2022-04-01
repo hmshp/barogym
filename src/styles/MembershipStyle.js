@@ -107,7 +107,7 @@ export const FORMITEM = styled.div`
 
 export const LABEL = styled.label`
   width: ${props => props.pwCheck ? "100%" : props.thirty ? "30%" : "50%"};
-  margin-bottom: 1em;
+  margin: 1em 0;
   font-weight: 700;
   ${props => props.center && css`
     justify-self: center;
@@ -138,6 +138,7 @@ export const ERRORMSG = styled.p`
   ${props => props.rightAlign && css`
     text-align: right;
   `}
+  margin: 0;
 `
 
 export const FIELDSET = styled.fieldset`
