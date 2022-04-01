@@ -133,19 +133,31 @@ export const FORMITEM = styled.div`
 `
 
 export const LABEL = styled.label`
-  width: ${props => props.pwCheck ? "100%" : "50%"};
+  width: ${props => props.pwCheck ? "100%" : props.thirty ? "30%" : "50%"};
   margin-bottom: 1em;
+  font-weight: 700;
+  ${props => props.center && css`
+    justify-self: center;
+  `}
+  ${props => props.seventy && css`
+    width: 70%;
+  `}
 `
 
 export const INPUT = styled.input`
-  height: 40px;
+  padding: 0.5em 1em;
+  margin-right: 1em;
   border-radius: 4px;
   border: 1px solid gray;
-  ${props => props.pwCheck &&
-    css`
-      margin-bottom: 1em;
-    `
-  }
+  ${props => props.seventy && css`
+    width: 70%;
+  `}
+  ${props => props.sixty && css`
+    width: 60%;
+  `}
+  ${props => props.full && css`
+    width: 100%;
+  `}
 `
 
 
