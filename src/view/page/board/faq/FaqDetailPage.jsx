@@ -51,8 +51,6 @@ const FaqDetailPage = (props) => {
           </LinkContainer>
         </TWOBUTTONS>
       </section>
-      <CommentForm />
-      <CommentList />
       <DetailPagination />
     </CONTAINER>
   );

@@ -27,13 +27,7 @@ const Navi = () => {
         <NavDropdown title="커뮤니티">
           <LinkContainer to={"/board/list?id=notice&page=1"}>
             <NavDropdown.Item>공지사항</NavDropdown.Item>
-          </LinkContainer>
-          <LinkContainer to={"/board/list?id=trans&page=1"}>
-            <NavDropdown.Item>이용권양도</NavDropdown.Item>
-          </LinkContainer>  
-          <LinkContainer to={"/board/list?id=review&page=1"}>
-            <NavDropdown.Item>수강후기</NavDropdown.Item>
-          </LinkContainer>  
+          </LinkContainer> 
           <LinkContainer to={"/board/list?id=qna&page=1"}>
             <NavDropdown.Item>1:1문의</NavDropdown.Item>
           </LinkContainer>  

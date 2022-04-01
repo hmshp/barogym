@@ -8,6 +8,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const NoticeDetailPage = (props) => {
+
   const { id, bno } = props;
   const [detail, setDetail] = useState({});
   const navigate = useNavigate();
@@ -51,8 +52,6 @@ const NoticeDetailPage = (props) => {
           </LinkContainer>   
         </TWOBUTTONS>
       </section>
-      <CommentForm />
-      <CommentList />
       <DetailPagination />
     </CONTAINER>
   );

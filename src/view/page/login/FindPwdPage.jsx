@@ -4,47 +4,57 @@ import { useNavigate } from 'react-router-dom';
 import {CONTAINER, FORM, FORMHEADER, FORMITEM, LABEL, INPUT, BUTTON, TWOBUTTONS, H1, ERRORMSG} from '../../../styles/MembershipStyle';
 
 
-const ResetPwdPage = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  console.log(errors)
-
+const FindPwdPage = () => {
   const navigate = useNavigate();
+
+  const [memberInfo, setMemberInfo] = useState({
+    id: "",
+    email: ""
+  });
+
+  console.log(memberInfo)
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setMemberInfo(prevInfo => ({...prevInfo, [name]: value}))
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetch(`http://localhost:9000`)
+      .then(res => res.json())
+      .then(result => console.log(result))
+  }
 
   return (
     <CONTAINER>
         <FORMHEADER>
-          <H1>비밀번호 변경</H1>
+          <H1>비밀번호 찾기</H1>
         </FORMHEADER>
         <main>
-          <FORM onSubmit={handleSubmit((data) => console.log(data))}>
+          <FORM onSubmit={handleSubmit}>
             <div>
-              <LABEL thirty htmlFor="name">이름</LABEL>
+              <LABEL thirty htmlFor="id">아이디</LABEL>
               <INPUT
-                {...register("name", { required: '필수 입력사항입니다.' })}
-                id="name"
+                id="id"
+                name="id"
+                onChange={handleChange}
+                value={memberInfo.id}
                 seventy
               />
-              <ERRORMSG rightAlign>{errors.name?.message}</ERRORMSG>
             </div>
             <div>
               <LABEL thirty htmlFor="email">이메일</LABEL>
               <INPUT
-                {...register("email", { required: '필수 입력사항입니다.' })}
                 id="email"
+                name="email"
+                onChange={handleChange}
+                value={memberInfo.email}
                 type="email" //@ 안붙이면 안내 메시지 뜸
                 seventy
               />
-              <ERRORMSG rightAlign>{errors.email?.message}</ERRORMSG>
             </div>
-            <div>
-              <LABEL thirty htmlFor="email">휴대폰</LABEL>
-              <INPUT
-                {...register("phone", { required: '필수 입력사항입니다.' })}
-                id="phone"
-                seventy
-              />
-              <ERRORMSG rightAlign>{errors.phone?.message}</ERRORMSG>
-            </div>
+
             <TWOBUTTONS>
               <BUTTON
                 onClick={()=>{ navigate('/login');}}
@@ -60,4 +70,4 @@ const ResetPwdPage = () => {
   );
 };
 
-export default ResetPwdPage;
+export default FindPwdPage;
