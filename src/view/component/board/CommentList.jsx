@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {CONTAINER, PAGEHEADER, H1, H2, BUTTON, TWOBUTTONS, COMMENTWRITER, FORM, TEXTAREA} from '../../../styles/BoardStyle';
+import UserContext from '../../../userContext';
 
 const ReviewCommentList = () => {
+  const userId = useContext(UserContext)
   return (
     <FORM>
       <PAGEHEADER>
@@ -15,10 +17,13 @@ const ReviewCommentList = () => {
           value="좋은 글 감사합니다."
           disabled
         />
-        <TWOBUTTONS flexEnd>
-          <BUTTON gray>수정</BUTTON>
-          <BUTTON gray>삭제</BUTTON>
-        </TWOBUTTONS>
+        {userId == "admin123" &&
+          <TWOBUTTONS flexEnd>
+            <BUTTON gray>수정</BUTTON>
+            <BUTTON gray>삭제</BUTTON>
+          </TWOBUTTONS>
+        }
+        
       </article>
       <article>
         <p>김사랑 | 2022-03-04</p>
@@ -27,10 +32,12 @@ const ReviewCommentList = () => {
           rows={3}
           disabled
         />
-        <TWOBUTTONS flexEnd>
-          <BUTTON gray>수정</BUTTON>
-          <BUTTON gray>삭제</BUTTON>
-        </TWOBUTTONS>
+        {userId == "admin123" &&
+          <TWOBUTTONS flexEnd>
+            <BUTTON gray>수정</BUTTON>
+            <BUTTON gray>삭제</BUTTON>
+          </TWOBUTTONS>
+        }
       </article>
     </FORM>
   );
