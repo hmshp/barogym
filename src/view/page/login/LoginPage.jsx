@@ -2,7 +2,6 @@ import React from 'react';
 import LoginForm from '../../component/login/LoginForm';
 import {PAGEHEADER, H1, BUTTON, LINKARTICLE, CONTAINER, P} from '../../../styles/MembershipStyle';
 import { LinkContainer } from 'react-router-bootstrap';
-import authLogic from '../../../service/firebase/authLogic';
 
 const LoginPage = () => {
   return (
@@ -31,8 +30,8 @@ const LoginPage = () => {
         </LINKARTICLE>
         <LINKARTICLE>
           <P>비밀번호를 잊으셨나요?</P>
-          <LinkContainer to="/login/resetPwd">
-            <BUTTON gray>비밀번호 변경</BUTTON>
+          <LinkContainer to="/login/findPwd">
+            <BUTTON gray>비밀번호 찾기</BUTTON>
           </LinkContainer>
         </LINKARTICLE>
       </aside>
