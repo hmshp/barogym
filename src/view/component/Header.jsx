@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Container, Navbar, Offcanvas, Button, ButtonGroup } from 'react-bootstrap';
 import Navi from './Navi';
 import {LOGO, H1, navbarBrandStyles, BUTTON, buttonStyle, NAVBAR} from '../../styles/HeaderStyle';
@@ -8,6 +8,9 @@ import { deleteCookie, getCookie } from './login/cookie';
 const Header = () => {
   const navigate = useNavigate();
   const [isToggled, setIsToggled] = useState(false);
+  //강사님은 수업 때 isLoggedin state 만들어서 submit할 때 이걸 true로 하고, 이 state 값에 따라 다른 컴포넌트들을 렌더링했다.(지금은 cmemName을 갖고 조건부 렌더링하고 있음)
+
+  //쿠키 연결이 풀렸 때를 대비하고 화면 렌더링 변화가 요구될 때
   const [cmemName, setMemName] = useState('');
   const [cmemUid, setMemUid] = useState('');
   
@@ -20,6 +23,7 @@ const Header = () => {
     console.log(`onLogout 호출`);
     deleteCookie('cmem_name');
     deleteCookie('cmem_uid');
+    // 공공장소 등에서 내 정보가 남아있으면 좋지 않으니.. 초기화
     setMemName('');
     setMemUid('');
     console.log(`onLogout 호출후 ${cmemName},  ${cmemUid}`);
