@@ -1,39 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState,  useEffect } from 'react';
 import {Table} from 'react-bootstrap';
 import {BUTTON} from '../../../styles/BoardStyle';
 
 const RequestMgmt = () => {
-  const [requestmentList, setRequestmentList] = useState([
-    {
-      isChecked: false,
-      name: '손혜미',
-      product: 'GX 5회권',
-      requestDate: '2022-03-29'
-    },
-    {
-      isChecked: false,
-      name: '김사랑',
-      product: 'GX 10회권',
-      requestDate: '2022-03-28'
-    },
-    {
-      isChecked: false,
-      name: '김지수',
-      product: '헬스장 이용권',
-      requestDate: '2022-03-27'
-    },
-  ]);
+  const [requestList, setRequestList] = useState([]);
+  const [selectedList, setSelectedList] = useState([]);
 
   console.log(requestList)
 
+  useEffect(() => {
+    fetch(`http://localhost:9000/request/productList`)//상품목록이 아닌 요청 목록 불러와야 함
+      .then(res => res.json())
+      .then(result => setRequestList(result))
+  }, [])
+
   const handleChange = (event) => {
-    const name = event.target.name
-    setRequestList(prevList => prevList.map(item => {
-      return {
-        ...item,
-        isChecked: item.name === name ? !item.isChecked : item.isChecked
-      }
-    }))
+    const isChecked = event.target.checked;
+    if(isChecked) { //체크 시 목록에 추가
+      setSelectedList(prevList => [...prevList, event.target.name])
+    } else { //체크 해제 시 목록에서 삭제
+      const index = selectedList.indexOf(event.target.name)
+      const temp = [...selectedList]//state를 직접 바꾸면 안 되니 복사
+      temp.splice(index, 1);
+      setSelectedList(temp);
+    }
   }
 
 
