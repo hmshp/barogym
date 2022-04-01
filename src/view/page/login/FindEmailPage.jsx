@@ -3,10 +3,25 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import {CONTAINER, FORM, FORMHEADER, FORMITEM, LABEL, INPUT, BUTTON, TWOBUTTONS, H1, ERRORMSG} from '../../../styles/MembershipStyle';
 const FindEmailPage = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  console.log(errors)
-
+  const [memberInfo, setMemberInfo] = useState({
+    name: "",
+    tel: ""
+  });
   const navigate = useNavigate();
+
+  console.log(memberInfo)
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setMemberInfo(prevInfo => ({...prevInfo, [name]: value}))
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetch(`http://localhost:9000`)
+      .then(res => res.json())
+      .then(result => console.log(result))
+  }
 
   return (
     <CONTAINER>
@@ -14,24 +29,28 @@ const FindEmailPage = () => {
           <H1>이메일 찾기</H1>
         </FORMHEADER>
         <main>
-          <FORM onSubmit={handleSubmit((data) => console.log(data))}>
+          <FORM onSubmit={handleSubmit}>
             <div>
               <LABEL thirty htmlFor="name">이름</LABEL>
               <INPUT
-                {...register("name", { required: '필수 입력사항입니다.' })}
                 id="name"
+                value={memberInfo.name}
+                name="name"
+                onChange={handleChange}
                 seventy
               />
-              <ERRORMSG rightAlign>{errors.name?.message}</ERRORMSG>
+              <ERRORMSG rightAlign></ERRORMSG>
             </div>
             <div>
-              <LABEL thirty htmlFor="phone">휴대폰</LABEL>
+              <LABEL thirty htmlFor="tel">휴대폰</LABEL>
               <INPUT
-                {...register("phone", { required: '필수 입력사항입니다.' })}
-                id="phone"
+                id="tel"
+                value={memberInfo.tel}
+                name="tel"
+                onChange={handleChange}
                 seventy
               />
-              <ERRORMSG rightAlign>{errors.phone?.message}</ERRORMSG>
+              <ERRORMSG rightAlign></ERRORMSG>
             </div>
             <TWOBUTTONS>
               <BUTTON
