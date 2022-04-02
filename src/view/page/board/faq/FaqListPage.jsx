@@ -10,43 +10,55 @@ import UserContext from '../../../../userContext'
 
 const FaqListPage = (props) => {
   const userId = useContext(UserContext)
-
   const navigate = useNavigate();
   const { id } = props;
+  const [postList,setPostList] = useState([]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setitemsPerPage] = useState(2);
+  const [startIndex, setStartIndex] = useState(0);
+  const [pageCount, setPageCount] = useState();
+
+  const [searchText, setSearchText] = useState("");
+  const filteredPostList = postList.filter(post => {
+    return post.title.includes(searchText)
+  })
+
+  console.log(postList)
 
   const [title, setTitle] = useState({ //필터 클릭하기 전 or 클릭해서 드롭다운 메뉴 중 하나 선택했을 때 화면에 보이는 제목 3개
     category : '카테고리',
   });
 
-  const [listBody,setListBody] = useState([]);
-
   useEffect(() => {
-    const boardList = async() =>{
-      const res = await boardListDB(id);
-      const list = [];
-      console.log(res)
-      res.data.forEach((item) => {
-        const obj = {
-          bno : item.MASTER_BNO,
-          title: item.MASTER_TITLE,
-          writer: item.MEM_NAME,
-          date: item.MASTER_DATE,
-          hit: item.MASTER_HIT
-        };
-        list.push(obj);
-      })
-      setListBody(list);
-    }
-    boardList();
-  },[title,setListBody, id]);
+    fetch(`http://localhost:9000/board/boardList?id=${id}`)
+      .then(res => res.json())
+      .then(result => (() => {
+        const list = [];
+        const slice = result.slice(startIndex, startIndex + itemsPerPage)//한 페이지에 담을 수 있는 개수만큼만
+        slice.forEach((item) => {
+          const obj = {
+            bno : item.MASTER_BNO,
+            title: item.MASTER_TITLE,
+            writer: item.MEM_NAME,
+            date: item.MASTER_DATE,
+            hit: item.MASTER_HIT
+          };
+          console.log('obj:' + obj)
+          list.push(obj);
+        })
+        setPageCount(Math.ceil(result.length / itemsPerPage));
+        setPostList(list);
+      })())
+  },[startIndex]);
 
-  const listHeaders = ["글 번호", "카테고리", "제목", "작성자", "등록일", "조회수"]
+  const listHeaders = ["글 번호", "제목", "작성자", "등록일", "조회수"]
 
   const listHeadersElements = listHeaders.map((listHeader, index) => <th key={index}>{listHeader}</th>)
 
-  const listItemsElements = listBody.map((listItem, index) => {
+  const listItemsElements = filteredPostList.map((listItem, index) => {
     return (
-      <tr key={index} onClick={() => navigate(`/board/faq/detail?bno=${listItem.bno}&page=1`)}>
+      <tr key={index} onClick={() => navigate(`/board/faq/detail?bno=${listItem.bno}`)}>
         {Object.keys(listItem).map((key, index) => (
           <td key={index}>{listItem[key]}</td>
         )) }
@@ -61,7 +73,7 @@ const FaqListPage = (props) => {
         {userId === "admin123" && <BUTTON onClick={()=>{navigate(`/board/write?id=${id}`)}}>글쓰기</BUTTON>}
         
       </PAGEHEADER>
-      <FaqListFilter title={title} setTitle={setTitle} />
+      {/* <FaqListFilter title={title} setTitle={setTitle} /> */}
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -72,8 +84,8 @@ const FaqListPage = (props) => {
           {listItemsElements}
         </tbody>
       </Table>
-      <BoardPagination />
-      <BoardSearchBar />
+      <BoardPagination pageCount={pageCount} currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage} startIndex={startIndex} setStartIndex={setStartIndex} />
+      <BoardSearchBar searchText={searchText} setSearchText={setSearchText} />
     </CONTAINER>
   );
 };
