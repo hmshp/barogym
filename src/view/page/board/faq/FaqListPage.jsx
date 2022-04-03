@@ -58,7 +58,7 @@ const FaqListPage = (props) => {
 
   const listItemsElements = filteredPostList.map((listItem, index) => {
     return (
-      <tr key={index} onClick={() => navigate(`/board/faq/detail?bno=${listItem.bno}`)}>
+      <tr key={index} onClick={() => navigate(`/board/detail?id=${id}&bno=${listItem.bno}`)}>
         {Object.keys(listItem).map((key, index) => (
           <td key={index}>{listItem[key]}</td>
         )) }

@@ -55,7 +55,7 @@ const QnAListPage = (props) => {
 
   const listItemsElements = filteredPostList.map((listItem, index) => {
     return (
-      <tr key={index} onClick={() => navigate(`/board/qna/detail?bno=${listItem.bno}`)}>
+      <tr key={index} onClick={() => navigate(`/board/detail?id=${id}&bno=${listItem.bno}`)}>
         {Object.keys(listItem).map((key, index) => (
           <td key={index}>{listItem[key]}</td>
         )) }

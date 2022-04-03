@@ -15,7 +15,7 @@ const NoticeListPage = (props) => {
   console.log(postList)
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setitemsPerPage] = useState(3);
+  const [itemsPerPage, setitemsPerPage] = useState(2);
   const [startIndex, setStartIndex] = useState(0);
   const [pageCount, setPageCount] = useState();
 
@@ -56,7 +56,7 @@ const NoticeListPage = (props) => {
   //검색어 필터링한 목록으로 map
   const listItemsElements = filteredPostList.map((listItem, index) => {
     return (
-      <tr key={index} onClick={() => navigate(`/board/notice/detail?bno=${listItem.bno}`)}>
+      <tr key={index} onClick={() => navigate(`/board/detail?id=${id}&bno=${listItem.bno}`)}>
         {Object.keys(listItem).map((key, index) => (
           <td key={index}>{listItem[key]}</td>
         )) }
