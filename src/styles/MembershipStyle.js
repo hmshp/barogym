@@ -141,6 +141,12 @@ export const ERRORMSG = styled.p`
   margin: 0;
 `
 
+export const PWRESULT = styled(ERRORMSG)`
+  margin: 2em 0;
+  color: black;
+  font-weight: 800;
+`
+
 export const FIELDSET = styled.fieldset`
   border: 1px solid gray;
   border-radius: 4px;

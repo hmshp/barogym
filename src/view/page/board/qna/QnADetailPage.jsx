@@ -55,8 +55,8 @@ const QnADetailPage = (props) => {
         }
         
       </section>
-      {userId === "admin123" && <CommentForm />}
-      <CommentList />
+      {userId === "admin123" && <CommentForm bno={bno} />}
+      <CommentList bno={bno} />
       <DetailPagination />
     </CONTAINER>
   );
