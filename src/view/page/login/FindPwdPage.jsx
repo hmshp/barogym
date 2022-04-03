@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import {CONTAINER, FORM, FORMHEADER, FORMITEM, LABEL, INPUT, BUTTON, TWOBUTTONS, H1, PWRESULT} from '../../../styles/MembershipStyle';
 
-
 const FindPwdPage = () => {
   const navigate = useNavigate();
 
@@ -11,6 +10,7 @@ const FindPwdPage = () => {
     id: "",
     email: ""
   });
+
   const [pwResult, setPwResult] = useState();
 
   console.log(memberInfo)
