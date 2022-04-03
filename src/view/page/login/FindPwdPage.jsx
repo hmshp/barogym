@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
-import {CONTAINER, FORM, FORMHEADER, FORMITEM, LABEL, INPUT, BUTTON, TWOBUTTONS, H1, ERRORMSG} from '../../../styles/MembershipStyle';
+import {CONTAINER, FORM, FORMHEADER, FORMITEM, LABEL, INPUT, BUTTON, TWOBUTTONS, H1, PWRESULT} from '../../../styles/MembershipStyle';
 
 
 const FindPwdPage = () => {
@@ -11,6 +11,7 @@ const FindPwdPage = () => {
     id: "",
     email: ""
   });
+  const [pwResult, setPwResult] = useState();
 
   console.log(memberInfo)
 
@@ -21,9 +22,10 @@ const FindPwdPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`http://localhost:9000`)
+    fetch(`http://localhost:9000/member/findPw?mem_id=${memberInfo.id}&mem_email=${memberInfo.email}`)
       .then(res => res.json())
-      .then(result => console.log(result))
+      .then(result => setPwResult(`비밀번호: ${result[0].MEM_PW}`))
+    typeof pwResult == "undefined" && setPwResult("입력하신 정보와 일치하는 비밀번호가 없습니다.")
   }
 
   return (
@@ -64,6 +66,9 @@ const FindPwdPage = () => {
               </BUTTON>
               <BUTTON forty>확인</BUTTON>
             </TWOBUTTONS>
+            {
+              pwResult && <PWRESULT>{pwResult}</PWRESULT>
+            }
           </FORM>
         </main>
     </CONTAINER>
