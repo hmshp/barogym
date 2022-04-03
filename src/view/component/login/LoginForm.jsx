@@ -30,10 +30,10 @@ export default function LoginForm() {
     console.log("submitted!"+formData.email+", "+formData.password);
     //onLogin(formData.email,formData.password);
     
-    fetch(`http://localhost:9000/member/memberLogin?email=${formData.email}&password=${formData.password}`)//톰캣에게 로그인 해달라고 요청. 우선 get 방식으로 해 둠
+    fetch(`http://localhost:9000/member/logIn?email=${formData.email}&password=${formData.password}`)//톰캣에게 로그인 해달라고 요청. 우선 get 방식으로 해 둠
     .then(res => res.json())
     .then(result => {
-      //console.log(result);
+      console.log(result);
       console.log(result[0].MEM_ID+", "+result[0].MEM_NAME);
       setCookie('cmem_uid', result[0].MEM_ID);//쿠키에 값을 담는 코드. //DB연동에서 insert할때 필요한 값들이 담겨 있어야 한다
       setCookie('cmem_name', result[0].MEM_NAME);//쿠키에 값을 담는 코드 //DB연동에서 insert할때 필요한 값들이 담겨 있어야 한다
