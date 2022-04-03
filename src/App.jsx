@@ -41,10 +41,11 @@ import { getCookie } from './view/component/login/cookie';
 
 const App = (props) => {
   const userId = getCookie('cmem_uid')
-  console.log('App 컴포넌트 안: ' + userId)
+  const userName = getCookie('cmem_name')
+  console.log('App 컴포넌트 안: ' + userId + " " + userName)
 
   return (
-    <UserContext.Provider value={userId}>
+    <UserContext.Provider value={{userId, userName}}>
       {userId === "admin123" ? <ManagerHeader /> : <Header/>}
     <GlobalStyle />
 
