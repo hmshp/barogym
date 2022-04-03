@@ -25,13 +25,13 @@ const Navi = () => {
           </LinkContainer>  
         </NavDropdown>
         <NavDropdown title="커뮤니티">
-          <LinkContainer to={"/board/list?id=notice&page=1"}>
+          <LinkContainer to={"/board/list?id=notice"}>
             <NavDropdown.Item>공지사항</NavDropdown.Item>
           </LinkContainer> 
-          <LinkContainer to={"/board/list?id=qna&page=1"}>
+          <LinkContainer to={"/board/list?id=qna"}>
             <NavDropdown.Item>1:1문의</NavDropdown.Item>
           </LinkContainer>  
-          <LinkContainer to={"/board/list?id=faq&page=1"}>
+          <LinkContainer to={"/board/list?id=faq"}>
             <NavDropdown.Item>자주하는질문</NavDropdown.Item>
           </LinkContainer>  
         </NavDropdown>

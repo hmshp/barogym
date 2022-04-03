@@ -4,50 +4,66 @@ import {CONTAINER, PAGEHEADER, H1, BUTTON} from '../../../../styles/BoardStyle';
 import BoardPagination from '../../../component/board/BoardPagination';
 import BoardSearchBar from '../../../component/board/BoardSearchBar';
 import { useNavigate } from 'react-router-dom';
-import { boardListDB } from '../../../../service/dbLogic';
 import UserContext from '../../../../userContext'
 
 const NoticeListPage = (props) => {
   const userId = useContext(UserContext)
-
   const navigate = useNavigate();
   const { id } = props;
+  const [postList, setPostList] = useState([]);
 
-  const [listBody,setListBody] = useState([]);
+  console.log(postList)
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setitemsPerPage] = useState(2);
+  const [startIndex, setStartIndex] = useState(0);
+  const [pageCount, setPageCount] = useState();
+
+  console.log(startIndex)
+
+  const [searchText, setSearchText] = useState("");
+  const filteredPostList = postList.filter(post => {
+    return post.title.includes(searchText)
+  })
+
 
   useEffect(() => {
-    const boardList = async() =>{
-      const res = await boardListDB(id);
-      const list = [];
-      console.log(res)
-      res.data.forEach((item) => {
-        const obj = {
-          bno : item.MASTER_BNO,
-          title: item.MASTER_TITLE,
-          writer: item.MEM_NAME,
-          date: item.MASTER_DATE,
-          hit: item.MASTER_HIT
-        };
-        list.push(obj);
-      })
-      setListBody(list);
-    }
-    boardList();
-  },[setListBody, id]);
+    fetch(`http://localhost:9000/board/boardList?id=${id}`)
+      .then(res => res.json())
+      .then(result => (() => {
+        const list = [];
+        const slice = result.slice(startIndex, startIndex + itemsPerPage)//한 페이지에 담을 수 있는 개수만큼만
+        slice.forEach((item) => {
+          const obj = {
+            bno : item.MASTER_BNO,
+            title: item.MASTER_TITLE,
+            writer: item.MEM_NAME,
+            date: item.MASTER_DATE,
+            hit: item.MASTER_HIT
+          };
+          // console.log('obj:' + obj)
+          list.push(obj);
+        })
+        setPageCount(Math.ceil(result.length / itemsPerPage));
+        setPostList(list);
+      })())
+  },[startIndex]);//startIndex 바뀔 때마다 useEffect 실행
 
   const listHeaders = ["글 번호", "제목", "작성자", "등록일", "조회수"]
 
   const listHeadersElements = listHeaders.map((listHeader, index) => <th key={index}>{listHeader}</th>)
 
-  const listItemsElements = listBody.map((listItem, index) => {
+  //검색어 필터링한 목록으로 map
+  const listItemsElements = filteredPostList.map((listItem, index) => {
     return (
-      <tr key={index} onClick={() => navigate(`/board/notice/detail?bno=${listItem.bno}&page=1`)}>
+      <tr key={index} onClick={() => navigate(`/board/detail?id=${id}&bno=${listItem.bno}`)}>
         {Object.keys(listItem).map((key, index) => (
           <td key={index}>{listItem[key]}</td>
         )) }
       </tr>
     )
   })
+  //어차피 검색바 input change 이벤트 일어날 때마다 state값 바뀌고 리렌더링되니(검색 버튼 사용하든 안 하든) 검색어 입력할 때마다 실시간으로 필터링해주는 방식이 편리할듯.
 
   return (
     <CONTAINER>
@@ -68,8 +84,8 @@ const NoticeListPage = (props) => {
           {listItemsElements}
         </tbody>
       </Table>
-      <BoardPagination />
-      <BoardSearchBar />
+      <BoardPagination pageCount={pageCount} currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage} startIndex={startIndex} setStartIndex={setStartIndex} />
+      <BoardSearchBar searchText={searchText} setSearchText={setSearchText} />
     </CONTAINER>
   );
 };

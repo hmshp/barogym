@@ -9,20 +9,17 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import UserContext from '../../../../userContext'
 
 const QnADetailPage = (props) => {
-  const userId = useContext(UserContext)
+  const { userId, userName } = useContext(UserContext)
 
   const { id, bno } = props;
   const [detail, setDetail] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
-    const boardDetail = async() => {
-      const res = await boardDetailDB(id ,bno);
-      console.log(res);
-      setDetail(res.data[0]);
-    }
-    boardDetail();
-  },[setDetail, id , bno])
+    fetch(`http://localhost:9000/board/boardDetail/?id=${id}&bno=${bno}`)
+      .then(res => res.json())
+      .then(result => setDetail(result[0]))
+  },[id , bno])
 
   const boardDelete = async() => {
     const board = {
@@ -37,8 +34,8 @@ const QnADetailPage = (props) => {
     <CONTAINER>
       <PAGEHEADER center>
         <div>
-          <h2>{detail.MASTER_TITLE}</h2>
-          <p>{detail.MASTER_DATE}</p>
+          <h2>{detail.QNA_TITLE}</h2>
+          <p>{detail.QNA_DATE}</p>
         </div>
         <GRIDCONTAINER>
           <p>작성자: {detail.MEM_NAME}</p>
@@ -46,13 +43,17 @@ const QnADetailPage = (props) => {
 
       </PAGEHEADER>
       <section>
-        <div dangerouslySetInnerHTML={{__html:detail.MASTER_CONTENT}}></div>
-        <TWOBUTTONS>
-          <BUTTON gray forty onClick={()=>{boardDelete()}}>삭제</BUTTON>
-          <LinkContainer to={`/board/qna/update?bno=${bno}`}>
-            <BUTTON forty>수정</BUTTON>
-          </LinkContainer>
-        </TWOBUTTONS>
+        <div dangerouslySetInnerHTML={{__html:detail.QNA_CONTENT}}></div>
+        {
+          userName === detail.MEM_NAME &&
+          <TWOBUTTONS>
+            <BUTTON gray forty onClick={()=>{boardDelete()}}>삭제</BUTTON>
+            <LinkContainer to={`/board/qna/update?bno=${bno}`}>
+              <BUTTON forty>수정</BUTTON>
+            </LinkContainer>
+          </TWOBUTTONS>
+        }
+        
       </section>
       {userId === "admin123" && <CommentForm />}
       <CommentList />
