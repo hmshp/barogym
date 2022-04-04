@@ -38,8 +38,8 @@ const QuillEditor = ({ value, handleContent, quillRef, files, handleFiles }) => 
                 console.log(pair[0], pair[1]); 
             }
             // 폼데이터를 서버에 넘겨 multer로 이미지 URL 받아오기
-            const res = await uploadImageDB(formData);
-            console.log(res.data);
+            const res = uploadImageDB(formData);
+            console.log(res);
             if (!res.data) {
                 return alert("이미지 업로드에 실패하였습니다.");
             }
