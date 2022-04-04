@@ -2,10 +2,13 @@ import React, {useState, useEffect} from 'react';
 import {PAGEHEADER,STYLEDBUTTON,STYLEDCONTAINER, INPUT, LABEL} from '../../../styles/ClassStyle'
 import { Link } from 'react-router-dom' 
 import styled from 'styled-components';
-import { H1 } from '../../../styles/MyInfoStyle';
+import { FORM, H1 } from '../../../styles/MyInfoStyle';
 import { themeColor } from '../../../styles/GlobalStyle';
+import PassDateModal from '../../component/pass/PassDateModal';
 //참고한 링크: https://medium.com/codex/handling-checkboxes-in-react-3a2514b140d2
 //https://stackoverflow.com/questions/57341541/removing-object-from-array-using-hooks-usestate
+
+//라디오버튼으로 바꿔야 되는데 시간이 없어서 우선 체크박스로 했다..
 
 const PassBuyPage = () => {
   const [productList, setProductList] = useState([]);
@@ -21,6 +24,10 @@ const PassBuyPage = () => {
       const temp = selectedProduct//state를 직접 바꾸면 안 되니 복사
       setSelectedProduct(temp);
     }
+  }
+
+  const handleSubmit = () => {
+    fetch(`http://localhost:9000/request/requsetInsert`)
   }
 
   console.log(productList)
@@ -41,18 +48,18 @@ const PassBuyPage = () => {
   })
 
   return (
-    <div>
+    <FORM onSubmit={(event) => event.preventDefault()}>
       <STYLEDCONTAINER>
         <PAGEHEADER>
           <H1>이용권 신청</H1>
         </PAGEHEADER>
-        <form>
+        <section>
           {productListElements}
-        </form>
+        </section>
         <br />
-        <STYLEDBUTTON>신청하기</STYLEDBUTTON>
+        <PassDateModal selectedProduct={selectedProduct} />
       </STYLEDCONTAINER>
-    </div>
+    </FORM>
   );
 };
 
