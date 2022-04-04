@@ -1,15 +1,16 @@
 import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
-import {CONTAINER, FORM, FORMHEADER, FORMITEM, LABEL, INPUT, BUTTON, TWOBUTTONS, H1, ERRORMSG} from '../../../styles/MembershipStyle';
+import {CONTAINER, FORM, FORMHEADER, FORMITEM, LABEL, INPUT, BUTTON, TWOBUTTONS, H1, ERRORMSG, EMAILRESULT} from '../../../styles/MembershipStyle';
 const FindEmailPage = () => {
   const [memberInfo, setMemberInfo] = useState({
     name: "",
     tel: ""
   });
+  const [emailResult, setEmailResult] = useState("");
   const navigate = useNavigate();
 
-  console.log(memberInfo)
+  console.log(emailResult)
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -18,9 +19,9 @@ const FindEmailPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`http://localhost:9000`)
+    fetch(`http://localhost:9000/member/findId?mem_tel=${memberInfo.tel}&mem_name=${memberInfo.name}`)
       .then(res => res.json())
-      .then(result => console.log(result))
+      .then(result => setEmailResult(`이메일: ${result[0].MEM_EMAIL}`))
   }
 
   return (
@@ -61,6 +62,9 @@ const FindEmailPage = () => {
               </BUTTON>
               <BUTTON forty>확인</BUTTON>
             </TWOBUTTONS>
+            {
+              emailResult && <EMAILRESULT>{emailResult}</EMAILRESULT>
+            }
           </FORM>
         </main>
     </CONTAINER>
