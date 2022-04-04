@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Nav, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import UserContext from '../../userContext';
 
 const Navi = () => {
-  // const param = useLocation();
-
-  // console.log(param)
+  const { userId } = useContext(UserContext)
 
   return(
     <>
@@ -43,25 +42,32 @@ const Navi = () => {
             <NavDropdown.Item>이용권구매</NavDropdown.Item>
           </LinkContainer>  
         </NavDropdown>
-        <NavDropdown title="수업 예약">
-          <LinkContainer to="/class/appointment">
-            <NavDropdown.Item>수업예약</NavDropdown.Item>
-          </LinkContainer>  
-          <LinkContainer to="/class/schedule">
-            <NavDropdown.Item>수업일정</NavDropdown.Item>
-          </LinkContainer>  
-        </NavDropdown>
-        <NavDropdown title="마이페이지">
-          <LinkContainer to="/myInfo">
-            <NavDropdown.Item>내 정보</NavDropdown.Item>
-          </LinkContainer>  
-          <LinkContainer to="/myInfo/PayList">
-            <NavDropdown.Item>구매한 이용권</NavDropdown.Item>
-          </LinkContainer>  
-          <LinkContainer to="/myInfo/posts">
-            <NavDropdown.Item>내 게시글</NavDropdown.Item>
-          </LinkContainer>  
-        </NavDropdown>
+        {
+          typeof userId !== 'undefined' &&
+          <NavDropdown title="수업 예약">
+            <LinkContainer to="/class/appointment">
+              <NavDropdown.Item>수업예약</NavDropdown.Item>
+            </LinkContainer>  
+            <LinkContainer to="/class/schedule">
+              <NavDropdown.Item>수업일정</NavDropdown.Item>
+            </LinkContainer>  
+          </NavDropdown>
+        }
+        
+        {
+          typeof userId !== 'undefined' &&
+          <NavDropdown title="마이페이지">
+            <LinkContainer to="/myInfo">
+              <NavDropdown.Item>내 정보</NavDropdown.Item>
+            </LinkContainer>  
+            <LinkContainer to="/myInfo/PayList">
+              <NavDropdown.Item>구매한 이용권</NavDropdown.Item>
+            </LinkContainer>  
+            <LinkContainer to="/myInfo/posts">
+              <NavDropdown.Item>내 게시글</NavDropdown.Item>
+            </LinkContainer>  
+          </NavDropdown>
+        }
       </Nav>      
     </>
   );
