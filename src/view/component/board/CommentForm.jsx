@@ -6,7 +6,6 @@ const CommentForm = (props) => {
   const { userId } = useContext(UserContext)
   const { bno } = props;
   const [comment, setComment] = useState("");
-  console.log(comment)
 
   const handleChange = (event) => {
     setComment(event.target.value);
