@@ -59,20 +59,28 @@ export const kakaoPaySuccessDB = (list) => {
 
 
 export const uploadImageDB = (file) => {
-  return new Promise((resolve) => {
-    const response = axios({
-      method: 'post',
-      url: process.env.REACT_APP_SPRING_IP+'board/imageUpload',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-      processData: false,
-      contentType: false,
-      data: file
+  return fetch(`http://localhost:9000/board/imageUpload`, {
+    method: "POST",
+    body: JSON.stringify(file),
+    headers: {
+      "Content-Type": "multipart/form-data"
+    },
+  })
+    .then(res => res.json())
+  // return new Promise((resolve) => {
+  //   const response = axios({
+  //     method: 'post',
+  //     url: process.env.REACT_APP_SPRING_IP+'board/imageUpload',
+  //     headers: {
+  //       'Content-Type': 'multipart/form-data',
+  //     },
+  //     processData: false,
+  //     contentType: false,
+  //     data: file
       
-    });
-    resolve(response);
-  });
+  //   });
+  //   resolve(response);
+  // });
 }
 
 export const boardListDB = (id) => {

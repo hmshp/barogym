@@ -147,6 +147,9 @@ export const PWRESULT = styled(ERRORMSG)`
   font-weight: 800;
 `
 
+export const EMAILRESULT = styled(PWRESULT)`
+`
+
 export const FIELDSET = styled.fieldset`
   border: 1px solid gray;
   border-radius: 4px;

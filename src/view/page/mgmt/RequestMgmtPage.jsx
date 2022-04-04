@@ -5,12 +5,14 @@ import MyPostsSearchBar from '../../component/myInfo/MyPostsSearchBar';
 import RequestMgmt from '../../component/mgmt/RequestMgmt'
 
 const RequestMgmtPage = () => {
+  const handleAdmit = () => {
+
+  }
   
   return (
     <CONTAINER>
       <PAGEHEADER>
         <H1>신청 관리</H1>
-        <BUTTON>승인하기</BUTTON>
       </PAGEHEADER>
       <main>
         <RequestMgmt />

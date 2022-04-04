@@ -8,7 +8,7 @@ import { boardListDB } from '../../../../service/dbLogic';
 import UserContext from '../../../../userContext'
 
 const QnAListPage = (props) => {
-  const userId = useContext(UserContext)
+  const { userId } = useContext(UserContext)
   const navigate = useNavigate();
   const { id } = props;
   const [postList,setPostList] = useState([]);

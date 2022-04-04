@@ -4,6 +4,8 @@ import MyPasswordInfo from '../../component/myInfo/MyPasswordInfo';
 import { useNavigate } from 'react-router-dom';
 import {PAGEHEADER, CONTAINER, BUTTON, FORM, INPUT, H1} from '../../../styles/MyInfoStyle';
 import { TWOBUTTONS } from '../../../styles/MyInfoStyle';
+import { LinkContainer} from 'react-router-bootstrap';
+import ResignMembershipModal from '../../component/login/ResignMembershipModal';
 
 
 const MyInfoPage = () => {
@@ -41,10 +43,10 @@ const MyInfoPage = () => {
 
   return (
     <CONTAINER>
-    {
+    {/* {
       !isPwChecked?
-      <>
-        <PAGEHEADER>
+      <> */}
+        {/* <PAGEHEADER>
           <H1>비밀번호 확인(1234)</H1>
         </PAGEHEADER>
         <main>
@@ -66,13 +68,13 @@ const MyInfoPage = () => {
               <BUTTON forty thick onClick={checkPassword}>확인</BUTTON>
             </TWOBUTTONS>
           </FORM>
-        </main>
-      </>
+        </main> */}
+      {/* </>
       :
-      <>
+      <> */}
         <PAGEHEADER>
           <h1>내 정보</h1>
-          <BUTTON>회원 탈퇴</BUTTON>
+          <ResignMembershipModal />
         </PAGEHEADER>
         <main>
           <CONTAINER flex>
@@ -86,9 +88,9 @@ const MyInfoPage = () => {
             />
           </CONTAINER>
         </main>
-      </>
+      {/* </>
       
-    }
+    } */}
 
     </CONTAINER>
   );

@@ -7,12 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import UserContext from '../../../../userContext'
 
 const NoticeListPage = (props) => {
-  const userId = useContext(UserContext)
+  const { userId } = useContext(UserContext)
   const navigate = useNavigate();
   const { id } = props;
   const [postList, setPostList] = useState([]);
 
-  console.log(postList)
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setitemsPerPage] = useState(2);
