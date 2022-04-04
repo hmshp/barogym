@@ -39,7 +39,7 @@ const PassInfoPage = () => {
 
 <div className="button">
   <Link to="/pass/buy"> 
-  <STYLEDBUTTON2> 이용권 구매 </STYLEDBUTTON2>
+  <STYLEDBUTTON2> 이용권 신청</STYLEDBUTTON2>
 </Link>
 </div>
 
