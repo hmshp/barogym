@@ -11,6 +11,7 @@ import UserContext from '../../../../userContext'
 const NoticeDetailPage = (props) => {
   const { userName } = useContext(UserContext)
   const { id, bno } = props;
+  const [isDisabled, setIsDisabled]  = useState(true);
   const [detail, setDetail] = useState({});
   const navigate = useNavigate();
   console.log(detail.MASTER_TITLE)
@@ -21,14 +22,25 @@ const NoticeDetailPage = (props) => {
       .then(result => setDetail(result[0]))
   },[id , bno])
 
-  const boardDelete = async() => {
-    const board = {
-      id: id,
-      bno : bno
-    }
-    boardDeleteDB(board);
-    navigate(`/board/notice/list?page=1`);
-  }
+  const boardDelete = () => {
+    fetch(`http://localhost:9000/board/boardDelete`, {
+      method: "POST",
+      body: JSON.stringify({
+        id: id,
+        bno: bno
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(result => console.log(result))
+    
+    navigate(`/board/list?id=${id}&page=1`);
+  } 
+  
+
+
 
   return (
     <CONTAINER>
@@ -47,9 +59,9 @@ const NoticeDetailPage = (props) => {
         {
           userName === detail.MEM_NAME &&
           <TWOBUTTONS>
-            <BUTTON gray forty onClick={()=>{boardDelete()}}>삭제</BUTTON>
-            <LinkContainer to={`/board/notice/update?bno=${bno}`}>
-              <BUTTON forty>수정</BUTTON>
+            <BUTTON gray forty onClick={boardDelete}>삭제</BUTTON>
+            <LinkContainer to={`/board/update?id=${id}&bno=${bno}`}>
+              <BUTTON footerStyles forty>수정</BUTTON>
             </LinkContainer>   
           </TWOBUTTONS>
         }

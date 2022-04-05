@@ -21,14 +21,22 @@ const QnADetailPage = (props) => {
       .then(result => setDetail(result[0]))
   },[id , bno])
 
-  const boardDelete = async() => {
-    const board = {
-      id: id,
-      bno : bno
-    }
-    boardDeleteDB(board);
-    navigate(`/board/qna/list?page=1`);
-  }
+  const boardDelete = () => {
+    fetch(`http://localhost:9000/board/boardDelete`, {
+      method: "POST",
+      body: JSON.stringify({
+        id: id,
+        bno: bno
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(result => console.log(result))
+    
+    navigate(`/board/list?id=${id}&page=1`);
+  } 
 
   return (
     <CONTAINER>
@@ -48,7 +56,7 @@ const QnADetailPage = (props) => {
           userName === detail.MEM_NAME &&
           <TWOBUTTONS>
             <BUTTON gray forty onClick={()=>{boardDelete()}}>삭제</BUTTON>
-            <LinkContainer to={`/board/qna/update?bno=${bno}`}>
+            <LinkContainer to={`/board/update?id=${id}&bno=${bno}`}>
               <BUTTON forty>수정</BUTTON>
             </LinkContainer>
           </TWOBUTTONS>
