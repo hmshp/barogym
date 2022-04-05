@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: "Nanum Gothic", sans-serif;
     line-height: 1.5;
-    margin-bottom: 10em;
+    margin-bottom: 15em;
     @media only screen and (min-width: ${breakpoint.size.xl}) {
       font-size: 1.5rem;
     }
