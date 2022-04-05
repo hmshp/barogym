@@ -26,11 +26,11 @@ import PayListPage from './view/page/myInfo/PayListPage'
 import SchedulePage from './view/page/myInfo/SchedulePage'
 import ProductListPage from './view/page/mgmt/ProductListPage';
 import ProductUpdatePage from './view/page/mgmt/ProductUpdatePage';
+import ProductInsertPage from './view/page/mgmt/ProductInsertPage';
 import MyPostsPage from './view/page/myInfo/MyPostsPage';
 import Zipcode from './view/component/login/Zipcode';
 import ManagerHeader from './view/component/mgmt/ManagerHeader';
 import MemberMgmtPage from './view/page/mgmt/MemberMgmtPage';
-import TeacherMgmtPage from './view/page/mgmt/TeacherMgmtPage';
 import BoardList from './view/page/board/BoardList'
 import BoardUpdate from './view/page/board/BoardUpdate'
 import BoardDetail from './view/page/board/BoardDetail';
@@ -38,6 +38,8 @@ import BoardWrite from './view/page/board/BoardWrite';
 import GlobalStyle from './styles/GlobalStyle';
 import RequestMgmt from './view/page/mgmt/RequestMgmtPage';
 import { getCookie } from './view/component/login/cookie';
+import ClassListPage from './view/page/mgmt/ClassListPage';
+import ClassInsertPage from './view/page/mgmt/ClassInsertPage';
 
 const App = (props) => {
   const userId = getCookie('cmem_uid')
@@ -86,9 +88,11 @@ const App = (props) => {
           {/* mgmt */}
           <Route path="/mgmt/product/list" exact={true} element={<ProductListPage/>} />
           <Route path="/mgmt/product/update" exact={true} element={<ProductUpdatePage/>} />
+          <Route path="/mgmt/product/insert" exact={true} element={<ProductInsertPage/>} />
           <Route path="/mgmt/member/list" exact={true} element={<MemberMgmtPage/>} />
-          <Route path="/mgmt/teacher/list" exact={true} element={<TeacherMgmtPage/>} />
           <Route path="/mgmt/request/list" exact={true} element={<RequestMgmt/>} />
+          <Route path="/mgmt/class/list" exact={true} element={<ClassListPage/>} />
+          <Route path="/mgmt/class/insert" exact={true} element={<ClassInsertPage/>} />
         </Routes> 
       <Footer />        
     </UserContext.Provider>
