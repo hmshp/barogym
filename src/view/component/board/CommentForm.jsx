@@ -31,6 +31,7 @@ const CommentForm = (props) => {
         console.log(err)
     })
     setComment("")
+    window.location.reload();
   }
 
 
