@@ -33,6 +33,11 @@ export const BUTTON = styled(Button)`
   border: none;
   font-weight: 800;
   margin: 0 0.5em;
+  @media only screen and (max-width: 991px) {
+    margin-left: 0;
+    margin-right: 1em;
+    margin-top: 0.5em;
+  }
   text-decoration: none;
   color: white;
   &:hover {
@@ -42,8 +47,22 @@ export const BUTTON = styled(Button)`
     color: white;
   }
 `
+export const LOGOUTBUTTON = styled(BUTTON)`
+  margin-left: 0.3em;
+  @media only screen and (max-width: 990px) {
+    margin: 0;
+    padding-left: 0;
+  }
+`
 
+export const MANAGERLOGOUTBTN = styled(LOGOUTBUTTON)`
+  margin-left: 0.5em;
+    @media only screen and (max-width: ${breakpoint.size.sm}) {
+    margin: 0;
+    padding-left: 0;
+  }
+`
 export const buttonStyle = {
   backgroundColor: "transparent",
-  border: "none"
+  border: "none",
 }

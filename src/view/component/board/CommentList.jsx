@@ -35,21 +35,23 @@ const CommentList = (props) => {
     })
       .then(res => res.json())
       .then(result => console.log(result))
+
+      window.location.reload();
   }
 
-  const handleDelete = () => {
-    fetch(`http://localhost:9000/board/qnaCommentDelete`, {
+  const handleDelete = (event) => {
+    setCommentNo(event.target.name)
+
+    fetch(`http://localhost:9000/board/qnaCommentDelete?bno=${bno}&qc_no=${commentNo}`, {
       method: "POST",
-      body: JSON.stringify({
-        bno: bno,
-        qc_no: commentNo
-      }),
       headers: {
         "Content-Type": "application/json"
       }
     })
       .then(res => res.json())
       .then(result => console.log(result))
+
+      window.location.reload();
   }
 
   useEffect(() => {
@@ -71,15 +73,16 @@ const CommentList = (props) => {
         />
         {
           !isDisabled &&//수정모드 활성화 후(관리자모드에서만 가능. 관리자모드에서만 수정 버튼이 보이니까)
+          //취소 버튼 누르면 수정모드 비활성화
           <TWOBUTTONS flexEnd>
             <BUTTON onClick={handleSubmit}>변경</BUTTON>
-            <BUTTON gray>취소</BUTTON>
+            <BUTTON gray onClick={() => setIsDisabled(true)}>취소</BUTTON>
           </TWOBUTTONS>
         }
         {isDisabled && userId === "admin123" &&//관리자모드이고 수정모드 활성화 전
           <TWOBUTTONS flexEnd>
             <BUTTON name={item.QC_NO} onClick={onEditMode} gray>수정</BUTTON>
-            <BUTTON gray onClick={handleDelete}>삭제</BUTTON>
+            <BUTTON gray name={item.QC_NO} onClick={handleDelete}>삭제</BUTTON>
           </TWOBUTTONS>
         }
       </article>

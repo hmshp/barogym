@@ -61,10 +61,10 @@ export const kakaoPaySuccessDB = (list) => {
 export const uploadImageDB = (file) => {
   return fetch(`http://localhost:9000/board/imageUpload`, {
     method: "POST",
-    body: JSON.stringify(file),
-    headers: {
-      "Content-Type": "multipart/form-data"
-    },
+    body: file,
+    // headers: {
+    //   "Content-Type": "multipart/form-data"
+    // },
   })
     .then(res => res.json())
   // return new Promise((resolve) => {

@@ -12,7 +12,6 @@ const RequestMgmt = () => {
       .then(result => setRequestList(result))
   }, [])
 
-  console.log(requestList)
   console.log(filteredList)
 
   const handleChange = (event) => {
@@ -34,26 +33,10 @@ const RequestMgmt = () => {
   }
 
   const handleSubmit = () => {
-    const arr = filteredList.map(item => {
-      return ({
-        MEM_ID: item.MEM_ID,
-        REQ_NO: item.REQ_NO,
-        PASS_SDAY: item.REQ_SDAY
-      })
-    })
-    fetch(`http://localhost:9000/pass/passInsertAll`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: {
-        arr
-      }
-    })//요청 목록 불러오기
+    fetch(`http://localhost:9000/pass/passInsertAll?MEM_ID=${filteredList[0].MEM_ID}&REQ_NO=${filteredList[0].REQ_NO}&PASS_SDAY=${filteredList[0].REQ_SDAY}`)//요청 목록 불러오기
       .then(res => res.json())
-      .then(result => setRequestList(result))
+      .then(result => console.log(result))
   }
-
 
   const requestListElements = requestList.map((item, index) => {
     return (
@@ -86,7 +69,7 @@ const RequestMgmt = () => {
           </tr>
         </thead>
         <tbody>
-          {requestListElements}
+          {requestListElements && requestListElements}
         </tbody>
       </Table>
       <BUTTON onClick={handleSubmit}>승인하기</BUTTON>

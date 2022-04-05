@@ -1,14 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { boardInsertDB } from '../../../../service/dbLogic'
 import QuillEditor from '../../../component/board/QuillEditor'
+import UserContext from '../../../../userContext'
+import { BUTTON } from '../../../../styles/BoardStyle';
 
 const QnAWritePage = (props) => {
   const { id } = props;
+  const { userId } = useContext(UserContext)
   const[title, setTitle]= useState('');
   const[content, setContent]= useState('');
   const[files, setFiles]= useState([]);
+
+  console.log(userId, title, content, id)
   
   const quillRef = useRef();
   const navigate = useNavigate();
@@ -40,18 +44,24 @@ const QnAWritePage = (props) => {
     setTitle(e);
   } 
 
-  const boardInsert = async() => {
-    if(title.trim()===''||content.trim()===''||!id) return alert("게시글이 작성되지 않았습니다.");
-    const board = {
-      id : id,
-      title : title,
-      content : content,
-      fileNames : files,
-      mem_no : '123'
-    }
-    const res = await boardInsertDB(board);
-    if(!res.data) return alert("게시판 수정에 실패했습니다.");
-    navigate(`/board/list?id=${id}&page=1`);
+  const boardWrite = () => {
+    fetch(`http://localhost:9000/board/boardInsert`, {
+      method: "POST",
+      body: JSON.stringify({
+        mem_id : userId,
+        title : title,
+        content : content,
+        id : id,
+        fileNames : files,
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => res.json())
+    .then(result => console.log(result))
+
+    navigate(`/board/list?id=${id}`)
   }
 
 
@@ -62,7 +72,7 @@ const QnAWritePage = (props) => {
         <div style={{width:"80%", maxWidth:"2000px"}}>
           <div style={{display: 'flex', justifyContent: 'space-between', marginBottom:'10px'}}>
             <span style={{alignSelf: 'flex-end'}}>제목</span> 
-            <Button onClick={()=>{boardInsert()}}>글쓰기</Button>
+            <BUTTON onClick={boardWrite}>글쓰기</BUTTON>
           </div>
           <input
             id="dataset-title"

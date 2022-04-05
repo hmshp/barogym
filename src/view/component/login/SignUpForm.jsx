@@ -23,6 +23,9 @@ export default function SignUpForm() {
   const [isEmailChecked, setIsEmailChecked] = useState(false);
   const [emailMsg, setEmailMsg] = useState("");
 
+  const [isIdChecked, setIsIdChecked] = useState(false);
+  const [idMsg, setIdMsg] = useState("");
+
   console.log(emailMsg)
   console.log('이메일 체크 여부: ' + isEmailChecked)
 
@@ -80,8 +83,8 @@ export default function SignUpForm() {
 
   }
 
-  const checkAvailability = () => {
-    fetch(`http://localhost:9000/member/emailCheck?email=${signUpFormData.mem_email}`)
+  const checkEmail = () => {
+    fetch(`http://localhost:9000/member/duplicateCheck?type=email&p_email=${signUpFormData.mem_email}`)
       .then(res => res.json())
       .then(result => {
         if(result === 1) {
@@ -89,6 +92,20 @@ export default function SignUpForm() {
         } else {
           setIsEmailChecked(true) 
           setEmailMsg("사용 가능한 이메일입니다.")
+        }
+        
+      })
+  }
+
+  const checkId = () => {
+    fetch(`http://localhost:9000/member/duplicateCheck?type=id&p_id=${signUpFormData.mem_id}`)
+      .then(res => res.json())
+      .then(result => {
+        if(result === 1) {
+          setIdMsg("이미 다른 사용자가 사용 중입니다.")
+        } else {
+          setIsIdChecked(true) 
+          setIdMsg("사용 가능한 아이디입니다.")
         }
         
       })
@@ -108,7 +125,7 @@ export default function SignUpForm() {
                 placeholder="이메일"
                 seventy
               />
-              <BUTTON thirty gray onClick={checkAvailability} type="button">중복확인</BUTTON>
+              <BUTTON thirty gray onClick={checkEmail} type="button">중복확인</BUTTON>
             </div>
             <ERRORMSG>{emailMsg}</ERRORMSG>
 
@@ -128,10 +145,14 @@ export default function SignUpForm() {
               placeholder="이름"
             />  
 
-            <LABEL htmlFor="mem_id">아이디</LABEL>
-            <INPUT onChange={handleChange} id="mem_id" name="mem_id" value={signUpFormData.mem_id}
-              placeholder="아이디"
-            />
+            <div>
+              <LABEL htmlFor="mem_id">아이디</LABEL>
+              <INPUT onChange={handleChange} id="mem_id" name="mem_id" seventy value={signUpFormData.mem_id}
+                placeholder="아이디"
+              />
+              <BUTTON thirty gray onClick={checkId} type="button">중복확인</BUTTON>
+            </div>
+            <ERRORMSG>{idMsg}</ERRORMSG>
 
             <LABEL htmlFor="mem_nickname">닉네임</LABEL>
             <INPUT onChange={handleChange} id="mem_nickname" name="mem_nickname" value={signUpFormData.mem_nickname}

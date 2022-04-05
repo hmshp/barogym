@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Container, Navbar, Offcanvas, Button, ButtonGroup } from 'react-bootstrap';
 import Navi from './Navi';
-import {LOGO, H1, navbarBrandStyles, BUTTON, buttonStyle, NAVBAR} from '../../styles/HeaderStyle';
+import {LOGO, H1, navbarBrandStyles, BUTTON, LOGOUTBUTTON, buttonStyle, NAVBAR} from '../../styles/HeaderStyle';
 import { Link, useNavigate } from 'react-router-dom';
 import { deleteCookie, getCookie } from './login/cookie';
 
@@ -36,7 +36,7 @@ const Header = () => {
   console.log(`getCookie : ${getCookie('cmem_uid')} , ${getCookie('cmem_name')}`);
   //console.log(cmem_name);
   return (
-    <NAVBAR collapseOnSelect expand="md" onToggle={toggle}>
+    <NAVBAR collapseOnSelect expand="lg" onToggle={toggle}>
       <Container fluid>
         <Navbar.Brand style={navbarBrandStyles} href="/">
           <LOGO
@@ -52,8 +52,8 @@ const Header = () => {
               <Navbar.Collapse className="justify-content-end">
                 <Navi/>
                 <ButtonGroup>
-                    <BUTTON variant="secondary" style={buttonStyle} onClick={onLogout}>로그아웃</BUTTON>
-                    <BUTTON variant="secondary" style={buttonStyle} as={Link} to="/login/modify">정보수정</BUTTON>
+                    <LOGOUTBUTTON variant="secondary" style={buttonStyle} onClick={onLogout}>로그아웃</LOGOUTBUTTON>
+                    {/* <BUTTON variant="secondary" style={buttonStyle} as={Link} to="/login/modify">정보수정</BUTTON> */}
                   </ButtonGroup>
               </Navbar.Collapse>
             </>

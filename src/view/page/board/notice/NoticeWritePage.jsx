@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState, useContext } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { boardInsertDB } from '../../../../service/dbLogic'
 import QuillEditor from '../../../component/board/QuillEditor'
 import UserContext from '../../../../userContext'
 
@@ -53,7 +52,8 @@ const NoticeWritePage = (props) => {
         mem_id : userId,
         title : title,
         content : content,
-        id : id
+        id : id,
+        fileNames : files
       }),
       headers: {
         "Content-Type": "application/json"
@@ -61,22 +61,9 @@ const NoticeWritePage = (props) => {
     })
     .then(res => res.json())
     .then(result => console.log(result))
-  }
 
-  const boardInsert = async() => {
-    if(title.trim()===''||content.trim()===''||!id) return alert("게시글이 작성되지 않았습니다.");
-    const board = {
-      id : userId,
-      title : title,
-      content : content,
-      fileNames : files,
-      mem_no : '123'
-    }
-    const res = await boardInsertDB(board);
-    if(!res.data) return alert("게시판 수정에 실패했습니다.");
-    navigate(`/board/list?id=${id}&page=1`);
+    navigate(`/board/list?id=${id}`)
   }
-
 
   return (
     <>

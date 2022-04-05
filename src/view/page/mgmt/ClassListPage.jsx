@@ -3,23 +3,24 @@ import {PAGEHEADER,H1, STYLEDCONTAINER,STYLEDBUTTON,STYLEDSECTION,SUBSECTION} fr
 import { useNavigate } from 'react-router-dom';
 import ProductList from '../../component/mgmt/ProductList';
 import { BUTTON } from '../../../styles/MyInfoStyle';
-const ProductListPage = () => {
+import ClassList from '../../component/mgmt/ClassList';
+const ClassListPage = () => {
   const navigate = useNavigate();
   return (
     <STYLEDCONTAINER>
       <PAGEHEADER>
-        <H1>상품 관리</H1>
-        <BUTTON onClick={() => navigate('/mgmt/product/insert')}>상품 추가</BUTTON>
+        <H1>수업 관리</H1>
+        <BUTTON onClick={() => navigate('/mgmt/class/insert')}>수업 추가</BUTTON>
         {/* <Link to="/mgmt/product/update"> 
           <STYLEDBUTTON >편집모드 </STYLEDBUTTON>
         </Link> */}
       </PAGEHEADER>
 
       <STYLEDSECTION>
-        <ProductList />
+        <ClassList />
       </STYLEDSECTION>
     </STYLEDCONTAINER>
   );
 };
 
-export default ProductListPage;
+export default ClassListPage;

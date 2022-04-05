@@ -1,50 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Table} from 'react-bootstrap';
 import {BUTTON} from '../../../styles/BoardStyle';
 
 const ProductList = () => {
 
-  const products = [
-    {
-      name: 'GX 5회권 패키지',
-      price: '70000'
-    },
-    {
-      name: 'GX 10회권 패키지',
-      price: '140000'
-    },
-    {
-      name: 'GX 20회권 패키지',
-      price: '200000'
-    },
-    {
-      name: 'GX 30회권 패키지',
-      price: '380000'
-    },
-    {
-      name: '헬스장 이용권 1개월',
-      price: '50000'
-    },
-    {
-      name: '헬스장 이용권 3개월',
-      price: '140000'
-    },
-    {
-      name: '헬스장 이용권 6개월',
-      price: '250000'
-    },
-    {
-      name: '헬스장 이용권 12개월',
-      price: '480000'
-    },
-  ]
+  const [ productList, setProductList] = useState([]);
+  console.log(productList)
 
-  const ProductElements = products.map((product, index) => {
+  useEffect(() => {
+    fetch(`http://localhost:9000/request/productList`)
+      .then(res => res.json())
+      .then(result => setProductList(result))
+  }, [])
+
+  const deleteProduct = (event) => {
+    const prodNo = event.target.name
+    fetch(`http://localhost:9000/request/productDelete?prod_no=${prodNo}`)
+    .then(res => res.json())
+    .then(result => console.log(result))
+  }
+
+  const ProductElements = productList.map((product, index) => {
     return (
       <tr key={index}>
-        <td>{product.name}</td>
-        <td>{product.price}</td>
-        <td><BUTTON gray full>삭제</BUTTON></td>
+        <td>{product.PROD_NO}</td>
+        <td>{product.PROD_NAME}</td>
+        <td>{product.PROD_PRICE}원</td>
+        <td>{product.PROD_STATUS === 0 ? "판매중" : "판매 종료"}</td>
+        <td><BUTTON name={product.PROD_NO} onClick={deleteProduct} gray full>삭제</BUTTON></td>
       </tr>
     )
   })
@@ -53,8 +36,10 @@ const ProductList = () => {
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th>이름</th>
+          <th>상품번호</th>
+          <th>상품명</th>
           <th>가격</th>
+          <th>판매 여부</th>
           <th>삭제</th>
         </tr>
       </thead>

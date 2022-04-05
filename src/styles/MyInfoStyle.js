@@ -116,7 +116,7 @@ export const INPUT = styled.input`
   padding: 0.5em 1em;
   border-radius: 4px;
   border: 1px solid gray;
-  ${props => props.pwCheck &&
+  ${props => props.margin &&
     css`
       margin-bottom: 1em;
     `
@@ -149,4 +149,9 @@ export const H1 = styled.h1`
 export const PAGINATION = styled(Pagination)`
   display: flex;
   justify-content: center;
+`
+
+export const SELECT = styled.select`
+  padding: 0.5em;
+  margin-bottom: 1em;
 `

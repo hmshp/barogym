@@ -32,18 +32,23 @@ const QuillEditor = ({ value, handleContent, quillRef, files, handleFiles }) => 
                 !fileType[fileType.length-1].match('png')&&
                 !fileType[fileType.length-1].match('jpeg')) {
                 return alert("jpg png jpeg형식만 지원합니다.");
+            } else if(file.size > 1048576) {
+                console.log(file.size);
+                return alert("이미지는 1MB까지 업로드 가능합니다.");
             }
             formData.append("image", file); // 위에서 만든 폼데이터에 이미지 추가
             for (let pair of formData.entries()) {
                 console.log(pair[0], pair[1]); 
             }
             // 폼데이터를 서버에 넘겨 multer로 이미지 URL 받아오기
-            const res = uploadImageDB(formData);
+            const res = await uploadImageDB(formData);
             console.log(res);
-            if (!res.data) {
+
+            if (!res) {
                 return alert("이미지 업로드에 실패하였습니다.");
             }
-            const url = process.env.REACT_APP_SPRING_IP+`board/imageDownload?imageName=${res.data}`;
+            console.log(res);
+            const url = `http://localhost:9000/board/imageDownload?imageName=${res}`;
             const quill = quillRef.current.getEditor();
             /* ReactQuill 노드에 대한 Ref가 있어야 메서드들을 호출할 수 있으므로
             useRef()로 ReactQuill에 ref를 걸어주자.
@@ -65,7 +70,7 @@ const QuillEditor = ({ value, handleContent, quillRef, files, handleFiles }) => 
                 range,
                 `<img src=${url} style="width: 100%; height: auto;" alt="image" />`);
 
-            handleFiles(res.data, `${Math.floor(file.size/(1024*1024)*10)/10}MB`);
+            handleFiles(res, `${Math.floor(file.size/1024)/10}MB`);
         }   //주어진 인덱스에 HTML로 작성된 내용물을 에디터에 삽입한다.
 
         
