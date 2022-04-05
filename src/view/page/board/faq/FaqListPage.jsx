@@ -15,7 +15,7 @@ const FaqListPage = (props) => {
   const [postList,setPostList] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setitemsPerPage] = useState(2);
+  const [itemsPerPage, setitemsPerPage] = useState(10);
   const [startIndex, setStartIndex] = useState(0);
   const [pageCount, setPageCount] = useState();
 
