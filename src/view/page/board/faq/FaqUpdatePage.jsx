@@ -10,6 +10,7 @@ const FaqUpdatePage = (props) => {
   const[title, setTitle]= useState('');
   const[content, setContent]= useState('');
   const[files, setFiles]= useState([]);
+  const fileNames = [];
   
   const quillRef = useRef();
   const navigate = useNavigate();
@@ -42,9 +43,14 @@ const FaqUpdatePage = (props) => {
     .then(result => {
         setTitle(result[0].MASTER_TITLE)
         setContent(result[0].MASTER_CONTENT)
+        for(let i=result.length; i>1; i--) {
+          console.log(i);
+          fileNames.push(result[i-1].FILE_NAME);
+        }
+        if(fileNames){setFiles(fileNames);}
         console.log(result[0])
     })
-  }, []) 
+  }, [])  
   
 
 
