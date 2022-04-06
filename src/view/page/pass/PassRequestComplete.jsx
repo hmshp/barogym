@@ -16,32 +16,20 @@ export const STYLEDBUTTON2 = styled.button`
   }
 `;
 
-const PassBuyComplete = () => {
+const PassRequestComplete = () => {
   return (
 <div>
 <STYLEDCONTAINER>
 
     <PAGEHEADER>
-      <H1>결제 완료</H1>
+      <H1>신청 완료</H1>
     </PAGEHEADER>
 
     <div>
       <SUBSECTION>
-        <h3><strong>이용권 구매</strong> 가 <strong>완료</strong>되었습니다.</h3>
+        <h3><strong>이용권 신청</strong>이 <strong>완료</strong>되었습니다.</h3>
       </SUBSECTION>
     </div>
-
-      <SUBSECTION>
-        <h2>그룹수업 5회권 패키지</h2>
-        <h3>70,000원</h3>
-      </SUBSECTION>
-        
-      <SUBSECTION>
-      <p><strong>이용권 정보 </strong>
-        그룹수업 5회권 패키지</p>
-      <p> <strong>이용권 시작일자 </strong> 2022.02.23 수요일</p>  
-     </SUBSECTION>
-
       <Link to="/">
         <STYLEDBUTTON2> 홈 화면으로</STYLEDBUTTON2>
       </Link>
@@ -52,4 +40,4 @@ const PassBuyComplete = () => {
   );
 };
 
-export default PassBuyComplete;
+export default PassRequestComplete;

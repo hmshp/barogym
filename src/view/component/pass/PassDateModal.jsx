@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom';
 
 const PassDateModal = (props) => {
   const { userId } = useContext(UserContext)
-  const { selectedProduct } = props;
+  const { selectedProdNo } = props;
   const [show, setShow] = useState(false);
   const [date, setDate] = useState();
 
   const navigate = useNavigate();
 
-  console.log(userId, selectedProduct, date)
+  console.log(userId, selectedProdNo, date)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -21,12 +21,12 @@ const PassDateModal = (props) => {
     setDate(event.target.value)
   }
   const handleSubmit = () => {
-    fetch(`http://localhost:9000/request/requestInsert?mem_id=${userId}&prod_no=${selectedProduct}&req_sday=${date}`)
+    fetch(`http://localhost:9000/request/requestInsert?mem_id=${userId}&prod_no=${selectedProdNo}&req_sday=${date}`)
       .then(res => res.json())
       .then(result => console.log(result))
 
     setShow(false)
-    // navigate('/'); window.location.reload();
+    navigate('/pass/requestComplete');
   }
 
   return (
@@ -37,7 +37,7 @@ const PassDateModal = (props) => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>날짜를 입력해 주세요(ex)20220404)</Modal.Title>
+          <Modal.Title>시작 날짜를 입력해 주세요(ex)20220404)</Modal.Title>
         </Modal.Header>
         <Modal.Body><input type="date" onChange={handleChange} /></Modal.Body>
         <Modal.Footer>

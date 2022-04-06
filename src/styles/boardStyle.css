@@ -19,3 +19,7 @@
 .ql-align-justify {
   text-align: justify;
 }
+
+img {
+  max-width: 100%;
+}

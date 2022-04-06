@@ -27,12 +27,7 @@ const ClassInsertPage = () => {
 //cls_maxcnt, cls_cnt, cls_date, cls_status
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`http://localhost:9000/class/classInsert?cls_type=${classInfo.cls_type}&cls_tname=${classInfo.cls_tname}&cls_info=${classInfo.cls_info}&cls_time=${classInfo.cls_time}&cls_maxcnt=${classInfo.cls_maxcnt}&cls_date=${classInfo.cls_date}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    fetch(`http://localhost:9000/class/classInsert?cls_type=${classInfo.cls_type}&cls_tname=${classInfo.cls_tname}&cls_info=${classInfo.cls_info}&cls_time=${classInfo.cls_time}&cls_maxcnt=${classInfo.cls_maxcnt}&cls_date=${classInfo.cls_date}`)
     .then(res => res.json())
     .then(result => console.log(result))
 

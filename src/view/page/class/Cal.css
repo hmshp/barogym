@@ -1,5 +1,5 @@
 .react-calendar { 
-    width: 400px;
+    width: 100%;
     max-width: 100%;
     background-color: #fff;
     color: rgba(254, 139, 121);
@@ -68,20 +68,26 @@
    }
 
 
-   .react-calendar__tile--active:enabled:hover,
-   .react-calendar__tile--active:enabled:focus {
-    background: #fe8b79;
-    color: white;
-   }
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+background: #fe8b79;
+color: white;
+}
 
 
-   .SelectDate {
-    color: #fe8b79;
-   text-align: center;
-   margin-top: 10px;
-   }
+.SelectDate {
+color: #fe8b79;
+text-align: center;
+margin: 1em 0;
+}
 
-   .classBox {
-       margin: auto;
-    width:400px;
-   }
+.classBox {
+margin: auto;
+}
+
+.classParagraph {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

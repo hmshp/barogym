@@ -45,7 +45,7 @@ export default function SignUpForm() {
     `);
     //onLogin(formData.email,formData.password);
     
-    fetch(`http://localhost:9000/member/signIn?mem_id=${signUpFormData.mem_id}&mem_email=${signUpFormData.mem_email}&mem_pw=${signUpFormData.mem_pw}&mem_name=${signUpFormData.mem_name}&mem_nickname=${signUpFormData.mem_nickname}`)
+    fetch(`http://localhost:9000/member/signIn?mem_id=${signUpFormData.mem_id}&mem_email=${signUpFormData.mem_email}&mem_pw=${signUpFormData.mem_pw}&mem_name=${signUpFormData.mem_name}&mem_nickname=${signUpFormData.mem_nickname}&mem_tel=${signUpFormData.mem_tel}&mem_birthday=${signUpFormData.mem_birthday}&mem_gender=${signUpFormData.mem_gender}&mem_addr=${signUpFormData.mem_addr}&mem_addr_dtl=${signUpFormData.mem_addr_dtl}&mem_zipcode=${signUpFormData.mem_zipcode}`)
     .then(res => res.json())
     .then(result => {
       console.log('회원가입 여부 : '+result);

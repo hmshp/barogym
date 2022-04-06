@@ -67,8 +67,7 @@ const QnAWritePage = (props) => {
 
   return (
     <>
-      게시판 글쓰기 페이지
-      <div style={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>
+      <div style={{display: 'flex', flexDirection:'column', alignItems: 'center', marginTop: '2em'}}>
         <div style={{width:"80%", maxWidth:"2000px"}}>
           <div style={{display: 'flex', justifyContent: 'space-between', marginBottom:'10px'}}>
             <span style={{alignSelf: 'flex-end'}}>제목</span> 
