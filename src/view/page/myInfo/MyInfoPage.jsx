@@ -1,91 +1,110 @@
-import {useState, React} from 'react';
-import MyContactInfo from '../../component/myInfo/MyContactInfo';
-import MyPasswordInfo from '../../component/myInfo/MyPasswordInfo';
+import {useState, React, useEffect, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
-import {PAGEHEADER, CONTAINER, BUTTON, FORM, INPUT, H1} from '../../../styles/MyInfoStyle';
-import { TWOBUTTONS } from '../../../styles/MyInfoStyle';
-import { LinkContainer} from 'react-router-bootstrap';
+import {PAGEHEADER, CONTAINER, BUTTON, FORM, INPUT, HFORMTITLE, FORMITEM, LABEL, ADDRSECTION} from '../../../styles/MyInfoStyle';
 import ResignMembershipModal from '../../component/login/ResignMembershipModal';
+import UserContext from '../../../userContext';
 
 
 const MyInfoPage = () => {
-  const [isPwChecked, setIsPwChecked] = useState(false);
+  const { userId } = useContext(UserContext)
+
+  const [isOnEditeMode, setIsOnEditeMode] = useState(false);
   //올바른 비번 입력 후 나오는 화면에서 연락처 또는 비밀번호 수정 가능한지
   //(연락처나 비번 수정할 수 있는 input이 disabled 상태인지)를 나타내는 state
-  const [isContactDisabled, setIsContactDisabled] = useState(true);
-  const [isPwDisabled, setIsPwDisabled] = useState(true);
-  const [pw, setPw] = useState("");
 
-  const checkPassword = () => {
-    //원래는 firebase로 보내서 비번이 일치하는지 확인하여야 함
-    const tempPw = "1234";
-    if(tempPw === pw){
-      console.log("비밀번호 맞음")
-      setIsPwChecked(true);
-    } else {
-      alert("비밀번호가 맞지않습니다.");
-    }
-  }
 
+  const [myInfo, setMyInfo] = useState({
+    // mem_email: "",
+    // mem_tel: "",
+    // mem_addr: "",
+    // mem_addr_dtl: "",
+    // mem_pw: ""
+  });
+
+  console.log(myInfo)
   const handleChange = (event) => {
-    setPw(event.target.value)
+    const name = event.target.name
+    console.log(name)
+    setMyInfo(prevInfo => ({
+      ...prevInfo,
+      [name]: event.target.value
+    }))
   }
 
   const navigate = useNavigate();
-  
 
-  const activateContactInput = () => {
-    setIsContactDisabled(false)
-  }
-  const activatePwInput = () => {
-    setIsPwDisabled(false)
-  }
+  useEffect(() => {
+    fetch(`http://localhost:9000/member/detMem?mem_id=${userId}`)
+      .then(res => res.json())
+      .then(result => setMyInfo(({
+        mem_email: result[0].MEM_EMAIL,
+        mem_tel: result[0].MEM_TEL,
+        mem_addr: result[0].MEM_ADDR,
+        mem_addr_dtl: result[0].MEM_ADDR_DTL,
+      })))
+  }, [])
+
+  useEffect(() => {
+    fetch(`http://localhost:9000/member/checkPw?id=${userId}`)
+    .then(res => res.json())
+    .then(result => setMyInfo(prevInfo => ({
+      ...prevInfo,
+      mem_pw: result
+    })))
+  }, [])
+  
 
   return (
     <CONTAINER>
-    {/* {
-      !isPwChecked?
-      <> */}
-        {/* <PAGEHEADER>
-          <H1>비밀번호 확인(1234)</H1>
-        </PAGEHEADER>
-        <main>
-          <FORM>
-            <INPUT
-              pwCheck
-              onChange={handleChange}
-              type="password"
-              placeholder='비밀번호를 입력해 주세요.'
-              id="password"
-            />
-            <TWOBUTTONS>
-              <BUTTON
-                forty gray thick
-                onClick={()=>{ navigate('/'); window.location.reload();}} 
-              >
-                  취소
-              </BUTTON>
-              <BUTTON forty thick onClick={checkPassword}>확인</BUTTON>
-            </TWOBUTTONS>
-          </FORM>
-        </main> */}
-      {/* </>
-      :
-      <> */}
         <PAGEHEADER>
           <h1>내 정보</h1>
           <ResignMembershipModal />
         </PAGEHEADER>
         <main>
           <CONTAINER flex>
-            <MyContactInfo
-              isDisabled={isContactDisabled}
-              activateInput={activateContactInput}
-            />
-            <MyPasswordInfo
-              isDisabled={isPwDisabled}
-              activateInput={activatePwInput}
-            />
+            <CONTAINER sidePadding relative>
+              <FORMTITLE>
+                <h2>회원 정보</h2>
+                <BUTTON onClick={() => navigate('/myInfo/update')}>회원 정보 수정</BUTTON>
+              </FORMTITLE>
+              <FORM>
+                <FORMITEM>
+                  <LABEL htmlFor={myInfo.mem_email}>이메일</LABEL>
+                  <INPUT
+                    id={myInfo.mem_email}
+                    name="mem_email"
+                    disabled
+                    value={myInfo.mem_email || ''}//controlled input을 uncontrolled로 하려고 한다는 에러가 나와서 || ''를 넣었다. undefined 방지용으로
+                    onChange={handleChange}
+                    required
+                    type="email"
+                  />
+                </FORMITEM>
+                <FORMITEM>
+                  <LABEL htmlFor={myInfo.mem_tel}>휴대폰</LABEL>
+                  <INPUT
+                    id={myInfo.mem_tel}
+                    name="mem_tel"
+                    disabled
+                    value={myInfo.mem_tel || ''}
+                    onChange={handleChange}
+                    required
+                  />
+                </FORMITEM>
+                <FORMITEM>
+                  <LABEL htmlFor={myInfo.mem_pw}>비밀번호</LABEL>
+                  <INPUT
+                    id={myInfo.mem_pw}
+                    name="mem_pw"
+                    disabled
+                    value={myInfo.mem_pw || ''}
+                    onChange={handleChange}
+                    required
+                    type="password"
+                  />
+                </FORMITEM>
+              </FORM>
+            </CONTAINER>
           </CONTAINER>
         </main>
       {/* </>
