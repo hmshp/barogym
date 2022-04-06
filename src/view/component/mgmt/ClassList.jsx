@@ -10,7 +10,7 @@ const ClassList = () => {
     fetch(`http://localhost:9000/class/classList`)
       .then(res => res.json())
       .then(result => setClassList(result))
-  }, [classList])
+  }, [])
 
   const deleteClass = (event) => {
     const clsNo = event.target.name
