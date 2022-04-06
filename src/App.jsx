@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { memberListDB } from './service/dbLogic';
 import Header from './view/component/Header';
 import Footer from './view/component/Footer';
-import KakaoMap from './view/component/intro/KakaoMap'
 import HomePage from './view/page/HomePage'
 import IntroGymPage from './view/page/intro/IntroGymPage'
 import IntroTeacherPage from './view/page/intro/IntroTeacherPage'
@@ -12,8 +10,6 @@ import IntroLocationPage from './view/page/intro/IntroLocationPage'
 import UserContext from './userContext'
 
 import PassInfoPage from './view/page/pass/PassInfoPage';
-import PassBuyPage from './view/page/pass/PassBuyPage';
-import PassBuyComplete from './view/page/pass/PassBuyComplete';
 import ClassUploadPage from './view/page/class/ClassUploadPage';
 import ClassAppointmentPage from './view/page/class/ClassAppointmentPage'
 import ClassSchedulePage from './view/page/class/ClassSchedulePage'
@@ -28,7 +24,6 @@ import ProductListPage from './view/page/mgmt/ProductListPage';
 import ProductUpdatePage from './view/page/mgmt/ProductUpdatePage';
 import ProductInsertPage from './view/page/mgmt/ProductInsertPage';
 import MyPostsPage from './view/page/myInfo/MyPostsPage';
-import Zipcode from './view/component/login/Zipcode';
 import ManagerHeader from './view/component/mgmt/ManagerHeader';
 import MemberMgmtPage from './view/page/mgmt/MemberMgmtPage';
 import BoardList from './view/page/board/BoardList'
@@ -40,6 +35,10 @@ import RequestMgmt from './view/page/mgmt/RequestMgmtPage';
 import { getCookie } from './view/component/login/cookie';
 import ClassListPage from './view/page/mgmt/ClassListPage';
 import ClassInsertPage from './view/page/mgmt/ClassInsertPage';
+import MyInfoUpdatePage from './view/page/myInfo/MyInfoUpdatePage';
+import MyPassPage from './view/page/myInfo/MyPassPage';
+import PassRequestPage from './view/page/pass/PassRequestPage';
+import PassRequestComplete from './view/page/pass/PassRequestComplete';
 
 const App = (props) => {
   const userId = getCookie('cmem_uid')
@@ -50,10 +49,6 @@ const App = (props) => {
     <UserContext.Provider value={{userId, userName}}>
       {userId === "admin123" ? <ManagerHeader /> : <Header/>}
     <GlobalStyle />
-
-        {/* <button onClick={async()=>{ const db =await memberListDB(); alert("console창 확인"); console.log(db.data[0]);}}>DB테스트</button>
-        <KakaoMap/>
-        <Zipcode/> */}
         <Routes>
           {/* home */}
           <Route path="/" exact={true} element={<HomePage/>} />
@@ -69,8 +64,8 @@ const App = (props) => {
           <Route path="/board/update/*" element={<BoardUpdate/>} />
           {/* pass */}
           <Route path="/pass/info" exact={true} element={<PassInfoPage/>} />
-          <Route path="/pass/buy" exact={true} element={<PassBuyPage/>} />
-          <Route path="/pass/buyComplete" exact={true} element={<PassBuyComplete/>} />
+          <Route path="/pass/request" exact={true} element={<PassRequestPage/>} />
+          <Route path="/pass/requestComplete" exact={true} element={<PassRequestComplete/>} />
           {/* class */}
           <Route path="/class/upload" exact={true} element={<ClassUploadPage/>} />
           <Route path="/class/appointment" exact={true} element={<ClassAppointmentPage/>} />
@@ -82,7 +77,8 @@ const App = (props) => {
           <Route path="/login/findPwd" exact={true} element={<FindPwdPage/>} />
           {/* myInfo */}
           <Route path="/myInfo" exact={true} element={<MyInfoPage/>} />
-          <Route path="/myInfo/payList" exact={true} element={<PayListPage/>} />
+          <Route path="/myInfo/update" exact={true} element={<MyInfoUpdatePage/>} />
+          <Route path="/myInfo/payList" exact={true} element={<MyPassPage/>} />
           <Route path="/myInfo/posts" exact={true} element={<MyPostsPage/>} />
           <Route path="/myInfo/schedule" exact={true} element={<SchedulePage/>} />
           {/* mgmt */}
