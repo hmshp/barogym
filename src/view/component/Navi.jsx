@@ -38,7 +38,7 @@ const Navi = () => {
           <LinkContainer to="/pass/info">
             <NavDropdown.Item>이용권안내</NavDropdown.Item>
           </LinkContainer>  
-          <LinkContainer to="/pass/buy">
+          <LinkContainer to="/pass/request">
             <NavDropdown.Item>이용권 신청</NavDropdown.Item>
           </LinkContainer>  
         </NavDropdown>
@@ -46,10 +46,10 @@ const Navi = () => {
           typeof userId !== 'undefined' &&
           <NavDropdown title="수업 예약">
             <LinkContainer to="/class/appointment">
-              <NavDropdown.Item>수업예약</NavDropdown.Item>
+              <NavDropdown.Item>수업 예약</NavDropdown.Item>
             </LinkContainer>  
             <LinkContainer to="/class/schedule">
-              <NavDropdown.Item>수업일정</NavDropdown.Item>
+              <NavDropdown.Item>예약 내역</NavDropdown.Item>
             </LinkContainer>  
           </NavDropdown>
         }
@@ -64,7 +64,7 @@ const Navi = () => {
               <NavDropdown.Item>구매한 이용권</NavDropdown.Item>
             </LinkContainer>  
             <LinkContainer to="/myInfo/posts">
-              <NavDropdown.Item>내 게시글</NavDropdown.Item>
+              <NavDropdown.Item>내 문의글</NavDropdown.Item>
             </LinkContainer>  
           </NavDropdown>
         }
