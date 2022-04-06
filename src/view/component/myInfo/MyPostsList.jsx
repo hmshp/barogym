@@ -1,35 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {Table} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import UserContext from '../../../userContext';
 
 const MyPosts = () => {
-
+  const { userId } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const posts = [
-    {
-      title: "이용권 양도합니다",
-      date: "2022-03-11",
-      boardType: "양도게시판"
-    },
-    {
-      title: "주차 이용시간 문의",
-      date: "2022-03-02",
-      boardType: "1:1 문의"
-    },
-    {
-      title: "스피닝 관련 문의",
-      date: "2022-02-01",
-      boardType: "1:1 문의"
-    },
-  ]
+  const [posts, myPosts] = useState([]);
+  
+  console.log(posts)
+
+  useEffect(() => {
+    fetch(`http://localhost:9000/board/boardList?id=myInfo&mem_id=${userId}`)
+    .then(res => res.json())
+    .then(result => myPosts(result))
+  }, [])
 
   const myPostsElements = posts.map((post, index) => {
     return (
-      <tr key={post.title} onClick={() => navigate(`/board/trans/detail?page=1&bno=${index}`)}>
-        <td>{post.title}</td>
-        <td>{post.date}</td>
-        <td>{post.boardType}</td>
+      <tr key={post.QNA_BNO} onClick={() => navigate(`/board/detail?id=qna&bno=${post.QNA_BNO}`)}>
+        <td>{post.QNA_BNO}</td>
+        <td>{post.TITLE}</td>
+        <td>{post.BOARD_DATE}</td>
       </tr>
     )
   })
@@ -38,9 +31,9 @@ const MyPosts = () => {
     <Table striped bordered hover>
       <thead>
         <tr>
+          <th>글 번호</th>
           <th>제목</th>
           <th>등록일</th>
-          <th>카테고리</th>
         </tr>
       </thead>
       <tbody>
