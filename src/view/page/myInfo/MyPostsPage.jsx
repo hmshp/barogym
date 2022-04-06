@@ -10,7 +10,7 @@ const MyPostsPage = () => {
   return (
     <CONTAINER>
       <PAGEHEADER>
-        <H1>내 게시글</H1>
+        <H1>내 문의글</H1>
       </PAGEHEADER>
       <main>
         <MyPosts />
