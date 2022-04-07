@@ -15,7 +15,7 @@ const IntroLocationPage = () => {
         className="location"
         src="https://i.ibb.co/MDTXm7W/2.png"
         alt="subway-bus"
-      />
+      /><br/>
       <img
         className="location"
         src="https://i.ibb.co/JFNGRZP/44.png"
