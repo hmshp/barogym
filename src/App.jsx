@@ -18,7 +18,7 @@ import SignupPage from './view/page/login/SignupPage'
 import FindEmailPage from './view/page/login/FindEmailPage'
 import FindPwdPage from './view/page/login/FindPwdPage'
 import MyInfoPage from './view/page/myInfo/MyInfoPage'
-import PayListPage from './view/page/myInfo/PayListPage'
+
 import SchedulePage from './view/page/myInfo/SchedulePage'
 import ProductListPage from './view/page/mgmt/ProductListPage';
 import ProductUpdatePage from './view/page/mgmt/ProductUpdatePage';
@@ -39,6 +39,7 @@ import MyInfoUpdatePage from './view/page/myInfo/MyInfoUpdatePage';
 import MyPassPage from './view/page/myInfo/MyPassPage';
 import PassRequestPage from './view/page/pass/PassRequestPage';
 import PassRequestComplete from './view/page/pass/PassRequestComplete';
+import MyRequestPage from './view/page/myInfo/MyRequestPage';
 
 
 const App = (props) => {
@@ -79,7 +80,8 @@ const App = (props) => {
           {/* myInfo */}
           <Route path="/myInfo" exact={true} element={<MyInfoPage/>} />
           <Route path="/myInfo/update" exact={true} element={<MyInfoUpdatePage/>} />
-          <Route path="/myInfo/payList" exact={true} element={<MyPassPage/>} />
+          <Route path="/myInfo/pass" exact={true} element={<MyPassPage/>} />
+          <Route path="/myInfo/request" exact={true} element={<MyRequestPage/>} />
           <Route path="/myInfo/posts" exact={true} element={<MyPostsPage/>} />
           <Route path="/myInfo/schedule" exact={true} element={<SchedulePage/>} />
           {/* mgmt */}

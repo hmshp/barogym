@@ -60,9 +60,12 @@ const Navi = () => {
             <LinkContainer to="/myInfo">
               <NavDropdown.Item>내 정보</NavDropdown.Item>
             </LinkContainer>  
-            <LinkContainer to="/myInfo/PayList">
-              <NavDropdown.Item>구매한 이용권</NavDropdown.Item>
+            <LinkContainer to="/myInfo/pass">
+              <NavDropdown.Item>내 이용권</NavDropdown.Item>
             </LinkContainer>  
+            <LinkContainer to="/myInfo/request">
+              <NavDropdown.Item>신청 내역</NavDropdown.Item>
+            </LinkContainer>
             <LinkContainer to="/myInfo/posts">
               <NavDropdown.Item>내 문의글</NavDropdown.Item>
             </LinkContainer>  

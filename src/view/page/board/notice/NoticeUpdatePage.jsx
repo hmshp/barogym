@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState, useContext } from 'react';
-import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import QuillEditor from '../../../component/board/QuillEditor'
 import UserContext from '../../../../userContext'
+import { BUTTON } from '../../../../styles/BoardStyle'
 
 const NoticeUpdatePage = (props) => {
   const { id, bno } = props;
@@ -88,7 +88,7 @@ const NoticeUpdatePage = (props) => {
         <div style={{width:"80%", maxWidth:"2000px"}}>
           <div style={{display: 'flex', justifyContent: 'space-between', marginBottom:'10px'}}>
             <span style={{alignSelf: 'flex-end'}}>제목</span> 
-            <Button onClick={boardUpdate}>수정하기</Button>
+            <BUTTON onClick={boardUpdate}>수정하기</BUTTON>
           </div>
           <input
             id="dataset-title"
