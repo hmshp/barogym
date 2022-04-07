@@ -45,6 +45,7 @@ const QnAWritePage = (props) => {
   } 
 
   const boardWrite = () => {
+    if(title.trim()===''||content.trim()===''||!id) return alert("제목과 내용을 모두 입력해주세요.");
     fetch(`http://localhost:9000/board/boardInsert`, {
       method: "POST",
       body: JSON.stringify({

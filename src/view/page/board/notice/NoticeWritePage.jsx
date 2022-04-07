@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import QuillEditor from '../../../component/board/QuillEditor'
 import UserContext from '../../../../userContext'
+import { BUTTON } from '../../../../styles/BoardStyle';
 
 const NoticeWritePage = (props) => {
   const { id } = props;
@@ -46,6 +47,7 @@ const NoticeWritePage = (props) => {
   } 
 
   const boardWrite = () => {
+    if(title.trim()===''||content.trim()===''||!id) return alert("제목과 내용을 모두 입력해주세요.");
     fetch(`http://localhost:9000/board/boardInsert`, {
       method: "POST",
       body: JSON.stringify({
@@ -71,7 +73,7 @@ const NoticeWritePage = (props) => {
         <div style={{width:"80%", maxWidth:"2000px"}}>
           <div style={{display: 'flex', justifyContent: 'space-between', marginBottom:'10px'}}>
             <span style={{alignSelf: 'flex-end'}}>제목</span> 
-            <Button onClick={boardWrite}>글쓰기</Button>
+            <BUTTON onClick={boardWrite}>글쓰기</BUTTON>
           </div>
           <input
             id="dataset-title"
