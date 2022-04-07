@@ -21,6 +21,7 @@ export const NAVBAR = styled(Navbar)`
   @media only screen and (min-width: ${breakpoint.size.xl}) {
     padding: 2em 0;
   }
+  z-index: 99;
 `
 
 export const navbarBrandStyles = {

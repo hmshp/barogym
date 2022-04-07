@@ -36,7 +36,7 @@ const Navi = () => {
         </NavDropdown>
         <NavDropdown title="이용권">
           <LinkContainer to="/pass/info">
-            <NavDropdown.Item>이용권안내</NavDropdown.Item>
+            <NavDropdown.Item>이용권 안내</NavDropdown.Item>
           </LinkContainer>  
           <LinkContainer to="/pass/request">
             <NavDropdown.Item>이용권 신청</NavDropdown.Item>

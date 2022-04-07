@@ -68,7 +68,7 @@ const QuillEditor = ({ value, handleContent, quillRef, files, handleFiles }) => 
         
             quill.clipboard.dangerouslyPasteHTML(
                 range,
-                `<img src=${url} style="width: 100%; height: auto;" alt="image" />`);
+                `<img className="editorImg" src=${url} style="width: 100%; height: auto;" alt="image" />`);
 
             handleFiles(res, `${Math.floor(file.size/1024)/10}MB`);
         }   //주어진 인덱스에 HTML로 작성된 내용물을 에디터에 삽입한다.

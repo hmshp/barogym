@@ -83,7 +83,6 @@ const NoticeUpdatePage = (props) => {
 
   return (
     <>
-      게시판 글쓰기 페이지
       <div style={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>
         <div style={{width:"80%", maxWidth:"2000px"}}>
           <div style={{display: 'flex', justifyContent: 'space-between', marginBottom:'10px'}}>
