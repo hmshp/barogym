@@ -48,6 +48,7 @@ function ClassAppointmentPage() {
   }
 
   const todayClassElements = todayClass.map((item, index) => {
+    console.log(item.CLS_MAXCNT, item.CLS_CNT)
     return (
       <div key={index} style={divStyle}>
         <p className="classParagraph">{item.CLS_TIME}</p>
@@ -58,10 +59,14 @@ function ClassAppointmentPage() {
           }
         </p>
         <p className="classParagraph">{item.CLS_TNAME} 강사</p>
-        <STYLEDBUTTON onClick={() => {
-          setShow(true)
-          setClsNo(item.CLS_NO)
-        }}>예약하기</STYLEDBUTTON>
+        {
+          item.CLS_MAXCNT != item.CLS_CNT ?
+          <STYLEDBUTTON onClick={() => {
+            setShow(true)
+            setClsNo(item.CLS_NO)
+          }}>예약하기</STYLEDBUTTON> : <STYLEDBUTTON gray> 예약마감 </STYLEDBUTTON>
+        }
+        
       </div>
     )
   })
