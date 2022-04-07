@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {CONTAINER, PAGEHEADER, H1, H2, BUTTON, TWOBUTTONS, COMMENTWRITER, FORM, TEXTAREA} from '../../../styles/BoardStyle';
 import UserContext from '../../../userContext';
+import DeleteCommentModal from './qna/DeleteCommentModal';
 
 const CommentList = (props) => {
   const { userId } = useContext(UserContext)
   const [isDisabled, setIsDisabled]  = useState(true);
   const [comment, setComment]  = useState();
   const [commentNo, setCommentNo] = useState();//댓글 번호
+  const [showModal, setShowModal] = useState(false);
   const { bno } = props;
   const [commentList, setCommentList] = useState([]);
 
@@ -39,19 +41,9 @@ const CommentList = (props) => {
       window.location.reload();
   }
 
-  const handleDelete = (event) => {
+  const showDeleteModal = (event) => {
     setCommentNo(event.target.name)
-
-    fetch(`http://localhost:9000/board/qnaCommentDelete?bno=${bno}&qc_no=${commentNo}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(result => console.log(result))
-
-      window.location.reload();
+    setShowModal(true)
   }
 
   useEffect(() => {
@@ -82,7 +74,7 @@ const CommentList = (props) => {
         {isDisabled && userId === "admin123" &&//관리자모드이고 수정모드 활성화 전
           <TWOBUTTONS flexEnd>
             <BUTTON name={item.QC_NO} onClick={onEditMode} gray>수정</BUTTON>
-            <BUTTON gray name={item.QC_NO} onClick={handleDelete}>삭제</BUTTON>
+            <BUTTON gray name={item.QC_NO} onClick={showDeleteModal}>삭제</BUTTON>
           </TWOBUTTONS>
         }
       </article>
@@ -96,6 +88,15 @@ const CommentList = (props) => {
         <H2>등록된 댓글</H2>
       </PAGEHEADER>
       {commentElements}
+      {
+        showModal &&
+        <DeleteCommentModal
+          bno={bno}
+          commentNo={commentNo}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
+      }
     </section>
   );
 };
