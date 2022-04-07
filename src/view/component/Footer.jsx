@@ -10,7 +10,8 @@ export const footerStyles = {
   color :'rgb(127, 106, 94)',
   position: "fixed",
   bottom: "0",
-  width: "100%"
+  width: "100%",
+  zIndex: "99"
 }
 export const footerStyles2 = {
   backgroundColor: 'rgb(204, 192, 184)',
