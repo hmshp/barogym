@@ -1,10 +1,13 @@
 import React, { useState,  useEffect } from 'react';
 import {Table} from 'react-bootstrap';
 import {BUTTON} from '../../../styles/BoardStyle';
+import DeleteRequestModal from './DeleteRequestModal';
 
 const RequestMgmt = () => {
   const [requestList, setRequestList] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
+
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:9000/request/requestList`)//요청 목록 불러오기
@@ -12,7 +15,8 @@ const RequestMgmt = () => {
       .then(result => setRequestList(result))
   }, [])
 
-  console.log(filteredList)
+  console.log(showModal)
+
 
   const handleChange = (event) => {
     const isChecked = event.target.checked;
@@ -52,7 +56,7 @@ const RequestMgmt = () => {
         <td>{item.MEM_ID}</td>
         <td>{item.PROD_NAME}</td>
         <td>{item.REQ_SDAY}</td>
-        <td><BUTTON gray full>삭제</BUTTON></td>
+        <td><BUTTON gray full onClick={() => {setShowModal(true)}}>삭제</BUTTON></td>
       </tr>
     )
   })
@@ -70,8 +74,17 @@ const RequestMgmt = () => {
         </thead>
         <tbody>
           {requestListElements && requestListElements}
+          
         </tbody>
       </Table>
+      {
+        filteredList.length !== 0 && showModal &&//filterListR 배열에 값이 들어가기 전엔 filteredList[0].REQ_NO를 하면 에러가 난다(값이 없으니) 그래서 fliteredList 길이가 0이 아니고 취소 버튼을 눌러서 showModal이 true일 때만 아래 모달을 띄우게 했다.
+        <DeleteRequestModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          reqNo={filteredList[0].REQ_NO}
+        />
+      }
       <BUTTON onClick={handleSubmit}>승인하기</BUTTON>
     </>
   );
