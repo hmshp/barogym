@@ -20,11 +20,6 @@ const MyInfoUpdatePage = () => {
   const [isPwDisabled, setIsPwDisabled] = useState(true);
 
   const [myInfo, setMyInfo] = useState({
-    // mem_email: "",
-    // mem_tel: "",
-    // mem_addr: "",
-    // mem_addr_dtl: "",
-    // mem_pw: ""
   });
 
   console.log(myInfo)
