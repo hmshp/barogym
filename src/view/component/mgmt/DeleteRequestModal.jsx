@@ -26,7 +26,7 @@ const DeleteRequestModal = (props) => {
     <>
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>요청 내역 삭제</Modal.Title>
+          <Modal.Title>신청 내역 삭제</Modal.Title>
         </Modal.Header>
         <Modal.Body>삭제하시겠습니까?</Modal.Body>
         <Modal.Footer>
