@@ -1,90 +1,136 @@
-## npm 라이브러리 설치 목록
+<h1>바로짐 - 헬스장 관리 웹사이트 </h1>
 
-#### npm i axios
-#### npm i bootstrap
-#### npm i --save firebase
-#### npm i --save @fortawesome/fontawesome-free
-#### npm i gh-pages --save-dev
-#### npm i react-bootstrap bootstrap@5.1.3
-#### npm i -S react-router-bootstrap
-#### npm i react-router-dom
-#### npm i react-redux
-#### npm i redux
-#### npm i redux-logger
-#### npm i redux-devtools-extension
-#### npm i redux-promise-middleware
-#### npm i redux-promise
-#### npm i redux-saga
-#### npm i redux-thunk
-#### npm i styled-components
+<h2>사용</h2>
+<ul>
+  <li>React</li>
+  <li>Context API</li>
+  <li>Styled Components</li>
+  <li>React Bootstrap</li>
+</ul>
 
-# Getting Started with Create React App
+<h2>기능</h2>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3><a href="https://youtu.be/4rc71JDMB3g" target="_blank">시연 영상</a></h3>
 
-## Available Scripts
+<h4>비회원 페이지</h4>
+<ul>
+  <li>로그인</li>
+  <li>회원가입</li>
+  <li>커뮤니티</li>
+</ul>
 
-In the project directory, you can run:
+<h4>회원 페이지</h4>
+<ul>
+  <li>로그인</li>
+  <li>로그아웃</li>
+  <li>회원 탈퇴</li>
+  <li>커뮤니티</li>
+  <li>이용권 신청</li>
+  <li>예약</li>
+</ul>
 
-### `npm start`
+<h4>관리자 페이지</h4>
+<ul>
+  <li>커뮤니티</li>
+  <li>회원 관리</li>
+  <li>수업 관리</li>
+  <li>상품 관리</li>
+  <li>이용권 신청 내역 관리</li>
+</ul>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<h4>반응형</h4>
+<div>
+  <img width="500" src="https://user-images.githubusercontent.com/95236467/162682861-9793c262-c82f-4c1e-9b0f-c33416dd9d77.gif" alt="반응형 헤더" >
+  <img width="500" src="https://user-images.githubusercontent.com/95236467/162683287-196f163d-3141-4fb3-9ef6-359ba51793fb.gif" alt="반응형 화면" >
+</div>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+<h2>담당한 파트(프론트엔드)</h2>
+<h4>레이아웃 + 기능 모두 구현한 파트</h4>
+<ul>
+  <li>헤더</li>
+  <li>로그인, 회원가입, 비밀번호 찾기, 이메일 찾기</li>
+  <li>관리자 페이지</li>
+  <li>커뮤니티 메뉴(에디터 외 모든 부분)</li>
+</ul>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<h4>기능(DB 연동)만 구현한 파트</h4>
+<ul>
+  <li>로그인, 회원가입, 비밀번호 찾기, 이메일 찾기</li>
+  <li>수업 예약</li>
+  <li>이용권</li>
+</ul>
 
-### `npm run build`
+<h2>트러블 슈팅</h2>
+<h3>1. 댓글 삭제 버튼을 클릭하고 handleDelete 함수를 호출해서 삭제 요청을 해도 댓글이 삭제되지 않는 문제</h3>
+<h4>문제</h4>
+<ul>
+  <li>fetch 메소드가 실행되고 리렌더링이 일어날 때가 돼서야 commentNo가 업데이트 되어서, fetch 요청 시 전달되는 commentNo 값이 undefined임</li>
+</ul>
+<img width="530" alt="댓글 삭제 기능 버그" src="https://user-images.githubusercontent.com/95236467/162692643-4dfa1ea9-b34d-429a-b244-0d6d01200420.PNG">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h4>해결</h4>
+<ul>
+  <li>함수 안에 setState가 들어 있을 때 state는 함수가 끝나고 리렌더링 될 때 업데이트 된다는 것을 학습</li>
+  <li>state 업데이트가 먼저 될 수 있도록 함 - 댓글 삭제 버튼 클릭 시 state 업데이트 하고 모달창 띄움</li>
+  <li>모달창에서 삭제 버튼을 클릭하면 DB에 삭제 요청</li>
+</ul>
+<img width="378" alt="댓글" src="https://user-images.githubusercontent.com/95236467/162694490-796177aa-93df-45d7-8534-f2909e50401b.PNG">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<h3>2. 페이지네이션 기능이 제대로 작동하지 않는 문제</h3>
+<h4>문제</h4>
+<ul>
+  <li>처음 게시판에 들어가면 1페이지에 있어야 하는 게시물이 잘 렌더링되나, 2페이지를 눌러도 같은 게시물이 렌더링됨</li>
+  <li>다시 1페이지를 누르면 2페이지에 있어야 하는 게시물이 렌더링되고, 2페이지를 다시 누르면 1페이지에 있어야 하는 게시물이 렌더링됨</li>
+</ul>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```javascript
+//버그 해결 전 소스 코드
+const handleChange = (event) => {
+    setStartIndex((currentPage - 1) * itemsPerPage)
+    setCurrentPage(Number(event.target.id))
+  }
 
-### `npm run eject`
+  for (let number = 1; number <= pageCount; number++) {
+    items.push(
+      <Pagination.Item
+        key={number} id={number}
+        onClick={handleChange}
+        active={number === currentPage}>
+        {number}
+      </Pagination.Item>,
+    );
+  }
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img width="700" src="https://user-images.githubusercontent.com/95236467/162699783-f1284cfc-1b9b-4bf8-8591-a9eadd3152f3.gif" alt="페이지네이션 버그">
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<h4>해결</h4>
+<ul>
+  <li>state는 batch 작업으로 업데이트되므로 코드 라인 순서대로 업데이트되지 않는다는 것을 학습</li>
+  <li>클릭 이벤트로는 setCurrentPage만 호출하여 currentPage state가 먼저 업데이트 되도록 하고</li>
+  <li>setStartIndex는 useEffect 안에서 호출하여 currentPage가 바뀔 때마다 호출되도록 함</li>
+</ul>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```javascript
+//버그 해결 후 소스코드
+useEffect(() => {
+    setStartIndex((currentPage - 1) * itemsPerPage)
+}, [currentPage])
 
-## Learn More
+  for (let number = 1; number <= pageCount; number++) {
+    items.push(
+      <Pagination.Item
+        key={number} id={number}
+        onClick={() => {setCurrentPage(number);}}
+        active={number === currentPage}>
+        {number}
+      </Pagination.Item>,
+    );
+  }
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img width="700" src="https://user-images.githubusercontent.com/95236467/162703703-44bc590a-bb9f-4244-a17c-efe8853010a2.gif" alt="페이지네이션 버그">
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
