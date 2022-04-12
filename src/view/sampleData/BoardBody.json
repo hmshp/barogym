@@ -1,0 +1,153 @@
+{
+  "qna": 
+    {
+      "listBody" : [
+        {
+          "bno": 1,
+          "title": "회원권 관련 문의",
+          "writer": "김사랑",
+          "date": "2022-02-01",
+          "hit": 0
+        },
+        {
+          "bno": 2,
+          "title": "주차 이용 시간 문의",
+          "writer": "김사랑",
+          "date": "2022-02-01",
+          "hit": 0
+        },
+        {
+          "bno": 3,
+          "title": "스피닝 관련 문의",
+          "writer": "김사랑",
+          "date": "2022-02-01",
+          "hit": 0
+        }
+      ]
+    },
+  "notice": 
+    {
+      "listBody": [
+        {
+          "bno": 1,
+          "title": "새학기 할인 이벤트",
+          "writer": "김사랑",
+          "date": "2022-02-01",
+          "hit": 0
+        },
+        {
+          "bno": 2,
+          "title": "코로나 사회적 거리두기 개편안 안내",
+          "writer": "김사랑",
+          "date": "2022-02-01",
+          "hit": 0
+        },
+        {
+          "bno": 3,
+          "title": "설 연휴 휴무 / 관련 안내사항입니다.",
+          "writer": "김사랑",
+          "date": "2022-02-01",
+          "hit": 0
+        }
+      ]
+    },
+  "faq": 
+    {
+      "listFilter": ["카테고리"],
+      "listBody": [
+        {
+          "bno": 1,
+          "PostCategory": "헬스장 이용 안내",
+          "title": "락커 대여 방법이 궁금합니다.",
+          "writer": "관리자",
+          "date": "2022-02-01",
+          "hit": 0
+        },
+        {
+          "bno": 2,
+          "PostCategory": "결제 안내",
+          "title": "결제는 어떻게 하나요?",
+          "writer": "관리자",
+          "date": "2022-02-01",
+          "hit": 0
+        },
+        {
+          "bno": 3,
+          "PostCategory": "수업 안내",
+          "title": "수업은 어떤 식으로 진행되나요?",
+          "writer": "관리자",
+          "date": "2022-02-01",
+          "hit": 0
+        }
+      ]
+    },
+  "review":
+    {
+      "listFilter": ["수업 전체", "강사명", "별점"],
+      "listBody": [
+        {
+          "bno": 1,
+          "ClassCategory": "요가",
+          "trainer": "손혜미 강사",
+          "title": "처음으로 운동에 재미를 느끼게 해 준 바로짐",
+          "rate": "★★★★★",
+          "writer": "손혜미",
+          "date": "2022-02-01",
+          "hit": 0
+        },
+        {
+          "bno": 2,
+          "ClassCategory": "스피닝",
+          "trainer": "김사랑 강사",
+          "title": "코어 힘이 생겼어요",
+          "rate": "★★★★★",
+          "writer": "손혜미",
+          "date": "2022-02-01",
+          "hit": 0
+        },
+        {
+          "bno": 3,
+          "ClassCategory": "필라테스",
+          "trainer": "손혜미 강사",
+          "title": "필라테스 수업 후기",
+          "rate": "★★★★★",
+          "writer": "김사랑",
+          "date": "2022-02-01",
+          "hit": 0
+        }
+      ]
+    },
+  "trans": 
+    {
+      "listFilter": ["카테고리"],
+      "listBody": [
+        {
+          "bno": 1,
+          "title": "이용권 양도해요",
+          "transCategory": "5회권",
+          "price": 50000,
+          "writer": "손혜미",
+          "date": "2022-02-01",
+          "hit": 0
+        },
+        {
+          "bno": 2,
+          "title": "3개월 남은 이용권 양도합니다!",
+          "transCategory": "헬스장 이용권",
+          "price": 30000,
+          "writer": "손혜미",
+          "date": "2022-02-01",
+          "hit": 0
+        },
+        {
+          "bno": 3,
+          "title": "10회권 양도해요.",
+          "transCategory": "10회권",
+          "price": 50000,
+          "writer": "김사랑",
+          "date": "2022-02-01",
+          "hit": 0
+        }
+      ]
+    }
+}

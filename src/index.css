@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Nanum Gothic";
+  font-display: fallback;
+
+  src:
+    url("./fonts/NanumGothic-Regular.woff") format("woff"),
+    url("./fonts/NanumGothic-Bold.woff") format("woff"),
+    url("./fonts/NanumGothic-ExtraBold.woff") format("woff");
+
+  /* 사용할 폰트의 기본 스타일 */
+  font-weight: 400;
+  font-style: normal;
+}

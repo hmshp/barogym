@@ -1,0 +1,25 @@
+.pagination > li > a {
+  color: gray;
+}
+
+.pagination .active > .page-link {
+  background-color: gray;
+  color: white;
+  border: none;
+}
+
+.ql-align-center {
+  text-align: center;
+}
+
+.ql-align-right {
+  text-align: right;
+}
+
+.ql-align-justify {
+  text-align: justify;
+}
+
+.editorImg {
+  max-width: 100%;
+}
